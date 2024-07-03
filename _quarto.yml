@@ -4,14 +4,14 @@ project:
 website:
   page-navigation: true
   reader-mode: false
-  title: "Matias Andina"
+  title: "Yair Litman"
   favicon: webpage_logo.png
   site-url: "https://matiasandina.netlify.app"
-  repo-url: "https://github.com/matiasandina/Webpage"
+  repo-url: "https://github.com/litman90/webpage"
   repo-actions: [edit, issue]
   open-graph: true
   twitter-card:
-    creator: "@NeuroMLA"
+    creator: "Yair Litman"
     card-style: summary_large_image
   
   search:
@@ -44,14 +44,21 @@ website:
       - text: "Research"
         file: research/index.qmd
       - text: "CV"
-        href: https://matiasandina.github.io/cv/
+        href: files/CV.pdf
     right: 
-      - icon: github
-        href: https://github.com/matiasandina/
+      #- icon: github
+      #  href: https://github.com/matiasandina/
+      - icon: envelope
+        href: mailto:yl899@cam.ac.uk
       - icon: twitter
-        href: https://twitter.com/neuroMLA
-      - icon: rss
-        href: posts/index.xml
+        href: https://x.com/YairLitman
+      - icon: linkedin
+        href: https://www.linkedin.com/in/yair-litman-11345b30/
+      - text: "{{< ai orcid >}}" 
+        href: https://orcid.org/0000-0002-6890-4052 
+      - text: "{{< ai google-scholar >}}"
+        href: https://scholar.google.de/citations?user=TZ9_wnEAAAAJ&hl=en 
+
 
   #sidebar:
   #  #logo: "images/T.png"

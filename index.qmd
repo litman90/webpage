@@ -1,26 +1,21 @@
 ---
-title: "Matias Andina"
+title: "Yair Litman"
 comments: False
 about:
   template: jolla
   image: profile.jpg
   links:
     - icon: envelope
-      text: Mail
-      href: mailto:matiasandina@gmail.com
+      href: mailto:yl899@cam.ac.uk
     - icon: twitter
-      text: twitter
-      href: https://twitter.com/NeuroMLA
+      href: https://x.com/YairLitman
     - icon: linkedin
-      text: LinkedIn
-      href: https://www.linkedin.com/in/matiasandina/
-    - icon: github
-      text: Github
-      href: https://github.com/matiasandina
-    - icon: stackoverflow
-      text: StackOverflow
-      href: https://stackoverflow.com/users/3215940/matias-andina
+      href: https://www.linkedin.com/in/yair-litman-11345b30/
+    - text: "{{< ai orcid >}}" 
+      href: https://orcid.org/0000-0002-6890-4052 
+    - text: "{{< ai google-scholar >}}" 
+      href: https://scholar.google.de/citations?user=TZ9_wnEAAAAJ&hl=en 
 
 ---
 
-Neuroscientist. Writer. Software Developer.
+Computational Material Scientist - Theoretical Chemist 
