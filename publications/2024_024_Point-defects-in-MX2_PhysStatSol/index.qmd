@@ -1,0 +1,15 @@
+---
+title: "A Hybrid-DFT Study of Intrinsic Point Defects in MX2 (M=Mo, W; X=S, Se) Monolayers"
+author: ["Alaa Akkoush", "Yair Litman", "Mariana Rossi"]
+date: 2023-05-16
+publication: "Phys. Status Solidi A, **221**, _2300180_ (2024)."
+categories: ["organic_inorganic_interfaces","vibrational_spectroscopy"]
+url_source:  https://onlinelibrary.wiley.com/doi/abs/10.1002/pssa.202300180
+url_preprint: 
+journ: "Phys. Status Solidi A"
+issue: 221
+page: 2300180
+year: 2024
+image: featured.jpg
+pub_number: 24
+---

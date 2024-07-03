@@ -1,0 +1,15 @@
+---
+title: "Fully First-Principles Surface Spectroscopy with Machine Learning" 
+author: ["Yair Litman", "Jinggang Lan", "Yuki Nagata", "David M. Wilkins"]
+date: 2024-01-15
+publication: "J. Phys. Chem. Lett, **16**, _644–650_ (2024)."
+categories: ["aqueous_interfaces","vibrational_spectroscopy"]
+url_source:  https://doi.org/10.1021/acs.jpclett.3c01989
+url_preprint: 
+journ: "J. Phys. Chem. Lett"
+issue: 14
+page: 8175-8182
+year: 2023
+image: featured.jpg
+pub_number: 23
+---

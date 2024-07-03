@@ -1,0 +1,15 @@
+---
+title:"Quantum tunneling in real space: Tautomerization of single porphycene molecules on the (111) surface of Cu, Ag, and Au"
+author: ["Takashi Kumagai", "Janina N. Ladenthin",  "Yair Litman",  "Mariana Rossi",  "Leonhard Grill",  "Sylwester Gawinkowski", "Jacek Waluk",  "Mats Persson"]
+date: 2017-12-26
+publication: "J. Chem. Phys., **148**, _102330_ (2018)."
+categories: ["organic_inorganic_interfaces","quantum_dynamics"]
+url_source: https://aip.scitation.org/doi/10.1063/1.5004602
+url_preprint: 
+journ: "J. Chem. Phys."
+issue: 148
+page: 102330
+year: 2018
+image: featured.png
+pub_number: 5
+---

@@ -1,0 +1,15 @@
+---
+title: "Decisive role of nuclear quantum effects on surface mediated water dissociation at finite temperature"
+author: [ "Yair Litman", "Davide Donadio", "Michele Ceriotti", "Mariana Rossi"]
+date: 2017-11-22
+publication: "J. Chem. Phys., **148**, _102320_ (2018)."
+categories: ["aqueous_interfaces","vibrational_spectroscopy","quantum_dynamics"]
+url_source: https://aip.scitation.org/doi/10.1063/1.5002537
+url_preprint: 
+journ: "J. Chem. Phys."
+issue: 148
+page: 102320
+year: 2018
+image: featured.jpg
+pub_number: 6
+---

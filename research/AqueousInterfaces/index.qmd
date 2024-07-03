@@ -1,0 +1,29 @@
+---
+title: Aqueous Interfaces
+alias: &ALIAS aqueous_interfaces
+image: featured.jpg
+listing:
+  id: pubs
+  template: ../../_ejs/publications-people.ejs 
+  contents: ../../publications/**/*.qmd
+  sort: "pub_number desc"
+  # sort-ui: true
+  filter-ui: true
+  include:
+    categories: *ALIAS
+  fields: [publication, title, categories, image, date, author]
+
+---
+Where water meets the world: exploring the dynamic and complex realm of aqueous interfaces
+
+<figure style="text-align: center;">
+    <img src="featured.jpg" alt="Featured Image" style="display: block; margin-left: auto; margin-right: auto; width: 500px; height: auto;">
+    <figcaption>NaCl (aq) - air interface </figcaption>
+</figure>
+
+
+## Related Publications
+
+
+:::{#pubs}
+:::

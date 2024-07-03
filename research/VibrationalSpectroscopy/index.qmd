@@ -1,0 +1,28 @@
+---
+title: Vibrational Spectroscopy
+alias: &ALIAS vibrational_spectroscopy
+image: featured.jpg
+listing:
+  id: pubs
+  template: ../../_ejs/publications-people.ejs 
+  contents: ../../publications/**/*.qmd
+  sort: "pub_number desc"
+  # sort-ui: true
+  filter-ui: true
+  include:
+    categories: *ALIAS
+  fields: [publication, title, categories, image, date, author]
+
+---
+Using light to reveal the mysteries of molecular motion.
+
+<figure style="text-align: center;">
+    <img src="featured.jpg" alt="Featured Image" style="display: block; margin-left: auto; margin-right: auto; width: 500px; height: auto;">
+</figure>
+
+
+## Related Publications
+
+
+:::{#pubs}
+:::

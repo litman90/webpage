@@ -1,0 +1,15 @@
+---
+title: "Is Unified Understanding of Vibrational Coupling of Water Possible? Hyper-Raman  Measurement and Machine Learning Spectra "
+author: ["Kazuki Inoue", "Yair Litman", "David M. Wilkins", "Yuki Nagata", "Masanari Okuno"]
+date: 2023-03-22
+publication: "J. Phys. Chem. Lett., **14**, _3063-3068_ (2023)."
+categories: ["vibrational_spectroscopy","quantum_dynamics"]
+url_source: https://doi.org/10.1021/acs.jpclett.3c00398
+url_preprint: 
+journ: "J. Phys. Chem. Lett."
+issue: 14
+page: 3063-3068
+year: 2023
+image: featured.jpg
+pub_number: 20
+---

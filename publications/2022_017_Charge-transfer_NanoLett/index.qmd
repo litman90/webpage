@@ -1,0 +1,15 @@
+---
+title: "Charge Transfer-Mediated Dramatic Enhancement of Raman Scattering upon Molecular Point Contact Formation"
+author: ["Borja Cirera","Yair Litman","Chenfang Lin","Alaa Akkoush","Adnan Hammud","Martin Wolf","Mariana Rossi","Takashi Kumagai"]
+date: 2023-03-22
+publication: "Nano Lett., **22**, _2170-2176_ (2022)."
+categories: ["vibrational_spectroscopy","organic_inorganic_interfaces"]
+url_source:  https://doi.org/10.1021/acs.nanolett.1c02626
+url_preprint: 
+journ: "Nano Lett.."
+issue: 22
+page: 2170-2176
+year: 2022 
+image: featured.jpg
+pub_number: 17
+---

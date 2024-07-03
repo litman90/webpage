@@ -1,0 +1,15 @@
+---
+title: "Zero-point energy and tunnelling: general discussion"
+author: ["Stuart C. Althorpe","Antonios M. Alvertis","William Barford","Raz L. Benson","Irene Burghardt","Samuele Giannini","Scott Habershon","Sharon Hammes-Schiffer","Sam Hay","Srinivasan Iyengar","Aaron Kelly","Ksenia Komarova","Joseph Lawrence","Yair Litman","Craig Martens","Reinhard J. Maurer","Dave Plant","Mariana Rossi","Ken Sakaushi","Addison Schile","Simone Sturniolo","David P. Tew","George
+Trenins","Graham Worth"]
+date: 2023-03-22
+publication: "Faraday Discuss., **221**, _478-500_ (2020)."
+categories: []
+url_source: https://pubs.rsc.org/en/content/articlelanding/2020/fd/c9fd90075f
+url_preprint: 
+journ: "Faraday Discuss."
+issue: 221
+page: 478-500
+year: 2020
+pub_number: 14
+---

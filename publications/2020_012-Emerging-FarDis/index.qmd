@@ -1,0 +1,15 @@
+---
+title: "Emerging opportunities and future directions: general discussion"
+author: ["Stuart C. Althorpe","William Barford","Jochen Blumberger","Callum Bungey","Irene Burghardt","Animesh Datta","Soumya Ghosh","Samuele Giannini","Tobias Grünbaum","Scott Habershon","Sharon
+Hammes-Schiffer","Sam Hay","Srinivasan Iyengar","Garth Jones","Aaron Kelly","Ksenia Komarova","Joseph Lawrence","Yair Litman","Jonathan Mannouch","David Manolopoulos","Craig Martens","Reinhard J. Maurer","Marko Melander","Mariana Rossi","Ken Sakaushi","Maximilian Saller","Addison Schile","Simone Sturniolo","George Trenins","Graham Worth"]
+date: 2023-03-22
+publication: "Faraday. Discuss., **221**, _564-581_ (2020)."
+categories: []
+url_source: https://pubs.rsc.org/en/content/articlelanding/2020/fd/c9fd90077b
+url_preprint: 
+journ: "Faraday Discuss."
+issue: 221
+page: 564-581
+year: 2020
+pub_number: 12
+---

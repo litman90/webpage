@@ -1,0 +1,14 @@
+---
+title: "Spectroscopic signatures of quantum effects: general discussion"
+author: ["Antonios M. Alvertis","William Barford","Susannah Bourne Worster","Irene Burghardt","Alex Chin","Animesh Datta","Arend Dijkstra","Thomas Fay","Helen Fielding","Tobias Grünbaum","Scott Habershon","Sharon Hammes-Schiffer","Srinivasan Iyengar","Alex R. Jones","Ksenia Komarova","Jérémie Léonard","Yair Litman","David Picconi","Dave Plant","Addison Schile","Gregory D. Scholes","Javier Segarra-Martí","Francesco Segata", "Alessandro Trossi", "Graham Worth"]
+date: 2023-03-22
+publication: "Faraday. Discuss., **221**, _322-349_ (2020)."
+categories: []
+url_source:  https://pubs.rsc.org/en/content/articlelanding/2020/fd/c9fd90074h
+url_preprint: 
+journ: "Faraday. Discuss."
+issue: 221
+page: 322-349
+year: 2020
+pub_number: 11
+---

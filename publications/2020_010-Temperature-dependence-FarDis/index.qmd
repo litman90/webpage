@@ -1,0 +1,15 @@
+---
+title: 'Temperature dependence of the vibrational spectrum of porphycene: a qualitative  failure of classical-nuclei molecular dynamics'
+author: ["Yair Litman","Jörg Behler","Mariana Rossi"]
+date: 2023-03-22
+publication: "Faraday Discuss., **221**, _526-546_ (2020)."
+categories: ["vibrational_spectroscopy","quantum_dynamics"]
+url_source: https://pubs.rsc.org/en/content/articlelanding/2020/fd/c9fd00056a
+url_preprint: 
+journ: "Faraday Discuss."
+issue: 221
+page: 526-546
+year: 2020
+image: featured.jpg
+pub_number: 10
+---

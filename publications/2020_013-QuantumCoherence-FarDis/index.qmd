@@ -1,0 +1,14 @@
+---
+title: "Quantum coherence in complex environments: general discussion"
+author: ["Antonios M. Alvertis","William Barford","Susannah Bourne Worster","Irene Burghardt","Animesh Datta","Arend Dijkstra","Thomas Fay","Soumya Ghosh","Tobias Grünbaum","Scott Habershon","P. J. Hore","David Hutchinson","Srinivasan Iyengar","Alex R. Jones","Garth Jones","Ksenia Komarova","Joseph Lawrence","Jérémie Léonard","Yair Litman","Jonathan Mannouch","David Manolopoulos","Craig Martens","Manel Mondelo-Martell","David Picconi","Dave Plant","Ken Sakaushi","Maximilian A. C. Saller","Addison Schile","Gregory D. Scholes","Javier Segarra-Martí","Francesco Segatta","Alessandro Troisi","Graham Worth"] 
+date: 2023-03-22
+publication: "Faraday Discuss., **221**, _168-201_ (2020)."
+categories: []
+url_source: https://pubs.rsc.org/en/content/articlelanding/2020/fd/c9fd90076d
+url_preprint: 
+journ: "Faraday Discuss."
+issue: 221
+page: 168-201
+year: 2020
+pub_number: 13
+---
