@@ -10,6 +10,5 @@ journ: ""
 issue: 
 page: ""
 year: 2020
-image: featured.jpg
 pub_number: 15
 ---

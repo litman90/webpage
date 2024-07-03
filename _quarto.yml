@@ -34,12 +34,15 @@ website:
     background: secondary
     search: true
     left:
-      - text: "Posts"
-        file: posts/index.qmd
-      - text: "Projects"
-        file: projects/index.qmd
-      - text: "Research"
+      #- text: "Posts"
+      #  file: posts/index.qmd
+      # - text: "Projects"
+      #  file: projects/index.qmd
+      - text: "Research Areas"
         file: research/index.qmd
+      - href: publications/index.qmd
+      - href: codes/index.qmd
+        text: Codes
       - text: "CV"
         href: files/CV.pdf
     right: 
