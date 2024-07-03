@@ -2,7 +2,7 @@
 title: "Dissipative tunneling rates through the incorporation of first-principles electronic  friction in instanton rate theory. I. Theory"
 author: ["Yair Litman","Eszter S. Pós","Connor L. Box","Rocco Martinazzo","Reinhard J. Maurer","Mariana Rossi"]
 date: 2023-03-22
-publication: "J. Chem. Phys. **156**, _194106_ (2022)."
+publication: "J. Chem. Phys., **156**, _194106_ (2022)."
 categories: ["quantum_dynamics"]
 url_source:  https://aip.scitation.org/doi/10.1063/5.0088399
 url_preprint: 

@@ -34,9 +34,6 @@ website:
     background: secondary
     search: true
     left:
-      #- text: "Home"
-      #  icon: house
-      #  file: index.qmd
       - text: "Posts"
         file: posts/index.qmd
       - text: "Projects"
@@ -59,25 +56,6 @@ website:
       - text: "{{< ai google-scholar >}}"
         href: https://scholar.google.de/citations?user=TZ9_wnEAAAAJ&hl=en 
 
-
-  #sidebar:
-  #  #logo: "images/T.png"
-  #  pinned: true
-  #  align: center
-  #  tools:
-  #    - icon: github
-  #      href: https://github.com/matiasandina/
-  #      text: "Github"
-  #    - icon: twitter
-  #      href: https://twitter.com/neuroMLA
-  #      text: "Twitter"
-
-  #  style: "docked"
-  #  collapse-level: 1
-  #  contents:
-  #    - href: posts/index.qmd
-  #      text: Posts
-# 
 
 format:
   html: 

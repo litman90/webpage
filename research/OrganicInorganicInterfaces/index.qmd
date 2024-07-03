@@ -1,5 +1,5 @@
 ---
-title: Organice Inorganic  Interfaces
+title: Organic/Inorganic  Interfaces
 alias: &ALIAS organic_inorganic_interfaces
 image: featured.jpg
 listing:

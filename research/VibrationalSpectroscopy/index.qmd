@@ -1,5 +1,5 @@
 ---
-title: Vibrational Spectroscopy
+title: (Non Linear) Vibrational Spectroscopy
 alias: &ALIAS vibrational_spectroscopy
 image: featured.jpg
 listing:
