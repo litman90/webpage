@@ -1,6 +1,3 @@
-# Preview
- quarto preview index.qmd 
-
 # Publish
 quarto render
 git add docs

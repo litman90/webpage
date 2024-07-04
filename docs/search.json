@@ -53,7 +53,7 @@
     "href": "research/index.html",
     "title": "Research Areas",
     "section": "",
-    "text": "(Non Linear) Vibrational Spectroscopy\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAqueous Interfaces\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOrganic/Inorganic Interfaces\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuantum Dynamics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Yair’s research aims to accelerate the development of current and future energy-related technologies by providing atomistic-level understanding of key processes ocurring at liquid-solid interfaces.\nHis primary system of interest include organic/inorganic, aqueous, and electrified interfaces. To tackle these challenges, Yair utilizes advanced first principles methods and employs machine learning techniques to achieve the accuracy and model complexity required by scientific question. Yair has developed theoretical methods to calculate (quantum) reaction rates and various types of spectroscopies, such as, tip-enhanced Raman, sum-frequency generation, among others. He enjoys collaborating with experimentalists and theoreticians alike.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n(Non Linear) Vibrational Spectroscopy\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAqueous Interfaces\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOrganic/Inorganic Interfaces\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuantum Dynamics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "publications/index.html",
@@ -961,9 +961,9 @@
   {
     "objectID": "note.html",
     "href": "note.html",
-    "title": "Yair Litman",
+    "title": "Preview",
     "section": "",
-    "text": "quarto preview index.qmd"
+    "text": "Preview\nquarto preview index.qmd\n\n\nPublish\nquarto render git add docs git commit -m “Publish site to docs/” git push"
   },
   {
     "objectID": "blogroll/index.html",
@@ -977,7 +977,7 @@
     "href": "index.html",
     "title": "Yair Litman",
     "section": "",
-    "text": "Computational Material Scientist - Theoretical Chemist\nAbout Yair\nYair Litman is a dedicated theoretical chemist working at the Yusuf Hamied Department of Chemistry (University of Cambridge) with a passion for solving complex problems at the interface of chemistry, physics, and materials science.\nYair’s research aims to accelerate the development of current and future energy-related technologies by providing atomistic-level understanding of key processes ocurring at liquid-solid interfaces. His primary foucus includes organic/inorganic, aqueous, and electrified interfaces. To tackle these challenges, Yair utilizes advanced first principles methods and employs machine learning techniques to achieve the accuracy and model complexity required by scientific question. He has developed theoretical methods to calculate (quantum) reaction rates and various types of spectroscopies, such as IR, Raman, tip-enhanced Raman, sum-frequency generation, among others. He enjoys collaborating with experimentalists and theoreticians alike."
+    "text": "Computational Material Scientist - Theoretical Chemist"
   },
   {
     "objectID": "codes/index.html",
