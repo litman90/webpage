@@ -1,0 +1,40 @@
+---
+title: Radiopharmaceuticals
+alias: &ALIAS bacon
+image: featured.png
+listing:
+  id: pubs
+  template: ../../_ejs/publications-people.ejs 
+  contents: ../../publications/**/*.qmd
+  sort: "pub_number desc"
+  # sort-ui: true
+  filter-ui: true
+  include:
+    categories: *ALIAS
+  fields: [publication, title, categories, image, date, author]
+
+---
+
+I worked for several years at **<a href=https://bacon.com.ar/en/home/> Laborations Bacon </a>** under the supervision of Lic. Guillermo Casale, producing
+and developing different radiopharmaceuticals.
+
+As a part of the R&D team, I developed the synthesis of two important drugs, namely:
+
+-  **<a href=https://bacon.com.ar/en/producto/colina-2/> 18F-Choline </a>**: used for the diagnosis of the initial stages of prostate cancer.
+-  **<a href=https://bacon.com.ar/en/producto/dopa/> 18F-l-Dopa </a>**: used for detecting activity loss of functional dopaminergic nerve endings.
+
+
+Example of brain PET-scans of healthy and sick patients using 18F-DOPA:
+![](F-DOPA.png)
+
+Early mornings (~4 am), I used to have fun carrying out nuclear reactions, more precisely 18O(p,n)18F,
+to synthesize **<a href=https://bacon.com.ar/en/producto/fdg/> 18F-FDG </a>**.
+
+Would like to know more? Check out this **<a href=https://www.youtube.com/watch?v=6BxyqFK2KRI&t=4s> video </a>**  on how the 18F nucleus  is created inside the IBA cyclotrons. 
+
+
+## Related Publications
+
+
+:::{#pubs}
+:::

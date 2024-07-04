@@ -14,7 +14,7 @@ listing:
   fields: [publication, title, categories, image, date, author]
 
 ---
-"Exploring the fascinating intersection where organic and inorganic worlds collide."
+Exploring the fascinating intersection where organic and inorganic worlds collide.
 
 <figure style="text-align: center;">
     <img src="featured.jpg" alt="Featured Image" style="display: block; margin-left: auto; margin-right: auto; width: 500px; height: auto;">

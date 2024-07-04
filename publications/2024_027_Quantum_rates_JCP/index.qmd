@@ -1,0 +1,15 @@
+---
+title: "Quantum rates in dissipative systems with spatially varying friction"
+author: ["Oliver Bridge", "Paolo Lazzaroni","Rocco Martinazzo", "Mariana Rossi", "Stuart C. Althorpe","Yair Litman"]
+date: 2024-05-28
+publication: "J. Chem. Phys. (accepted)"
+categories: ["quantum_dynamics"]
+url_source: https://doi.org/10.48550/arXiv.2405.00512
+url_preprint: 
+journ: "J. Chem. Phys."
+issue: "(accepted) "
+page: " "
+year: 2024
+image: featured.png
+pub_number: 27
+---

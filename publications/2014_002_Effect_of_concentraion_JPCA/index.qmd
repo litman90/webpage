@@ -1,0 +1,15 @@
+---
+title: "Effect of Concentration on the Formation of Rose Bengal Triplet State on Microcrystalline Cellulose: A Combined Laser-Induced Optoacoustic Spectroscopy, Diffuse Reflectance Flash Photolysis, and Luminescence Study"
+author: ["Yair  Litman", "Matthew G. Voss", "Hernan B. Rodriguez", "Enrique San Roman"]
+date: 2014-08-11
+publication: "J. Phys. Chem. A., **118**, _10531-10537_ (2014)."
+categories: ["photochemistry"]
+url_source: https://doi.org/10.1021/jp5045095 
+url_preprint: 
+journ: "J. Phys. Chem. A."
+issue: 118
+page: 10531-10537
+year: 2014
+image: featured.gif
+pub_number: 2
+---

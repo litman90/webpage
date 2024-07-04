@@ -1,0 +1,7 @@
+---
+title: Previous lifes
+listing:
+  id: previous-lifes
+  type: grid
+page-layout: full
+---

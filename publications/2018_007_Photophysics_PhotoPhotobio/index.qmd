@@ -1,0 +1,15 @@
+---
+title: "Photophysics of Xanthene Dyes at High Concentrations in Solid Environments: Charge Transfer Assisted Triplet Formation"
+author: ["Yair  Litman", "Hernan B. Rodriguez", "Silvia E. Braslavsky", "Enrique San Roman"]
+date: 2016-07-07
+publication: "Photochem. and Photobiol., **94**, _865-874_ (2018)."
+categories: ["photochemistry"]
+url_source:  https://doi.org/10.1111/php.12978
+url_preprint: 
+journ: "Photochem. and Photobiol."
+issue: 94
+page: 865-874
+year: 2018
+image: featured.png
+pub_number: 7
+---

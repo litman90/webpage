@@ -1,0 +1,15 @@
+---
+title: "i-PI 3.0: a flexible, efficient framework for advanced atomistic simulations"
+author: ["Yair Litman","Venkat Kapil", "Yotam MY Feldman", "Davide Tisi", "Tomislav Begušić", "Karen Fidanyan", "Guillaume Fraux", "Jacob Higer", "Matthias Kellner", "Tao E Li", "Eszter S Pós", "Elia Stocco", "George Trenins", "Barak Hirshberg", "Mariana Rossi", "Michele Ceriotti"]
+date: 2024-07-20
+publication: "J. Chem. Inf. Model., **64**, _4426-4435_ (2024)."
+categories: ["quantum_dynamics"]
+url_source: https://arxiv.org/abs/2405.15224
+url_preprint: 
+journ: "arXiv"
+issue: 2405.15224
+page: " "
+year: 2024
+image: featured.png
+pub_number: 28
+---

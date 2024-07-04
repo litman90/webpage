@@ -1,0 +1,15 @@
+---
+title: "Tuning the concentration of dye loaded polymer films for maximum photosensitization efficiency: phloxine B in poly(2-hydroxyethyl methacrylate)"
+author: ["Yair  Litman", "Hernan B. Rodriguez", "Enrique San Roman"]
+date: 2016-01-01
+publication: " Photochem. Photobiol. Sci., **15**, _80-85_ (2016)."
+categories: ["photochemistry"]
+url_source: https://doi.org/10.1039/c5pp00360a 
+url_preprint: 
+journ: "Photochem. Photobiol. Sci."
+issue: 15
+page: 80-85
+year: 2016
+image: featured.png
+pub_number: 3
+---
