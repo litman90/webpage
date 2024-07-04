@@ -1,5 +1,5 @@
 ---
-title: Previous lifes
+title: Previous Lifes
 listing:
   id: previous-lifes
   type: grid
