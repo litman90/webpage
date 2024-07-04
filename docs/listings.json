@@ -56,14 +56,6 @@
     ]
   },
   {
-    "listing": "/previous_lifes/Photochemistry/index.html",
-    "items": [
-      "/publications/2018_007_Photophysics_PhotoPhotobio/index.html",
-      "/publications/2016_003_Tuning_PhotoPhotobio/index.html",
-      "/publications/2014_002_Effect_of_concentraion_JPCA/index.html"
-    ]
-  },
-  {
     "listing": "/posts/index.html",
     "items": [
       "/posts/2024-01-12-recoding-america/index.html",
@@ -119,14 +111,22 @@
     ]
   },
   {
-    "listing": "/previous_lifes/index.html",
+    "listing": "/past_lives/Photochemistry/index.html",
     "items": [
-      "/previous_lifes/Photochemistry/index.html",
-      "/previous_lifes/Bacon/index.html"
+      "/publications/2018_007_Photophysics_PhotoPhotobio/index.html",
+      "/publications/2016_003_Tuning_PhotoPhotobio/index.html",
+      "/publications/2014_002_Effect_of_concentraion_JPCA/index.html"
     ]
   },
   {
-    "listing": "/previous_lifes/Bacon/index.html",
+    "listing": "/past_lives/index.html",
+    "items": [
+      "/past_lives/Photochemistry/index.html",
+      "/past_lives/Bacon/index.html"
+    ]
+  },
+  {
+    "listing": "/past_lives/Bacon/index.html",
     "items": [
       "/publications/2012_001_Novel-simple-and-fast_Choline/index.html"
     ]

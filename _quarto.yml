@@ -46,8 +46,8 @@ website:
         text: Software
       - text: "CV"
         href: files/CV.pdf
-      - text: "Previous Lifes"
-        file: previous_lifes/index.qmd
+      - text: "Past lives"
+        file: past_lives/index.qmd
     right: 
       #- icon: github
       #  href: https://github.com/matiasandina/
