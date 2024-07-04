@@ -46,7 +46,7 @@ website:
         text: Codes
       - text: "CV"
         href: files/CV.pdf
-      - text: "Previous lifes"
+      - text: "Previous Lifes"
         file: previous_lifes/index.qmd
     right: 
       #- icon: github
