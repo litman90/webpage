@@ -43,7 +43,7 @@ website:
         file: research/index.qmd
       - href: publications/index.qmd
       - href: codes/index.qmd
-        text: Codes
+        text: Software
       - text: "CV"
         href: files/CV.pdf
       - text: "Previous Lifes"
