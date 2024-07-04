@@ -15,7 +15,7 @@ listing:
 
 ---
 
-I started my research as an undergraduate in the field of  photochemistry under the guidance of Dr. Enrique San Roman. There, I enjoyed measuring the triplet and singlet state quantum yields using a battery of spectroscopic techniques, including laser-induced optoacoustic spectroscopy (LIOAS), diffuse reflectance flash photolysis, and laser-induced luminescence (LIL). 
+I started my research career as an undergraduate in the field of  photochemistry under the guidance of Dr. Enrique San Roman. There, I enjoyed measuring the triplet and singlet state quantum yields using a battery of spectroscopic techniques, including laser-induced optoacoustic spectroscopy (LIOAS), diffuse reflectance flash photolysis, and laser-induced luminescence (LIL). 
 
 
 ## Related Publications
