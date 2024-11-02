@@ -1,58 +1,10 @@
 [
   {
-    "listing": "/research/VibrationalSpectroscopy/index.html",
+    "listing": "/past_lives/Photochemistry/index.html",
     "items": [
-      "/publications/2024_025_Surface-stratification_NatChem/index.html",
-      "/publications/2024_024_Point-defects-in-MX2_PhysStatSol/index.html",
-      "/publications/2023_023_Full-First-Principles-SFG_JPhysChemLett/index.html",
-      "/publications/2023_022_First-Principles-TERS/index.html",
-      "/publications/2023_020_Is-unified-understanding_JPhysChemLett/index.html",
-      "/publications/2022_017_Charge-transfer_NanoLett/index.html",
-      "/publications/2020_010-Temperature-dependence-FarDis/index.html",
-      "/publications/2019_009-ipiv2/index.html",
-      "/publications/2019_008-Elucidating-JACS/index.html",
-      "/publications/2018_004_Positional_Isotope_Exchange-JPCA/index.html"
-    ]
-  },
-  {
-    "listing": "/research/index.html",
-    "items": [
-      "/research/VibrationalSpectroscopy/index.html",
-      "/research/AqueousInterfaces/index.html",
-      "/research/OrganicInorganicInterfaces/index.html",
-      "/research/QuantumDynamics/index.html"
-    ]
-  },
-  {
-    "listing": "/publications/index.html",
-    "items": [
-      "/publications/2024_028_ipiv3_JCP/index.html",
-      "/publications/2024_027_Quantum_rates_JCP/index.html",
-      "/publications/2024_026_Learning-Electronic-Pol_JChemInfModel/index.html",
-      "/publications/2024_025_Surface-stratification_NatChem/index.html",
-      "/publications/2024_024_Point-defects-in-MX2_PhysStatSol/index.html",
-      "/publications/2023_023_Full-First-Principles-SFG_JPhysChemLett/index.html",
-      "/publications/2023_022_First-Principles-TERS/index.html",
-      "/publications/2023_020_Is-unified-understanding_JPhysChemLett/index.html",
-      "/publications/2022_019_Dissipative_tunneling_v2_JCP/index.html",
-      "/publications/2022_018_Dissipative_tunneling_v1_JCP/index.html",
-      "/publications/2022_017_Charge-transfer_NanoLett/index.html",
-      "/publications/2020_016_Multidimensional_hydrogen-PhysRevLett/index.html",
-      "/publications/2020_015_thesis/index.html",
-      "/publications/2020_014_ZPE-FarDis./index.html",
-      "/publications/2020_013-QuantumCoherence-FarDis/index.html",
-      "/publications/2020_012-Emerging-FarDis/index.html",
-      "/publications/2020_011-Spectroscopy-FarDis/index.html",
-      "/publications/2020_010-Temperature-dependence-FarDis/index.html",
-      "/publications/2019_009-ipiv2/index.html",
-      "/publications/2019_008-Elucidating-JACS/index.html",
       "/publications/2018_007_Photophysics_PhotoPhotobio/index.html",
-      "/publications/2018_006_Decisive_role_JCP/index.html",
-      "/publications/2018_005_QuantumTunneling_JCP/index.html",
-      "/publications/2018_004_Positional_Isotope_Exchange-JPCA/index.html",
       "/publications/2016_003_Tuning_PhotoPhotobio/index.html",
-      "/publications/2014_002_Effect_of_concentraion_JPCA/index.html",
-      "/publications/2012_001_Novel-simple-and-fast_Choline/index.html"
+      "/publications/2014_002_Effect_of_concentraion_JPCA/index.html"
     ]
   },
   {
@@ -111,23 +63,58 @@
     ]
   },
   {
-    "listing": "/past_lives/Photochemistry/index.html",
+    "listing": "/research/VibrationalSpectroscopy/index.html",
     "items": [
+      "/publications/2024_025_Surface-stratification_NatChem/index.html",
+      "/publications/2024_024_Point-defects-in-MX2_PhysStatSol/index.html",
+      "/publications/2023_023_Full-First-Principles-SFG_JPhysChemLett/index.html",
+      "/publications/2023_022_First-Principles-TERS/index.html",
+      "/publications/2023_020_Is-unified-understanding_JPhysChemLett/index.html",
+      "/publications/2022_017_Charge-transfer_NanoLett/index.html",
+      "/publications/2020_010-Temperature-dependence-FarDis/index.html",
+      "/publications/2019_009-ipiv2/index.html",
+      "/publications/2019_008-Elucidating-JACS/index.html",
+      "/publications/2018_004_Positional_Isotope_Exchange-JPCA/index.html"
+    ]
+  },
+  {
+    "listing": "/research/index.html",
+    "items": [
+      "/research/VibrationalSpectroscopy/index.html",
+      "/research/AqueousInterfaces/index.html",
+      "/research/OrganicInorganicInterfaces/index.html",
+      "/research/QuantumDynamics/index.html"
+    ]
+  },
+  {
+    "listing": "/publications/index.html",
+    "items": [
+      "/publications/2024_028_ipiv3_JCP/index.html",
+      "/publications/2024_027_Quantum_rates_JCP/index.html",
+      "/publications/2024_026_Learning-Electronic-Pol_JChemInfModel/index.html",
+      "/publications/2024_025_Surface-stratification_NatChem/index.html",
+      "/publications/2024_024_Point-defects-in-MX2_PhysStatSol/index.html",
+      "/publications/2023_023_Full-First-Principles-SFG_JPhysChemLett/index.html",
+      "/publications/2023_022_First-Principles-TERS/index.html",
+      "/publications/2023_020_Is-unified-understanding_JPhysChemLett/index.html",
+      "/publications/2022_019_Dissipative_tunneling_v2_JCP/index.html",
+      "/publications/2022_018_Dissipative_tunneling_v1_JCP/index.html",
+      "/publications/2022_017_Charge-transfer_NanoLett/index.html",
+      "/publications/2020_016_Multidimensional_hydrogen-PhysRevLett/index.html",
+      "/publications/2020_015_thesis/index.html",
+      "/publications/2020_014_ZPE-FarDis./index.html",
+      "/publications/2020_013-QuantumCoherence-FarDis/index.html",
+      "/publications/2020_012-Emerging-FarDis/index.html",
+      "/publications/2020_011-Spectroscopy-FarDis/index.html",
+      "/publications/2020_010-Temperature-dependence-FarDis/index.html",
+      "/publications/2019_009-ipiv2/index.html",
+      "/publications/2019_008-Elucidating-JACS/index.html",
       "/publications/2018_007_Photophysics_PhotoPhotobio/index.html",
+      "/publications/2018_006_Decisive_role_JCP/index.html",
+      "/publications/2018_005_QuantumTunneling_JCP/index.html",
+      "/publications/2018_004_Positional_Isotope_Exchange-JPCA/index.html",
       "/publications/2016_003_Tuning_PhotoPhotobio/index.html",
-      "/publications/2014_002_Effect_of_concentraion_JPCA/index.html"
-    ]
-  },
-  {
-    "listing": "/past_lives/index.html",
-    "items": [
-      "/past_lives/Photochemistry/index.html",
-      "/past_lives/Bacon/index.html"
-    ]
-  },
-  {
-    "listing": "/past_lives/Bacon/index.html",
-    "items": [
+      "/publications/2014_002_Effect_of_concentraion_JPCA/index.html",
       "/publications/2012_001_Novel-simple-and-fast_Choline/index.html"
     ]
   },
@@ -165,6 +152,19 @@
       "/publications/2018_006_Decisive_role_JCP/index.html",
       "/publications/2018_005_QuantumTunneling_JCP/index.html",
       "/publications/2018_004_Positional_Isotope_Exchange-JPCA/index.html"
+    ]
+  },
+  {
+    "listing": "/past_lives/index.html",
+    "items": [
+      "/past_lives/Photochemistry/index.html",
+      "/past_lives/Bacon/index.html"
+    ]
+  },
+  {
+    "listing": "/past_lives/Bacon/index.html",
+    "items": [
+      "/publications/2012_001_Novel-simple-and-fast_Choline/index.html"
     ]
   }
 ]
