@@ -1,0 +1,2289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Yair Litman</title>
+<link>https://matiasandina.netlify.app/posts/#category=R</link>
+<atom:link href="https://matiasandina.netlify.app/posts/index-r.xml" rel="self" type="application/rss+xml"/>
+<description></description>
+<generator>quarto-1.7.31</generator>
+<lastBuildDate>Thu, 21 Nov 2019 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Fitbit Analysis</title>
+  <dc:creator>Matias Andina</dc:creator>
+  <link>https://matiasandina.netlify.app/posts/2019-11-22-fitbit-analysis/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<p>It’s been a bit more than a year since I got a fitbit and I have been pretty excited about tracking my activity and heart rate. I should say I’m quite surprised about the sleep data. Tracking sleep has been, in fact, the most exciting feature, and I now strive to get at least 7 hours of sleep per night.</p>
+<p>Let’s first see a glimpse of the data, just to know what type of data we are dealing with.</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-3_449d71aadc60365c95379d226147e553">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 8
+  date_time           dateTime   dataset_time variable value total_value
+  &lt;dttm&gt;              &lt;date&gt;     &lt;time&gt;       &lt;chr&gt;    &lt;dbl&gt;       &lt;dbl&gt;
+1 2018-06-10 00:00:00 2018-06-10 00'00"       steps        0        7256
+2 2018-06-10 00:01:00 2018-06-10 01'00"       steps        8        7256
+3 2018-06-10 00:02:00 2018-06-10 02'00"       steps        0        7256
+4 2018-06-10 00:03:00 2018-06-10 03'00"       steps        0        7256
+5 2018-06-10 00:04:00 2018-06-10 04'00"       steps        0        7256
+# ℹ 2 more variables: date &lt;date&gt;, time &lt;time&gt;</code></pre>
+</div>
+</div>
+<section id="density-plots" class="level2">
+<h2 class="anchored" data-anchor-id="density-plots">Density plots</h2>
+<p>Let’s now inspect the overall distribution for heart rate and step values.</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-4_7f262ef97126c97a9f9b5ff7195a56e8">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://matiasandina.netlify.app/posts/2019-11-22-fitbit-analysis/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="when-do-i-move" class="level2">
+<h2 class="anchored" data-anchor-id="when-do-i-move">When do I move?</h2>
+<p>I will start by focusing on the data for steps.</p>
+<p>I’m curious to see what times of the day have the most activity. Because I have a quite large amount of data points (~751 K) I will use <code>geom_hex()</code> to count for me and simplify rendering<sup>1</sup>.</p>
+<div class="cell" data-hash="index_cache/html/steps-1_8d6c71e6ad4638b0de99fb1db91cc53b">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://matiasandina.netlify.app/posts/2019-11-22-fitbit-analysis/index_files/figure-html/steps-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Well, I should have remembered that for the vast majority of minutes (regardless of the hour of the day), the count is exactly zero. Let’s only look at the positive counts:</p>
+<div class="cell" data-hash="index_cache/html/steps-2_ad7004a8e0bb2c9104f43a69ad49a0af">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://matiasandina.netlify.app/posts/2019-11-22-fitbit-analysis/index_files/figure-html/steps-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We see now some patches that have high activity (&gt; 100 steps), particularly around 9:00, 12:00 and 18:00. These mostly correspond to “going to work”, “activity around lunch time (?)”, and “going home / physical activity”. For all other cases, it looks like I move around 10-20 steps per minute, regardless of the minute within the hour.</p>
+<section id="last-10-minutes" class="level3">
+<h3 class="anchored" data-anchor-id="last-10-minutes">Last 10 minutes</h3>
+<p>The result above is interesting because I usually have to be reminded by Fitbit to “move up to 250 steps in the hour”. I receive this notification during the last 10 minutes of the hour and I would think that during those 10 minutes I put more steps than during the first 50. The data show I’m wrong:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://matiasandina.netlify.app/posts/2019-11-22-fitbit-analysis/index_files/figure-html/last-10-plot-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>That being said, I want to keep my reminder on. I feel like having it turned on definitely adds ~ 1000-2000 steps per day.</p>
+</section>
+<section id="daily-average" class="level3">
+<h3 class="anchored" data-anchor-id="daily-average">Daily average</h3>
+<p>Let’s get one level above and aggregate each day as a unit. This plot shows a nice trend, with months from May to August showing an increase on the number of steps. Keep in mind that November will show little average steps because for that month we have incomplete data (last day in database is 2019-11-13),</p>
+<div class="cell" data-hash="index_cache/html/steps-3_71a509a22fe214d601e90217c476bdc1">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://matiasandina.netlify.app/posts/2019-11-22-fitbit-analysis/index_files/figure-html/steps-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>At this part of the analysis, I should make clear that I took vacations from <code>2019-06-27</code> to <code>2019-07-11</code>. We will use this information in the analysis to make some things clear.</p>
+</section>
+</section>
+<section id="distribution" class="level2">
+<h2 class="anchored" data-anchor-id="distribution">Distribution</h2>
+<p>We looked at the average daily steps for each month, how about the distribution of daily steps? We see that most days I come quite close to the default target of 10K steps. There are some days with very little steps (see below) and, obviously, some days with extreme number of steps.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://matiasandina.netlify.app/posts/2019-11-22-fitbit-analysis/index_files/figure-html/typical-events-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="extreme-events" class="level2">
+<h2 class="anchored" data-anchor-id="extreme-events">Extreme events</h2>
+<p>Using the boxplot below, we can define <em>extreme events</em> as instances where I walked more than 20K steps. I chose to plot this by day of the week, to get an insight about periodicity of events.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://matiasandina.netlify.app/posts/2019-11-22-fitbit-analysis/index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Because I walked a lot during the vacations, I highlighted the days on top of the previous boxplot. Most of the extreme events are definitely during the vacations. Moreover, none of the days I walked less than 10K steps, pretty amazing!</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://matiasandina.netlify.app/posts/2019-11-22-fitbit-analysis/index_files/figure-html/vacations-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>There are some extreme <em>low</em> events, these are quite likely the days I just don’t wear the fitbit (or days I forget to wear it for most of the day). Just because I can order the data and make another plot, I went ahead and did it!</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://matiasandina.netlify.app/posts/2019-11-22-fitbit-analysis/index_files/figure-html/arranged-steps-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We usually go for walks on Saturdays and/or Sundays. Knowing this little piece of data, it’s quite expected to see Saturdays being the days with higher number of steps (and hence higher success rate on the 10K target).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://matiasandina.netlify.app/posts/2019-11-22-fitbit-analysis/index_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="season" class="level2">
+<h2 class="anchored" data-anchor-id="season">Season</h2>
+<p>I want to turn the focus now to the seasonality of the data. I will use a helper function <code>getSeason()</code> that I took from <a href="https://stackoverflow.com/questions/9500114/find-which-season-a-particular-date-belongs-to">StackOverflow</a>.</p>
+<p>We can inspect the effect of season on my walking.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://matiasandina.netlify.app/posts/2019-11-22-fitbit-analysis/index_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The plot above is not good, it fails to communicate. I think this is a better way to show the data.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://matiasandina.netlify.app/posts/2019-11-22-fitbit-analysis/index_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="a-years-heart-rate-in-one-plot" class="level2">
+<h2 class="anchored" data-anchor-id="a-years-heart-rate-in-one-plot">A year’s heart rate in one plot</h2>
+<p>I’m borrowing <strong>heavily</strong> from <a href="https://livefreeordichotomize.com/2017/12/27/a-year-as-told-by-fitbit/">Nick</a> here. But I thought it was a brilliant plot, so I took it for a ride with my data. I actually changed a few things, I decided to keep the native sampling rate and use <code>geom_line()</code> instead of down-sampling and using <code>geom_tile()</code>. The overall trend is clear, movements during the morning and the afternoon that correlate well with going and coming back from work. Somewhere around July 2019 you can see the change in timezone when I took vacations. There are a couple of days in late May with continuously high or lacking values, I take this as one of the days I forgot the fitbit at home, likely spurious measures.</p>
+<p><img src="https://matiasandina.netlify.app/posts/2019-11-22-fitbit-analysis/heart_plot.png" class="img-fluid"></p>
+</section>
+<section id="code" class="level2">
+<h2 class="anchored" data-anchor-id="code">Code</h2>
+<p>The code for this post is quite long and I thought it would get in the way. I am happy to share upon request, hit me up on <a href="https://twitter.com/NeuroMLA">Twitter</a> or in the comments below.</p>
+</section>
+<section id="sources" class="level2">
+<h2 class="anchored" data-anchor-id="sources">Sources</h2>
+<ul>
+<li>https://livefreeordichotomize.com/2017/12/27/a-year-as-told-by-fitbit/</li>
+</ul>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>I had been searching for excuses to use this function for a while. Check it out <a href="https://ggplot2.tidyverse.org/reference/geom_hex.html">here</a>↩︎</p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{andina2019,
+  author = {Andina, Matias},
+  title = {Fitbit {Analysis}},
+  date = {2019-11-22},
+  url = {https://matiasandina.netlify.app/posts/2019-11-22-fitbit-analysis/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-andina2019" class="csl-entry quarto-appendix-citeas">
+Andina, Matias. 2019. <span>“Fitbit Analysis.”</span> November 22, 2019.
+<a href="https://matiasandina.netlify.app/posts/2019-11-22-fitbit-analysis/">https://matiasandina.netlify.app/posts/2019-11-22-fitbit-analysis/</a>.
+</div></div></section></div> ]]></description>
+  <category>tracking</category>
+  <category>learning</category>
+  <category>R</category>
+  <guid>https://matiasandina.netlify.app/posts/2019-11-22-fitbit-analysis/</guid>
+  <pubDate>Thu, 21 Nov 2019 23:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>On pipelines</title>
+  <dc:creator>Matias Andina</dc:creator>
+  <link>https://matiasandina.netlify.app/posts/2019-11-14-on-pipelines/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<p>I have been thinking about different problems I have when writing code and the things that I normally try to do to keep my projects clean and functional. I wrote this post to put this thoughts out there, hopefully I will receive input from the great software engineers.</p>
+<section id="problems-in-mind" class="level2">
+<h2 class="anchored" data-anchor-id="problems-in-mind">Problems in mind</h2>
+<section id="where-do-you-live" class="level3">
+<h3 class="anchored" data-anchor-id="where-do-you-live">Where do you live?</h3>
+<p>Code files usually live in one folder, which is also a GitHub folder that you and your team commit/push to. So far, so good. But what do you do with the data to feed that monster pipeline of yours?</p>
+<p>I will assume that your concerns with data privacy are minor or you handled them accordingly (only private parties have access to the data).</p>
+<p>Now, you still have the problem of <em>where</em> to put this other folder, which is basically a size problem.</p>
+<blockquote class="blockquote">
+<p>Small files can live with your data</p>
+</blockquote>
+<p>This is the case for small and few text files of some thousand rows. Easy enough, you just go with your <code>/repo-name/data/</code> and live happily ever after.</p>
+<blockquote class="blockquote">
+<p>Medium size files</p>
+</blockquote>
+<p>These files are big enough to be a problem for hosting on GitHub. File formats start to be an issue here, images and video will not be easily accessible anywhere you take it.</p>
+<p><strong>Options: the cloud</strong> ☁️</p>
+<p><strong>Pros:</strong> It’s fluffy. Now, seriously, it’s good that your code can point to one place, download the stuff into local and use it. Every computer can do the same and there <em>should</em> be no problem. Because your sizes are not huge, you <em>should</em> be fine.</p>
+<p><strong>Cons:</strong> You need internet. No, internet it’s not everywhere all the time<sup>1</sup>. Internet is not in my cellphone on a second basement in a concrete building. Even with the fastest internet, it’s not trivial to setup <code>your-favorite-cloud-service</code> to allow access to <code>the-sketchy-script-you-wrote</code><sup>2</sup>.</p>
+<center>
+<img src="https://matiasandina.netlify.app/posts/2019-11-14-on-pipelines/simple_credentials.jpg" class="img-fluid">
+</center>
+<hr>
+<p><strong>Options: Good old-fashioned external hard drive.</strong> 💾</p>
+<p><strong>Pros:</strong> This is a good one if your data size is in the Gb range and you don’t really need to share it with too many people.</p>
+<p><strong>Cons:</strong> Hard drives fail. Are you ready to lose your data? It starts to get really annoying when you have to do back-ups of your data and your data is big enough that you can’t use your computer’s hard drive (that’s why you chose an external hard drive in the first place). Should you have an external hard drive for the external hard drive? Are you planning to write the output of your code on those hard drives? Brace for impact.</p>
+<center>
+<img src="https://matiasandina.netlify.app/posts/2019-11-14-on-pipelines/spiderman_pointing_meme.jpg" class="img-fluid">
+</center>
+<p>External hard-drives might have paths that change depending on which computer is connected to. This can easily be a path inferno. Moreover, some hard drives don’t work if you try to use them in different OS.</p>
+<blockquote class="blockquote">
+<p>Large sizes</p>
+</blockquote>
+<p>I work with brains. Last time I checked, one mouse brain is <code>~2TB</code>, n=1, just a few channels, not even the best resolution we can get.</p>
+<p>I think local/cloud servers are the only way to go here<sup>3</sup>. I don’t have a lot of experience with this, but I have suffered internet upload/download speed problems when I try to sync with my cloud back-ups or share image/video files with my team.</p>
+</section>
+<section id="paths-need-to-be-absolute" class="level3">
+<h3 class="anchored" data-anchor-id="paths-need-to-be-absolute">Paths need to be absolute</h3>
+<p>Because your working directory is the folder where your code lives<sup>4</sup>, but your data folder lives elsewhere, you kind of need to use absolute paths all the time.</p>
+<p>I have only been able to fix this issue using functions that attempt to fix this when running the script.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">fix_working_environment <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(saved_path,</span>
+<span id="cb1-2">                                    local_path){</span>
+<span id="cb1-3">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># if the folder structure doesn't work as expected...</span></span>
+<span id="cb1-4">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># this will explode </span></span>
+<span id="cb1-5">  stringr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_replace</span>(saved_path,</span>
+<span id="cb1-6">                       <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"some_regular_expression"</span>,</span>
+<span id="cb1-7">                       local_path)</span>
+<span id="cb1-8">}</span></code></pre></div>
+</div>
+<p>This is particularly annoying when you have to run commands that involve calling things from console.</p>
+<p>Let’s call <code>ImageJ</code> from R.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">system</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"/home/matias/Downloads/Fiji.app/ImageJ-linux64 --run"</span>,</span>
+<span id="cb2-2">             macro_to_run))</span></code></pre></div>
+</div>
+<p>The moment somebody changes the Fiji folder, or tries to call ImageJ from another computer, that code brakes. I’m unaware of how to make sure these things bullet-proof, <strong>please enlighten me</strong>.</p>
+<p>Let’s call <code>python</code> from R. Wait, what version of python do you want? I rest my case.</p>
+</section>
+<section id="processes-are-identified-by-the-files" class="level3">
+<h3 class="anchored" data-anchor-id="processes-are-identified-by-the-files">Processes are identified by the files</h3>
+<p>I have this problem quite often. It might be because my pipelines follow this logic.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-829cf29291305b9bdd78" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-829cf29291305b9bdd78">{"x":{"diagram":"\n\ngraph LR\nD(Raw Data)\nA[List all files] -->|Apply functions| B[Write computation]\nD --> A\nB --> C(New files)\nC --> A\n\nlinkStyle 0 stroke-width:2px,fill:none,stroke:pink;\nlinkStyle 1 stroke-width:2px,fill:none,stroke:pink;\nlinkStyle 2 stroke-width:2px,fill:none,stroke:pink;\nlinkStyle 3 stroke-width:2px,fill:none,stroke:pink;     style A fill:#f9f, stroke:#333,stroke-width:1px        \nstyle B fill:#f9f,stroke:#333,stroke-width:1px        \n        "},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>It’s quite difficult to escape the infinite <code>list all files</code> –&gt; <code>apply function to all files</code> –&gt; <code>write computations into new files</code> loop. I don’t really know what’s on the other side.</p>
+<p>The main problem is that your previous, current, and next files always serve as identifiers and you need to carry over their absolute path (to be able to read them form your data folder). Whenever these paths get corrupted (or you change your computer) things stop working.</p>
+<p>This problem might stem from the fact that I normally have to process experimental units through the pipeline. I have to do many things to an experimental unit and have many many experimental units composing the data for one pipeline. That’s when my inner voice goes:</p>
+<blockquote class="blockquote">
+<p>But I would also like to have the possibility to run or re-run just one (or just a few experimental units).</p>
+</blockquote>
+<p>The way I handle this is by leaving open the door to hand selection of files (aka interactive mode, not fun). However, interactive mode somewhat helps with the problem below.</p>
+</section>
+<section id="dont-move-my-files" class="level3">
+<h3 class="anchored" data-anchor-id="dont-move-my-files">Don’t move my files</h3>
+<p>People do stuff people normally do, like moving folders around…that’s BAD, REALLY BAD. It’s also quite difficult to communicate the need to keep the file structure without casting the magic spells of <em>everything will break</em><sup>5</sup>.</p>
+<p>I don’t feel good with the level of dependency on file structure that my projects always end up having. <strong>Please enlighten me on this one too!</strong></p>
+</section>
+<section id="dont-rename-my-files" class="level3">
+<h3 class="anchored" data-anchor-id="dont-rename-my-files">Don’t rename my files</h3>
+<p>Don’t rename my files, except when I do. That would be a better subtitle of this section. A great way of not dealing with multiple copies of the same files. For example, let’s say you applied a mask to an image and then cropped, and rotated it. How many files do you keep? What if your image size was 1 Gb?</p>
+<p>My hack around this is to rename the files (this include the cases where I just want to move files to specific sub-folders). Because I rely so much on the file names, this renaming usually comes back to bite me. I just 🤷.</p>
+</section>
+<section id="operating-systems" class="level3">
+<h3 class="anchored" data-anchor-id="operating-systems">Operating systems</h3>
+<p>I’m writing this in 2019, I thought the OS problem was solved. Turns out it’s not solved at all and developers shy away from it more often than they should. I understand them, developing for every OS is a huge pain and requires you to constantly check in multiple machines (or have access to a teammate that breaks your code as soon as you push it).</p>
+<hr>
+</section>
+</section>
+<section id="what-is-your-approach" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-your-approach">What is your approach?</h2>
+<p>This is something I will continue to think for a long time, and my approach might need to be adjusted to each situation. What is your current approach?</p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Maybe I should say moderately fast and stable internet.↩︎</p></li>
+<li id="fn2"><p>Image borrowed from <a href="https://freek.dev/459-how-to-setup-and-use-the-google-calendar-api">here</a>↩︎</p></li>
+<li id="fn3"><p>And yet, for many practical reasons, I never do this.↩︎</p></li>
+<li id="fn4"><p>And you should <strong>never</strong> forcefully set the working directory elsewhere.↩︎</p></li>
+<li id="fn5"><p>Yes, your computer is on the line! And I will get all your passwords (?).↩︎</p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{andina2019,
+  author = {Andina, Matias},
+  title = {On Pipelines},
+  date = {2019-11-14},
+  url = {https://matiasandina.netlify.app/posts/2019-11-14-on-pipelines/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-andina2019" class="csl-entry quarto-appendix-citeas">
+Andina, Matias. 2019. <span>“On Pipelines.”</span> November 14, 2019. <a href="https://matiasandina.netlify.app/posts/2019-11-14-on-pipelines/">https://matiasandina.netlify.app/posts/2019-11-14-on-pipelines/</a>.
+</div></div></section></div> ]]></description>
+  <category>R</category>
+  <category>data</category>
+  <category>reproducibility</category>
+  <guid>https://matiasandina.netlify.app/posts/2019-11-14-on-pipelines/</guid>
+  <pubDate>Wed, 13 Nov 2019 23:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Data Visualization Challenge 2</title>
+  <dc:creator>Matias Andina</dc:creator>
+  <link>https://matiasandina.netlify.app/posts/2019-04-14-data-visualization-challenge-2/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<p>This post is made as a backup for the data visualization challenge number 2. Data comes from the daily posts of the members of the Data Visualization Society (DVS) on the DVS Slack channels. You can see everybody’s submissions for the challenge <a href="https://www.datavisualizationsociety.com/challenge2">here</a>.</p>
+<p>I am also very motivated to explore the dark versions of the ggplot themes. The package I’m going to be using is called <code>ggdark</code>.</p>
+<section id="dive-in" class="level2">
+<h2 class="anchored" data-anchor-id="dive-in">Dive in</h2>
+<p>These are the libraries we’ll need:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggdark)</span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(lubridate)</span></code></pre></div>
+</details>
+</div>
+<p>We read the data from the repository.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">df <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_csv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://raw.githubusercontent.com/data-visualization-society/datavizsociety/master/challenge_data/dvs_challenge_2_channel_topics_over_time/flattened_channel_data.csv"</span>)</span></code></pre></div>
+</details>
+</div>
+<p>Let’s perform some summary stats. There’s 62 channels, but I will focus on the top 15 channels as ranked by their total volume of characters. I’m using this metric because the correlation between characters and the number of posts is, naturally, good.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(df, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(posts<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>responses, characters))<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_smooth</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">method =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lm"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">se=</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">lty=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.4</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">dark_theme_bw</span>()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_continuous</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">labels =</span> scales<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">label_number_si</span>())</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://matiasandina.netlify.app/posts/2019-04-14-data-visualization-challenge-2/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Summary.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">sum_df <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> df <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(channel) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb4-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarise</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">total_channel =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sum</span>(characters),</span>
+<span id="cb4-3">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">median_channel =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">median</span>(characters)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb4-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">top_n</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">15</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">wt =</span>  total_channel) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb4-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">arrange</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">desc</span>(total_channel))</span></code></pre></div>
+</details>
+</div>
+<p>Modify the original data and do some stats.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">df <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> df <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(channel) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">total_channel =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sum</span>(characters),</span>
+<span id="cb5-3">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">median_channel =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">median</span>(characters),</span>
+<span id="cb5-4">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">char_per_ping =</span> characters<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>(posts<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>responses))   <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ungroup</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(date) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">daily_flow =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sum</span>(characters),</span>
+<span id="cb5-8">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">daily_posts =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sum</span>(posts<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>responses))<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ungroup</span>()</span></code></pre></div>
+</details>
+</div>
+</section>
+<section id="first-pair" class="level2">
+<h2 class="anchored" data-anchor-id="first-pair">First pair</h2>
+<p>The idea behind the first pair of plots is to see the sheer amount of volume on certain channels.</p>
+<p>A good way of seeing how the top channels are ordered according to output is to do an ordered boxplot.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">top_box <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span>  df <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb6-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(channel <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unique</span>(sum_df<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>channel)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb6-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">channel=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">fct_reorder</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">factor</span>(channel), median_channel)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb6-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(channel, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">log10</span>(characters)))<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb6-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_boxplot</span>()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb6-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">coord_flip</span>()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb6-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">dark_theme_bw</span>()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb6-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb6-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggtitle</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sprintf</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Top %s Channels"</span>,</span>
+<span id="cb6-10">                  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">length</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unique</span>(sum_df<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>channel))),</span>
+<span id="cb6-11">          <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Metric: median characters"</span>)</span></code></pre></div>
+</details>
+</div>
+<p>I’m also curious about how persistent in time the flow is.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">wave <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> df <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb7-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(channel <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unique</span>(sum_df<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>channel)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb7-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">channel=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">fct_reorder</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">factor</span>(channel), total_channel)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb7-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(date, channel, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">log10</span>(characters))) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">lwd=</span>characters))<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">dark_theme_bw</span>()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Date"</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">guides</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_color_gradient</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">low =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#613A00"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">high=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#FA9800"</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggtitle</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Top 15 channels"</span>, </span>
+<span id="cb7-11">          <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Metric: total characters"</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-12">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_discrete</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">position =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"right"</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"none"</span>)</span></code></pre></div>
+</details>
+</div>
+<p>We put everything together with the <code>cowplot</code> package.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">cowplot<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">plot_grid</span>(top_box, wave)</span>
+<span id="cb8-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Save the plot</span></span>
+<span id="cb8-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#ggsave("box_wave.svg", width = 8, height = 4, units = "in", dpi="retina")</span></span></code></pre></div>
+</details>
+</div>
+<p>I later modified this output a bit using Inkscape.</p>
+<p><img src="https://matiasandina.netlify.app/posts/2019-04-14-data-visualization-challenge-2/box_wave.svg" class="img-fluid"></p>
+</section>
+<section id="lengthy-channels" class="level2">
+<h2 class="anchored" data-anchor-id="lengthy-channels">Lengthy channels</h2>
+<p>While most of the channels have a low median, even below a full tweet, it looks like some channels tend to have very lengthy posts.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Calculate median</span></span>
+<span id="cb9-2">median_post <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">median</span>(</span>
+<span id="cb9-3">  df<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>characters<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>(df<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>posts <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>df<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>responses))</span>
+<span id="cb9-4"></span>
+<span id="cb9-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Do the plot  </span></span>
+<span id="cb9-6">lengthy <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(df, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">log10</span>(total_channel),</span>
+<span id="cb9-7">               char_per_ping))<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">dark_theme_bw</span>()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_hline</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">yintercept =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">280</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">lty=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_hline</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">yintercept =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">median</span>(</span>
+<span id="cb9-11">    df<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>characters<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>(df<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>posts <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>df<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>responses)), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">lty=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-12">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">annotate</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">340</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Median post"</span>,</span>
+<span id="cb9-13">                                            <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"One tweet"</span>))<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-14">         <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color=</span>channel), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.9</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-15">         <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_color_viridis_d</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">direction =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-16">         <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"none"</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-17">  ggrepel<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_text_repel</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(df,</span>
+<span id="cb9-18">                                       char_per_ping <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">850</span>),</span>
+<span id="cb9-19">            <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> channel, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color=</span>channel))<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-20">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">bquote</span>(</span>
+<span id="cb9-21">    log10 <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"(total characters)"</span>),</span>
+<span id="cb9-22">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"characeters per post"</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-23">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggtitle</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Channels with lengthy posts"</span>)</span>
+<span id="cb9-24"></span>
+<span id="cb9-25"></span>
+<span id="cb9-26"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Save</span></span>
+<span id="cb9-27"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ggsave("lengthy.svg", width = 8, height = 4, units = "in",dpi="retina")</span></span></code></pre></div>
+</details>
+</div>
+<p><img src="https://matiasandina.netlify.app/posts/2019-04-14-data-visualization-challenge-2/lengthy.svg" class="img-fluid"></p>
+</section>
+<section id="share-of-flow" class="level2">
+<h2 class="anchored" data-anchor-id="share-of-flow">Share of flow</h2>
+<p>What is the share of each channel on the total flow within the DataViz Slack?</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">top_top_channels <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> sum_df <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb10-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">arrange</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">desc</span>(total_channel)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb10-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">slice</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>)</span>
+<span id="cb10-4"></span>
+<span id="cb10-5">share <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> df <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(date) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb10-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">big_channel =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ifelse</span>(channel <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> top_top_channels<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>channel,</span>
+<span id="cb10-7">                              channel, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"other"</span>),</span>
+<span id="cb10-8">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">total=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sum</span>(characters),</span>
+<span id="cb10-9">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">rel_char =</span> characters<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>total) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb10-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(date, rel_char, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill=</span>big_channel))<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb10-11">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_col</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">width =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb10-12">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_viridis_d</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">direction =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb10-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">dark_theme_bw</span>()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb10-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.position=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">85</span>,.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>))<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb10-15">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Relative share"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Channel"</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb10-16">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggtitle</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Share of the conversation"</span>,</span>
+<span id="cb10-17">          <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Relative share of the total characters per day"</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb10-18">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_date</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">limits =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.Date</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"2019-02-18"</span>),</span>
+<span id="cb10-19">                          <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.Date</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"2019-04-23"</span>)),</span>
+<span id="cb10-20">               <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">date_breaks =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"1 week"</span>, </span>
+<span id="cb10-21">               <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">date_labels =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"%b-%d"</span>)</span></code></pre></div>
+</details>
+</div>
+<p>It seems the initial bump was driven by many (lengthy) introductions, and nowadays the discussion has moved towards other channels.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">intro_decay <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span>  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(df, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(date, daily_flow))<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb11-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb11-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(df, channel <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(</span>
+<span id="cb11-4">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"-introductions"</span>)),</span>
+<span id="cb11-5">            <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(date, characters), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"yellow"</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb11-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">dark_theme_bw</span>()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb11-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">xlab</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb11-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ylab</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Daily characters"</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb11-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">annotate</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.Date</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"2019-04-10"</span>,</span>
+<span id="cb11-10">                               <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"2019-04-08"</span>)),</span>
+<span id="cb11-11">           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1000</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50000</span>),</span>
+<span id="cb11-12">           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"-introductions"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"all channels"</span>),</span>
+<span id="cb11-13">           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"yellow"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"white"</span>))<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb11-14">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_date</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">limits =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.Date</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"2019-02-18"</span>),</span>
+<span id="cb11-15">                              <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.Date</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"2019-04-23"</span>)),</span>
+<span id="cb11-16">                 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">date_breaks =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"1 week"</span>, </span>
+<span id="cb11-17">                 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">date_labels =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"%b-%d"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb11-18">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_continuous</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">labels =</span> scales<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">label_number_si</span>())</span></code></pre></div>
+</details>
+</div>
+<p>Let’s see how it looks like.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># We put everything together with cowplot</span></span>
+<span id="cb12-2">cowplot<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">plot_grid</span>(share,intro_decay,</span>
+<span id="cb12-3">                   <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">nrow =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">rel_heights =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>))</span>
+<span id="cb12-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># save</span></span>
+<span id="cb12-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggsave</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">filename =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"share_plot.svg"</span>, </span>
+<span id="cb12-6">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">width =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">12</span>, </span>
+<span id="cb12-7">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">height =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>, </span>
+<span id="cb12-8">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">dpi=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"retina"</span>)</span></code></pre></div>
+</details>
+</div>
+<p>The final version is this one.</p>
+<p><img src="https://matiasandina.netlify.app/posts/2019-04-14-data-visualization-challenge-2/share_plot.svg" class="img-fluid"></p>
+</section>
+<section id="weekday-news" class="level2">
+<h2 class="anchored" data-anchor-id="weekday-news">Weekday news</h2>
+<p>Because everything is seasonal, let’s analyze by days of the week. Seems like Tuesday to Thursday are the days with most movement, waning down on Friday and into the weekend.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(df, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">wday</span>(date, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label=</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">abbr =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">week_start =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>),</span>
+<span id="cb13-2">               daily_posts))<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb13-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gray80"</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb13-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">stat_summary</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geom =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"point"</span>,</span>
+<span id="cb13-5">               <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fun =</span> median, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2.5</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb13-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">dark_theme_bw</span>()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb13-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Number of daily posts"</span>,</span>
+<span id="cb13-8">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Weekly post variations"</span>,</span>
+<span id="cb13-9">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Points represent median daily post.</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Lines show full data range."</span>)</span>
+<span id="cb13-10"></span>
+<span id="cb13-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ggsave(filename= "weekly_vars.svg", width = 8, height = 6 , dpi="retina")</span></span></code></pre></div>
+</details>
+</div>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{andina2019,
+  author = {Andina, Matias},
+  title = {Data {Visualization} {Challenge} 2},
+  date = {2019-04-14},
+  url = {https://matiasandina.netlify.app/posts/2019-04-14-data-visualization-challenge-2/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-andina2019" class="csl-entry quarto-appendix-citeas">
+Andina, Matias. 2019. <span>“Data Visualization Challenge 2.”</span>
+April 14, 2019. <a href="https://matiasandina.netlify.app/posts/2019-04-14-data-visualization-challenge-2/">https://matiasandina.netlify.app/posts/2019-04-14-data-visualization-challenge-2/</a>.
+</div></div></section></div> ]]></description>
+  <category>R</category>
+  <category>learning</category>
+  <guid>https://matiasandina.netlify.app/posts/2019-04-14-data-visualization-challenge-2/</guid>
+  <pubDate>Sat, 13 Apr 2019 22:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Email analysis</title>
+  <dc:creator>Matias Andina</dc:creator>
+  <link>https://matiasandina.netlify.app/posts/2019-04-06-email-analysis/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<p>I am keen on tracking things. Some people call this <em>personal analytics</em>, I call it fun. In this post, I will explore how to extract your email information using python and R. My goal is to do some analysis on the data and, hopefully, explore different visualizations that can inform future behavior.</p>
+<section id="emails-from-gmail" class="level2">
+<h2 class="anchored" data-anchor-id="emails-from-gmail">Emails from Gmail</h2>
+<p>Reading emails in python is quite simple, we need to import the mailbox library. My file is called <code>correo</code> and comes from downloading my Gmail stuff out of https://takeout.google.com/settings/takeout. It can take a while so be patient.</p>
+<p>This should return something that looks like:</p>
+<pre><code>X-GM-THRID
+X-Gmail-Labels
+Received
+MIME-Version
+Date
+To
+From
+Subject
+Content-Type
+Content-Disposition
+Message-Id</code></pre>
+<p>Let’s save the info we care about into a new file. We select <code>subject</code>, <code>from</code>, <code>date</code>, <code>to</code>, and some variables that allow us to keep track of things (i.e, labels and threads).</p>
+</section>
+<section id="emails-from-thunderbird" class="level2">
+<h2 class="anchored" data-anchor-id="emails-from-thunderbird">Emails from Thunderbird</h2>
+<p>I keep 3 accounts in Thunderbird. Using the <a href="https://addons.thunderbird.net/en-US/thunderbird/addon/importexporttools/">ImportExportTools Add-on</a>, I exported things into <code>.mbox</code> format. Following a similar procedure to the one depicted above, I got the other three accounts exported to <code>.csv</code> files. Just be sure you select the correct keys (see example below, this might change for other email clients).</p>
+</section>
+<section id="data-cleaning" class="level2">
+<h2 class="anchored" data-anchor-id="data-cleaning">Data cleaning</h2>
+<p>Let’s switch from python to R<sup>1</sup>.</p>
+<p>Unfortunately, emails come tagged (things like <code>"\\?="</code> and other nasty stuff) and you might have to deal with different encodings (the perks of speaking multiple languages). As an example, let’s see what Quora sends me.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                                                             from
+1                         Quora Digest &lt;digest-noreply@quora.com&gt;
+2                         Quora Digest &lt;digest-noreply@quora.com&gt;
+3                         Quora Digest &lt;digest-noreply@quora.com&gt;
+4  =?utf-8?q?Selecci=C3=B3n_de_Quora?= &lt;digest-noreply@quora.com&gt;
+5                         Quora Digest &lt;digest-noreply@quora.com&gt;
+6                         Quora Digest &lt;digest-noreply@quora.com&gt;
+7                         Quora Digest &lt;digest-noreply@quora.com&gt;
+8  =?utf-8?q?Selecci=C3=B3n_de_Quora?= &lt;digest-noreply@quora.com&gt;
+9  =?utf-8?q?Selecci=C3=B3n_de_Quora?= &lt;digest-noreply@quora.com&gt;
+10 =?utf-8?q?Selecci=C3=B3n_de_Quora?= &lt;digest-noreply@quora.com&gt;</code></pre>
+</div>
+</div>
+<p>That’s nasty…Let’s do some cleaning. This function comes really handy for text replacement.</p>
+<p>We are going to modify the function a bit, we add <code>x</code> as the string we pass for cleaning and we will remove the tags progressively.</p>
+<p>We are ready to use our super cool function and clean the text! Not perfect, but gets us 90% of the way.</p>
+<p>Let’s see how emails from Quora changed with this new encoding:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                                            from
+1        Quora Digest &lt;digest-noreply@quora.com&gt;
+2        Quora Digest &lt;digest-noreply@quora.com&gt;
+3        Quora Digest &lt;digest-noreply@quora.com&gt;
+4  Selección_de_Quora &lt;digest-noreply@quora.com&gt;
+5        Quora Digest &lt;digest-noreply@quora.com&gt;
+6        Quora Digest &lt;digest-noreply@quora.com&gt;
+7        Quora Digest &lt;digest-noreply@quora.com&gt;
+8  Selección_de_Quora &lt;digest-noreply@quora.com&gt;
+9  Selección_de_Quora &lt;digest-noreply@quora.com&gt;
+10 Selección_de_Quora &lt;digest-noreply@quora.com&gt;</code></pre>
+</div>
+</div>
+<p>Let’s filter those from “Received” or “Sent” (in Spanish, “Recibidos” or “Enviado”).</p>
+<p>To save you from reading a considerable amount of code, I will load the other accounts and modify them accordingly in the background. I will finally merge everything together. Just enjoy the kitten while the code is running in my machine.</p>
+<p><img src="https://matiasandina.netlify.app/posts/2019-04-06-email-analysis/001-kitty.jpg" class="img-fluid"></p>
+</section>
+<section id="analysis" class="level2">
+<h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
+<p>There’s still some stuff to clean, but I’d rather go into the analysis. So, let’s get some questions to guide our purpose:</p>
+<ol type="1">
+<li>Who sends me the most emails? Who receives emails from me?</li>
+<li>When do I get emails (mostly)?</li>
+<li>When should I do something about it (aka, reply)?</li>
+</ol>
+<blockquote class="blockquote">
+<p><strong>Warning:</strong> We have to dance with parsing dates and times. I highly recommend being familiar with <code>lubridate</code> (for example, see https://rdrr.io/cran/lubridate/man/parse_date_time.html).</p>
+</blockquote>
+<section id="most-frequent-senders" class="level3">
+<h3 class="anchored" data-anchor-id="most-frequent-senders">Most frequent senders</h3>
+<p>Just because I’m curious, let’s take a look at who are the all time senders!</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                    from   n
+1                  Quora 393
+2                 Maggie 316
+3                   Yair 216
+4                Luciano 173
+5                  Sarah 167
+6                  "Bank 161
+7           "Amazon.com" 139
+8                Mariana 138
+9  pubchase@zappylab.com 131
+10            "Mendeley" 126</code></pre>
+</div>
+</div>
+<p>It’s cool to know that my lingering feeling (“wow…<code>Quora</code> just spams the hell out of me”) is supported by data. Other big spammers are, of course, the Bank and Amazon. People I work with and friends come high up too. Funny to see Mendeley and Pubchase on the top ten, it’s been a long journey of them sending me papers, thank you for that<sup>2</sup>.</p>
+</section>
+<section id="from-me-to-you" class="level3">
+<h3 class="anchored" data-anchor-id="from-me-to-you">From me to you</h3>
+<p>Let’s try to find the people I directly send the most emails to. I tend to send a lot of automatic reminders via email to myself so I removed me from the destination.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>       to   n
+1 Mariana 192
+2 Mariana 126
+3    Yair  86
+4 Mélanie  64
+5   Beata  59</code></pre>
+</div>
+</div>
+<p>Looks like both my former advisers get most of my output (yes, same name first name, not related).</p>
+</section>
+</section>
+<section id="working-with-dates-and-times" class="level2">
+<h2 class="anchored" data-anchor-id="working-with-dates-and-times">Working with dates and times</h2>
+<p>Every time I have to deal with dates, I have a miniature panic attack. As a general rule, you have to have all the variables that you want to use as separate columns (i.e, year, month, day, week_day, time, …). The <code>lubridate</code> package helps a lot, but it’s still quite an effort.</p>
+<p>Working only with times of the day, regardless of date itself is problematic. Working with periods is difficult, so <code>as.numeric(x, "hour")</code> is a friend.</p>
+<p>Here’s a hint of how the <code>date</code> column in the original data actually looks like. This may or might not look the same way for you, it depends on your date settings.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                             date
+1 Sat, 23 Mar 2019 08:57:48 -0700
+2 Sat, 23 Mar 2019 08:57:32 -0700
+3 Sat, 23 Mar 2019 20:25:31 -0400
+4 Sat, 23 Mar 2019 08:57:46 -0700
+5 Sat, 23 Mar 2019 08:57:35 -0700</code></pre>
+</div>
+</div>
+<p>Let’s create all the variables we need. It seems like a lot because it <em>should</em> work out of the box and it doesn’t, but it’s actually somewhat straight-forward to get most of what we want.</p>
+</section>
+<section id="birdseye" class="level2">
+<h2 class="anchored" data-anchor-id="birdseye">Birdseye</h2>
+<p>Let’s look at how the whole email movement looks like. In the last couple of years, I clearly felt the load rising and rising. The lack of data in the early years is mostly due to me not downloading everything from the Hotmail account (it’s too late, too far in the past to fix :P). Besides, the trend likely holds quite well.</p>
+<div class="cell" height="6">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://matiasandina.netlify.app/posts/2019-04-06-email-analysis/index_files/figure-html/tile-plot-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>If we split by input and output, we can easily see that the input-output ratio went nuts when I moved to the US.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://matiasandina.netlify.app/posts/2019-04-06-email-analysis/index_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This is not really surprising, given the amount of unsolicited advertising I started getting since the move. Yes, I’m talking to you again Quora/Amazon/people trying to sell me stuff<sup>3</sup>. Of course, University related chains likely take a big chunk of the pie.</p>
+<p>I don’t feel like parsing out each sender out of the sheer amount. I have had the Gmail and Hotmail accounts for more than 10 years, but the University email is something relatively recent. All in all, considering the time I’ve had each account, the input rate coming from universities worries me. Here are the total email for each account:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  Gmail hotmail     MIT   umass 
+   7481   10331    1297    7122 </code></pre>
+</div>
+</div>
+<section id="when" class="level3">
+<h3 class="anchored" data-anchor-id="when">When</h3>
+<p>Let’s add the time of the day to the equation. This plot was made using <code>ggbeeswarm</code> package, I highly recommend checking it, it’s pure power. I got help to put the labels in the <code>y</code> axis from ‘00:00’ to ‘24:00’. You can find a toy example in <a href="https://stackoverflow.com/questions/55463735/how-to-force-scale-y-datetime-scale-to-show-2400-instead-of-0000-in-r/55464995#55464995">this StackOverflow question</a>.</p>
+<p><img src="https://matiasandina.netlify.app/posts/2019-04-06-email-analysis/email-analysis-beeswarm.png" class="img-fluid"></p>
+<section id="daily-news" class="level4">
+<h4 class="anchored" data-anchor-id="daily-news">Daily news</h4>
+<p>What’s the average number of emails per day? I’m including all the emails in from 2015 to 2019, including those that go directly to trash.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://matiasandina.netlify.app/posts/2019-04-06-email-analysis/index_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>For those looking for some tabulated info, here it is:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Number of emails per day received in all accounts</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">Min</th>
+<th style="text-align: right;">Max</th>
+<th style="text-align: right;">Mode</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">6.8</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">10.2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">14.5</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">68</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">13.0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">18.9</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">132</td>
+<td style="text-align: right;">7</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>I am more inclined to graphics, the following figure shows not only an increasing mean, but, surprisingly, a widening range.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://matiasandina.netlify.app/posts/2019-04-06-email-analysis/index_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="all-days-were-not-created-equal" class="level3">
+<h3 class="anchored" data-anchor-id="all-days-were-not-created-equal">All days were not created equal</h3>
+<p>Of course, the number of emails somewhat depends on the day of the week. We can easily see a decreasing trend.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ Mon  Tue  Wed  Thu  Fri  Sat  Sun 
+4720 4748 4469 4326 3928 1938 1970 </code></pre>
+</div>
+</div>
+<p>Although the day of the week has influence on the amount of emails received, the time of the day seems to have a stronger, more permanent effect.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://matiasandina.netlify.app/posts/2019-04-06-email-analysis/index_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="everything-together" class="level3">
+<h3 class="anchored" data-anchor-id="everything-together">Everything together</h3>
+<p>If we pool all the data together, it seems that I receive/send emails at all times, although there is more movement in the accounts around 10:00 and 16:30. Overall, the distributions are quite similar<sup>4</sup>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://matiasandina.netlify.app/posts/2019-04-06-email-analysis/index_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="just-for-fun" class="level4">
+<h4 class="anchored" data-anchor-id="just-for-fun">Just for fun</h4>
+<p>Just for the fun of data visualization. Here’s the same plot but adding <code>coord_polar</code> to it. I believe it creates a very weird but good looking thing. It’s not really a clock but there’s something about it I can’t stop looking at<sup>5</sup>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://matiasandina.netlify.app/posts/2019-04-06-email-analysis/index_files/figure-html/polar-plot-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="split-in-two" class="level3">
+<h3 class="anchored" data-anchor-id="split-in-two">Split in two</h3>
+<p>As you can see from the figures above, the emails in the received bucket have two humps (wink, Bactrian camel, little prince), but I send emails at almost all times (except maybe between 2 AM and 5 AM). This is a <strong>bad habit</strong>, I should not be sending emails all the time, I should batch to diminish the costs associated with shifting tasks. I could just put a rule of thumb and check emails only once a day (e.g, 12:00:00). However, this might not be the best decision, because it chunks the response time in two very broad categories (either I get back to you somewhat quick, within 2 hours, or I take almost a full day to reply).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://matiasandina.netlify.app/posts/2019-04-06-email-analysis/index_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Additionally, checking emails only once might make me miss something somewhat fleeting. In general, I want to read things during the time they are relevant (did anybody say free pizza?).</p>
+<p>The primary goal, then, is to minimize the times I check/send emails without <strong>1)</strong> impacting my perceived response rate and <strong>2)</strong> missing out too much info during the day. But that optimization problem is hard to solve and likely a waste of time (trust me, I tried and I’m not that smart).</p>
+<p>I believe we can solve it with a rule of thumb anyway. Let’s say, I would check emails <em>twice</em> a day and respond immediately, unless I need to harness some brain power to create an elaborate response<sup>6</sup>.</p>
+<p>I just wrote a “cost function” and calculated the cost for several combinations of times.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">values <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> emails <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb9-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(simple_label<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Received"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb9-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">val =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.numeric</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seconds_to_period</span>(my_time))) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb9-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pull</span>(val)</span>
+<span id="cb9-5"></span>
+<span id="cb9-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># calculate linear distance to minimize </span></span>
+<span id="cb9-7"></span>
+<span id="cb9-8">dist_to_min <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(values, possible_times){</span>
+<span id="cb9-9"> </span>
+<span id="cb9-10">  min_time <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>(possible_times)</span>
+<span id="cb9-11">  max_time <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(possible_times)</span>
+<span id="cb9-12">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># do nothing to first batch</span></span>
+<span id="cb9-13">  corrected_values <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ifelse</span>(values <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> max_time,</span>
+<span id="cb9-14">                           values,</span>
+<span id="cb9-15">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># shift the ones answered on next day, this already gives positive distance</span></span>
+<span id="cb9-16">                          <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">86400</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> values <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> min_time)</span>
+<span id="cb9-17"></span>
+<span id="cb9-18">  </span>
+<span id="cb9-19">  to_second <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">between</span>(corrected_values, min_time, max_time)</span>
+<span id="cb9-20">  second_batch <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> corrected_values[to_second]</span>
+<span id="cb9-21">  first_batch <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> corrected_values[<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span>to_second]  </span>
+<span id="cb9-22">  </span>
+<span id="cb9-23">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Calculate distance (should be all positive)</span></span>
+<span id="cb9-24">  dist_second <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> max_time <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> second_batch </span>
+<span id="cb9-25">  </span>
+<span id="cb9-26">  dist_first <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ifelse</span>(first_batch <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> min_time,</span>
+<span id="cb9-27">                       min_time <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> first_batch,</span>
+<span id="cb9-28">                       corrected_values)</span>
+<span id="cb9-29"></span>
+<span id="cb9-30">  total_dist <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sum</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(dist_first, dist_second))</span>
+<span id="cb9-31">  </span>
+<span id="cb9-32">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">return</span>(total_dist)</span>
+<span id="cb9-33">}</span></code></pre></div>
+</details>
+</div>
+<p>Now we can use our <code>dist_to_min</code> function in a loop. We’ll calculate from the first second of the day, to the last (86400) every half hour (1800 sec).</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Create the data to iterate over</span></span>
+<span id="cb10-2">val <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">86400</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1800</span>)</span>
+<span id="cb10-3">val <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data.frame</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">t</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">combn</span>(val,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)))</span>
+<span id="cb10-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">names</span>(val) <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Var1"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Var2"</span>)</span>
+<span id="cb10-5">distance <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">numeric</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">length=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(val))</span>
+<span id="cb10-6"></span>
+<span id="cb10-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># For loop...</span></span>
+<span id="cb10-8"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> (i <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(val)){</span>
+<span id="cb10-9">  possible_times <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> val[i, ]</span>
+<span id="cb10-10">  </span>
+<span id="cb10-11">  distance[i] <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">dist_to_min</span>(values, possible_times)</span>
+<span id="cb10-12">  </span>
+<span id="cb10-13">}</span></code></pre></div>
+</details>
+</div>
+<p>The function calculates the distance we want to minimize. The output looks like this.</p>
+<div class="cell" width="8">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://matiasandina.netlify.app/posts/2019-04-06-email-analysis/index_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Sounds like the combinations we care about are those below 2.5e+8.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://matiasandina.netlify.app/posts/2019-04-06-email-analysis/index_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>All this long post is to say that, from now on, I will be answering my emails in either one of these combinations.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>  first_batch second_batch
+1   12H 0M 1S    18H 0M 1S
+2   11H 0M 1S   17H 30M 1S</code></pre>
+</div>
+</div>
+</section>
+<section id="a-finer-grain" class="level3">
+<h3 class="anchored" data-anchor-id="a-finer-grain">A finer grain</h3>
+<p>Just for the fun of it, let’s take a closer look, a second by second analysis. It seems like machine programmed emails peak at 2 and 3 seconds past midnight.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>       time simple_label Freq
+1  00:00:02     Received   77
+2  00:00:03     Received   43
+3  15:32:51     Received    6
+4  10:17:11     Received    5
+5  12:05:40     Received    5
+6  12:09:11     Received    5
+7  12:42:03     Received    5
+8  15:30:29     Received    5
+9  17:17:06     Received    5
+10 09:07:15     Received    4</code></pre>
+</div>
+</div>
+<p>Who are these emails coming from anyway?</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 2
+   from         n
+   &lt;chr&gt;    &lt;int&gt;
+ 1 @mit.edu    33
+ 2 @mit.edu    24
+ 3 @mit.edu    23
+ 4 @mit.edu    10
+ 5 @mit.edu     6
+ 6 @mit.edu     6
+ 7 @mit.edu     4
+ 8 @mit.edu     3
+ 9 @mit.edu     3
+10 @mit.edu     2</code></pre>
+</div>
+</div>
+<p>Looks like people at MIT programmed news to be sent seconds after midnight.</p>
+</section>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>I have had <em>a lot</em> of fun doing this project. I also experienced an enormous amount of frustration with dates. Moreover, every time I thought this project was over, a new little idea for a <em>not so little</em> graph came into my mind. Of course, I went after it. I hope this info helps other people take a look at their own personal analytics and make some decisions. I am somewhat happy I have almost all notifications turned off (hence, no Facebook/Twitter/Slack/whatever appearing as top senders). In fact, turning email notifications off is the first thing I do when I sign up for a service/site, I encourage you to do the same.</p>
+<p>Batching is something I will start testing. I can’t control my input but, hopefully, the distributions of my sent email will start matching the times I designated. More importantly, people will not notice, even if the email input keeps increasing.</p>
+<hr>
+<p>Some people requested me to do the following scatter-plot. I went with the ggbeeswarm version on the text because I find it more appealing.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://matiasandina.netlify.app/posts/2019-04-06-email-analysis/index_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+<p>I excluded parts of the code because it was too much. I am happy to share if requested!</p>
+<hr>
+<p><strong>Sources:</strong></p>
+<p>https://jellis18.github.io/post/2018-01-17-mail-analysis/<br>
+https://blog.stephenwolfram.com/2012/03/the-personal-analytics-of-my-life/<br>
+https://uc-r.github.io/kmeans_clustering</p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>You could actually stay in python (follow https://jellis18.github.io/post/2018-01-17-mail-analysis/). I’m way more comfortable with R for analysis and I only wanted python because I had the copy-paste version of getting my <code>.mbox</code> file to <code>.csv</code> fast.↩︎</p></li>
+<li id="fn2"><p>I had signed up for Mendeley <em>before</em> Elsevier bought it…I’m not quite happy about it now, but at least I still get paper recommendations.↩︎</p></li>
+<li id="fn3"><p>I know I could just <em>unsubscribe</em> to these kind of things, just the way I do with 99% of all other aggressive garbage. I just didn’t do it for these senders.↩︎</p></li>
+<li id="fn4"><p>Do they look like an elephant inside a boa or a hat?↩︎</p></li>
+<li id="fn5"><p>Please, if you know how to make the 0:00 or 24:00 appear on the center, reach out! I couldn’t figure it out.↩︎</p></li>
+<li id="fn6"><p>If you have as much free time as me, you can run a <code>kmeans(...)</code>. My emails actually turned out to be around 2 clusters.↩︎</p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{andina2019,
+  author = {Andina, Matias},
+  title = {Email Analysis},
+  date = {2019-04-06},
+  url = {https://matiasandina.netlify.app/posts/2019-04-06-email-analysis/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-andina2019" class="csl-entry quarto-appendix-citeas">
+Andina, Matias. 2019. <span>“Email Analysis.”</span> April 6, 2019. <a href="https://matiasandina.netlify.app/posts/2019-04-06-email-analysis/">https://matiasandina.netlify.app/posts/2019-04-06-email-analysis/</a>.
+</div></div></section></div> ]]></description>
+  <category>R</category>
+  <category>learning</category>
+  <guid>https://matiasandina.netlify.app/posts/2019-04-06-email-analysis/</guid>
+  <pubDate>Fri, 05 Apr 2019 22:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>R pipeline – It’s a trap!</title>
+  <dc:creator>Matias Andina</dc:creator>
+  <link>https://matiasandina.netlify.app/posts/2019-02-01-r-pipeline-its-a-trap/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<p>Here’s how the story usually goes: It starts with you, sitting in front of the computer screen, thinking: <em>What a lovely day for some data analysis!</em>.</p>
+<p>This day is great because you have collected some data or maybe because you happened to find some data somewhere, begging to be part of a smoking good plot.</p>
+<section id="raw-data-inside-tin-software" class="level2">
+<h2 class="anchored" data-anchor-id="raw-data-inside-tin-software">Raw data inside Tin Software</h2>
+<p>Having data feels so good, that itching feeling in your fingers, the rush to know. How does it look like? You <em>need</em> to know. But let’s be honest, no dataset comes clean. You have to fight your way to finally get the squeaky clean readable <code>data.frame</code>.</p>
+<p>Why is data <em>dirty</em>? Well, there are many reasons. Today I want to focus on the manufacturers.</p>
+<p>Manufacturers don’t care for tidiness or openness, they use the format that works for them. They care for proprietary software solutions that help them help you, for a little contribution <sup>1</sup>.</p>
+</section>
+<section id="reclaiming-your-data" class="level2">
+<h2 class="anchored" data-anchor-id="reclaiming-your-data">Reclaiming your data</h2>
+<p>Of course, your data is your <em>own</em> and there has to be a way of getting it out of the tin software. So, you pull up your sleeves and go for it: <em>there must be a way to get a text file out of this</em>. Fortunately, but not after a lot of clicking, you find a way to get your <code>raw_data.csv</code> file exported.</p>
+</section>
+<section id="untitled1" class="level2">
+<h2 class="anchored" data-anchor-id="untitled1">Untitled1</h2>
+<p>You are now more than ready to <code>read.csv(...)</code> your file. You open a new empty script and rush through commands. Read it. Do some quick wrangling. Maybe even a manual edit? The goal at this stage is to swift through it. You accept hard-coding some values, why not?</p>
+<p><code>df &lt;- df[3:3245, 18:22]</code> doesn’t sound that bad at this stage.</p>
+<p>Before you can tell, you end up with less than 50 lines of code that accomplish the task, a sort of <code>x + y + z -&gt; result</code>. This feels good!</p>
+</section>
+<section id="plot" class="level2">
+<h2 class="anchored" data-anchor-id="plot">Plot</h2>
+<p>You plot the data. Yes, you might even use <em>base graphics</em> at this stage. It looks horrible, but the relationship is there, and you smile. It’s encouraging, in your next meeting, you will discuss the great advances in your research line (added n=3 to a group).</p>
+</section>
+<section id="periodic" class="level2">
+<h2 class="anchored" data-anchor-id="periodic">Periodic</h2>
+<p>But something holds you when you try to escape back to the real world. You know that this process is gonna happen more than once. Hopefully, every week or so, you’re going to get your <code>sample of interest</code> read in that <code>machine of hell</code> and, if you want a quick taste of that sweet data, you’d better clean your script and make it a nice <em>pipeline</em>. Here’s where your Advanced R (http://adv-r.had.co.nz/) voice whispers to you: <em>Everything to parameters, parameters to functions.</em></p>
+</section>
+<section id="functions" class="level2">
+<h2 class="anchored" data-anchor-id="functions">Functions</h2>
+<p>Let’s think in more general terms now…Where is the regular expressions God when I need it?</p>
+<p>You don’t really remember, but there’s Google and there’s <code>stringr</code>. You’re quite sure you’ll find a way to extract all relevant info and recycle it through the pipeline. You create universal values that are shared, <code>ID_this</code>, <code>ID_that</code>. Naming names wasn’t that difficult after all!</p>
+<p>Your vision is still clear, maybe it’s because of the coffee, so you quickly wrap your sequential steps into functions that directly resemble them. You proudly name the files after the steps they perform (as if you would remember what <code>clean_and_tidy_df.R</code> does three months from now).</p>
+<p>You still have a sequence: it now looks like <code>x = f(...) + y = g(...) + z = h(...) -&gt; result</code>. Not bad for a couple hours of work!</p>
+</section>
+<section id="climax" class="level2">
+<h2 class="anchored" data-anchor-id="climax">Climax</h2>
+<p>You find yourself at the climax of your endeavor. You can easily do a sequence of calls to functions. Moreover, everything is fresh in your memory and you have not tested your functions extensively. Things appear to work because you haven’t invested enough effort to break them.</p>
+<ul>
+<li>What will happen when dates change?</li>
+<li>Is your description of the problem(s) correct?</li>
+<li>Are your solutions working despite not being authoritative (aka, how many unknown unknowns waiting to bite you?)?</li>
+<li>You are the only one running this code now, is that going to be the case <em>forever</em>?</li>
+<li>Packages will update tomorrow. Are you ready for that?</li>
+</ul>
+<p>All this ignorance feels a lot like happiness. Again, you are strongly tempted to get up from your desk and go live your life.</p>
+</section>
+<section id="wake-up" class="level2">
+<h2 class="anchored" data-anchor-id="wake-up">Wake up</h2>
+<p>It doesn’t really matter how long it takes, your code will break. You realize your functions depend on global parameters, the date, the folder structure, the file names, and a stupid pattern on row 7 that is manually typed on <code>machine of hell</code> and therefore might contain human errors.</p>
+<p>You cry, at least for a microsecond. Then you decide it’s time to bring the big guns to the fight. Everything will be standardized. It’s time for <code>list.files()</code> and <code>lapply()</code> to save the day.</p>
+</section>
+<section id="everything-is-a-list" class="level2">
+<h2 class="anchored" data-anchor-id="everything-is-a-list">Everything is a list</h2>
+<p>You create <code>wrapper_of_clean_and_tidy_df.R</code> and all sorts of other wrapper functions that can handle lists. Why? Because <em>everything is a list now</em>. You will load all the data, make a huge list, loop over, and apply all-purpose functions. Remember <code>x</code>? Neither do I, but it’s somewhere there, running at the bottom.</p>
+<p>But this <code>list -&gt; list -&gt; list -&gt; list of results</code> is a bit confusing, where is the stuff I care about?. Don’t even get me started with the lists of lists.</p>
+</section>
+<section id="checkpoints" class="level2">
+<h2 class="anchored" data-anchor-id="checkpoints">Checkpoints</h2>
+<p>By this point, even if you will be the only one running this code, you are in deep need of some hints that point you towards what is going on.</p>
+<p>You also have big objects that were only meaningful on the very first time, things that you never want to calculate again. But <em>What if some day…?</em> Yes, you know how this one goes. So, go ahead, you are allowed to add this line:</p>
+<p><code>readline(prompt = "This was only computed once in the life of the Universe, compute again [Y/N]? &gt; ")</code></p>
+<p>Checkpoints are also useful tools to handle errors that might come in the data, find typos, sort out dates, prevent the wrong data type from entering a function, among others.</p>
+<p>For example, you might be expecting something that looks like <code>yyyy-mm-dd_filename.csv</code>, but for some reason you end up trying to read <code>other_filename.csv</code>. Well, good luck converting <code>other</code> to date format. Moreover, are you really trying to use <code>"[0-9]{4}-[0-9]{2}-[0-9]{2}"</code> as the pattern to match to <code>yyyy-mm-dd</code>? Come on…you can do better than this!</p>
+<p>Wondering where are those <code>NAs</code> coming from? Wondering what’s the length of a <code>NULL</code> character? Been there, done that. Don’t worry, enough checkpoints can solve the problem.</p>
+<p>At this point, after another couple hours, your code is working under several layers of <code>if(condition) {...} else {...}</code> statements. Good job, feeling like a programmer yet?</p>
+</section>
+<section id="what-does-the-code-do-again" class="level2">
+<h2 class="anchored" data-anchor-id="what-does-the-code-do-again">What does the code do again?</h2>
+<p>Because your code is now looking like:</p>
+<p><code>wrapper of wrapper of x + wrapper of wrapper of y + wrapper of wrapper of z -&gt; ???</code></p>
+<p>You have no idea what’s going on unless you run the whole chain. But you did your work and it pays off. The code works like a charm! You can see lines of code dropping, messages being printed, prompts being asked and answered, graphs popping every now and then. You even check some errors by trying to run corrupted data, errors are being thrown! Heaven.</p>
+<p>You are ready now, the code is working, time to collect a <em>shit ton</em> of data.</p>
+</section>
+<section id="why-are-you-doing-this-to-yourself" class="level2">
+<h2 class="anchored" data-anchor-id="why-are-you-doing-this-to-yourself">Why are you doing this to yourself?</h2>
+<p>You didn’t optimize for <em>that</em> much data. Your code is now running at a brand new speed: <em>turtle</em>. You can go get coffee, stop to chat a for a while with the students in another lab and come back to the computer, only to see it improve a few % points.</p>
+<p>You did this to yourself. You don’t need those 17 extra plots in between calculations every single time. You have no time to look at them if you are running hundreds of tiny files as inputs. Besides, you already know that your method works, the calibration curve is calibrated and the machine parameters lie within the expected distribution.</p>
+</section>
+<section id="save-before-continue" class="level2">
+<h2 class="anchored" data-anchor-id="save-before-continue">Save before continue</h2>
+<p>Gaming rules apply: before fighting the boss, save the game, just in case you know…you die in the fight. You don’t want to start all over, do you?</p>
+<p>But we seldom do this unless we absolutely have to. We don’t like to leave a trail of intermediate computations. In a sense, this might be dangerous, what if something broke in between, but because we have an old copy we are able to go through the pipeline without noticing? It makes me cringe.</p>
+<p>But you don’t want to calculate years of data just to look how much the new addition changes the output, right? Start saving intermediate steps!</p>
+</section>
+<section id="package" class="level2">
+<h2 class="anchored" data-anchor-id="package">Package</h2>
+<p>You said you were going to have the data analysed by tomorrow, but you spent the whole day waiting for it to run, debugging and trying to make the pipeline even more tight. That thing you did, the saving intermediate files, turned out to be far more complicated than what you expected. You realized exactly how many environment variables were being created and used during the pipeline. You re-learn the term <code>scoping</code> and you learn to worship it. Nah, 10 arguments it’s not too much, you will <em>surely</em> remember them all when you call the function! No data so far, no data that you can <em>show</em> to another human being.</p>
+<p>It’s well past midnight, your eyes hurt, there’s no more ice cream to keep you excited. But a question creeps into your mind, a revelation:</p>
+<p><em>Should I start from scratch and make this my own package? Yes..that’s what I’m gonna do…!</em></p>
+<hr>
+<p>Stop! It’s a trap!</p>
+</section>
+<section id="steps-of-the-race-to-the-bottom" class="level2">
+<h2 class="anchored" data-anchor-id="steps-of-the-race-to-the-bottom">Steps of the race to the bottom</h2>
+<p>Just as recap…be my guest.</p>
+<ol type="1">
+<li>You have a <code>raw_data.csv</code>.</li>
+<li>You open an empty script (<em>Untitled1</em>) and write a few lines that do sequentially something like x + y + z -&gt; result.</li>
+<li>You make a <em>very</em> raw representation (even using base graphics).</li>
+<li>You <em>know</em> this is going to be periodically done, so you shift to functions, you parametrize some things.</li>
+<li>Now you have x = f(…), y = g(…), and z(…).</li>
+<li>You are happy because you still can do something like f(…) + g(…) + z(….).</li>
+<li>You realize your functions depend on global parameters like the date in which you do each of your experiments.</li>
+<li>You decide you are going to take this a step forward, here comes <code>list.files</code> and <code>lapply()</code> to save the day.</li>
+<li>You wrap your main functions inside other functions that are compatible with lists (because now EVERYTHING is a list).</li>
+<li>You realize that you lost.</li>
+<li>You add checkpoints, questions, exceptions (for all those moments where data behave as well…normal messy data).</li>
+<li>Your code has grown so much you have no clue what it does unless you run the full script, so now it looks like wrapper of wrapper x + wrapper of wrapper y + wrapper of wrapper z -&gt; entangled results.</li>
+<li>You are so happy that you can run all those files like a charm (and it works!) so you acquire a shit ton of data.</li>
+<li>You didn’t optimize for “a shit ton of data”, your code is slow now. Also…what were you thinking? You don’t need those 17 extra plots in between calculations. You have no time to look at them now that you are running hundreds of tiny files as inputs.</li>
+<li>Calculations take forever now. You realize that you had to save intermediate steps.</li>
+<li>Even if you tried saving them, most of your functions are dependent on other tiny values (dates, number of trials, number of rows of matrix named “WHATEVER”).</li>
+<li>Make your own R package.</li>
+</ol>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>To be fair, companies are not entirely to blame here. The scientific community (aka, the consumers) demands a visually friendly display, with Excel <code>Copy+Paste</code> capabilities. No wonder why universal text formats are many many clicks away in most software and you need several data wrangling steps before having the thing you want: <em>a tidy table</em>. Data coming from organizations (e.g, UN) is not always super clean either (countries keep changing their names, how dare they!?).↩︎</p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{andina2019,
+  author = {Andina, Matias},
+  title = {R Pipeline -\/- {It’s} a Trap!},
+  date = {2019-01-02},
+  url = {https://matiasandina.netlify.app/posts/2019-02-01-r-pipeline-its-a-trap/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-andina2019" class="csl-entry quarto-appendix-citeas">
+Andina, Matias. 2019. <span>“R Pipeline -- It’s a Trap!”</span> January
+2, 2019. <a href="https://matiasandina.netlify.app/posts/2019-02-01-r-pipeline-its-a-trap/">https://matiasandina.netlify.app/posts/2019-02-01-r-pipeline-its-a-trap/</a>.
+</div></div></section></div> ]]></description>
+  <category>R</category>
+  <category>learning</category>
+  <guid>https://matiasandina.netlify.app/posts/2019-02-01-r-pipeline-its-a-trap/</guid>
+  <pubDate>Tue, 01 Jan 2019 23:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>
