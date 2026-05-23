@@ -1,4 +1,4 @@
 - source: project
-  netlify:
-    - id: 677950e7-4dc7-4260-8dca-d38ce8ebed24
-      url: 'https://matiasandina.com'
+  gh-pages:
+    - id: litman90-webpage
+      url: 'https://litman90.github.io/webpage'

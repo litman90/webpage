@@ -1,13 +1,16 @@
 project:
   type: website
   output-dir: docs
+  render:
+    - "*.qmd"
+    - "!publications/_template/"
 
 website:
   page-navigation: true
   reader-mode: false
   title: "Yair Litman"
   favicon: webpage_logo.png
-  site-url: "https://matiasandina.netlify.app"
+  site-url: "https://litman90.github.io/webpage"
   repo-url: "https://github.com/litman90/webpage"
   repo-actions: [edit, issue]
   open-graph: true
@@ -22,7 +25,7 @@ website:
     
   comments:
     utterances:
-      repo: matiasandina/Webpage
+      repo: litman90/webpage
       label: "Comment"
       theme: github-dark
 
@@ -35,8 +38,8 @@ website:
     background: secondary
     search: true
     left:
-      #- text: "Posts"
-      #  file: posts/index.qmd
+      - text: "Thoughts"
+        file: posts/index.qmd
       # - text: "Projects"
       #  file: projects/index.qmd
       - text: "Research Areas"
@@ -64,13 +67,16 @@ website:
 
 
 format:
-  html: 
+  html:
     theme:
-      light: [flatly, theme.scss] 
+      light: [flatly, theme.scss]
       dark: [darkly, dark.scss]
     code-copy: true
     code-overflow: wrap
     toc: true
+    css: styles.css
+    resources:
+      - figures
     # page formatting
     grid:
       #sidebar-width: 300px

@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Organic/Inorganic Interfaces – Yair Litman</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -39,14 +42,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-61128e63b9d0e6f7a3c04088296a0feb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-ffd6b7cfeaf05b906d8d3c526df9a281.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-61128e63b9d0e6f7a3c04088296a0feb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-c398011d8ebede1969d87f857d17a807.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-05f42ecee97cb2a5fbe5606e88ccdfb2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-c398011d8ebede1969d87f857d17a807.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -87,7 +90,7 @@ ul.task-list li input[type="checkbox"] {
     const options = {
       valueNames: ['listing-publication','listing-title','listing-categories','listing-image','listing-date','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-project","listing-website","listing-format","listing-editor","listing-language","listing-comments","listing-title:"Quantum tunneling in real space","listing-author","listing-date","listing-publication","listing-categories","listing-url_source","listing-url_preprint","listing-journ","listing-issue","listing-page","listing-year","listing-image","listing-pub_number","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-title"],
+      searchColumns: ["listing-project","listing-website","listing-format","listing-editor","listing-engines","listing-language","listing-comments","listing-title:"Quantum tunneling in real space","listing-author","listing-date","listing-publication","listing-categories","listing-url_source","listing-url_preprint","listing-journ","listing-issue","listing-page","listing-year","listing-image","listing-pub_number","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-title"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -106,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
   </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -119,7 +122,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -137,11 +140,11 @@ window.Quarto = {
 
 <meta property="og:title" content="Organic/Inorganic Interfaces – Yair Litman">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://matiasandina.netlify.app/research/OrganicInorganicInterfaces/featured.jpg">
+<meta property="og:image" content="https://litman90.github.io/webpage/research/OrganicInorganicInterfaces/featured.jpg">
 <meta property="og:site_name" content="Yair Litman">
 <meta name="twitter:title" content="Organic/Inorganic Interfaces – Yair Litman">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://matiasandina.netlify.app/research/OrganicInorganicInterfaces/featured.jpg">
+<meta name="twitter:image" content="https://litman90.github.io/webpage/research/OrganicInorganicInterfaces/featured.jpg">
 <meta name="twitter:creator" content="Yair Litman">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -326,6 +329,10 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
+    <a class="nav-link" href="../../posts/index.html"> 
+<span class="menu-text">Thoughts</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../research/index.html"> 
 <span class="menu-text">Research Areas</span></a>
   </li>  
@@ -430,7 +437,7 @@ window.Quarto = {
 <div class="list quarto-listing-default">
     
     
-    <div class="quarto-post image-right" data-index="0" data-categories="b3JnYW5pY19pbm9yZ2FuaWNfaW50ZXJmYWNlcyUyQ3ZpYnJhdGlvbmFsX3NwZWN0cm9zY29weQ==" data-listing-date-sort="1684188000000" data-listing-file-modified-sort="1749485938889" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+    <div class="quarto-post image-right" data-index="0" data-categories="b3JnYW5pY19pbm9yZ2FuaWNfaW50ZXJmYWNlcyUyQ3ZpYnJhdGlvbmFsX3NwZWN0cm9zY29weQ==" data-listing-date-sort="1684188000000" data-listing-file-modified-sort="1779535659975" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
         <div class="thumbnail">
             <!-- <a href="/publications/2024_024_Point-defects-in-MX2_PhysStatSol/index.qmd"> -->
 
@@ -495,7 +502,7 @@ window.Quarto = {
     
     
     
-    <div class="quarto-post image-right" data-index="1" data-categories="b3JnYW5pY19pbm9yZ2FuaWNfaW50ZXJmYWNlcyUyQ3ZpYnJhdGlvbmFsX3NwZWN0cm9zY29weQ==" data-listing-date-sort="1687557600000" data-listing-file-modified-sort="1749485938885" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+    <div class="quarto-post image-right" data-index="1" data-categories="b3JnYW5pY19pbm9yZ2FuaWNfaW50ZXJmYWNlcyUyQ3ZpYnJhdGlvbmFsX3NwZWN0cm9zY29weQ==" data-listing-date-sort="1687557600000" data-listing-file-modified-sort="1779535659971" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
         <div class="thumbnail">
             <!-- <a href="/publications/2023_022_First-Principles-TERS/index.qmd"> -->
 
@@ -560,7 +567,7 @@ window.Quarto = {
     
     
     
-    <div class="quarto-post image-right" data-index="2" data-categories="dmlicmF0aW9uYWxfc3BlY3Ryb3Njb3B5JTJDb3JnYW5pY19pbm9yZ2FuaWNfaW50ZXJmYWNlcw==" data-listing-date-sort="1679439600000" data-listing-file-modified-sort="1749485938885" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+    <div class="quarto-post image-right" data-index="2" data-categories="dmlicmF0aW9uYWxfc3BlY3Ryb3Njb3B5JTJDb3JnYW5pY19pbm9yZ2FuaWNfaW50ZXJmYWNlcw==" data-listing-date-sort="1679439600000" data-listing-file-modified-sort="1779535659968" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
         <div class="thumbnail">
             <!-- <a href="/publications/2022_017_Charge-transfer_NanoLett/index.qmd"> -->
 
@@ -625,7 +632,7 @@ window.Quarto = {
     
     
     
-    <div class="quarto-post image-right" data-index="3" data-categories="b3JnYW5pY19pbm9yZ2FuaWNfaW50ZXJmYWNlcyUyQ3F1YW50dW1fZHluYW1pY3M=" data-listing-date-sort="1605567600000" data-listing-file-modified-sort="1749485938885" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+    <div class="quarto-post image-right" data-index="3" data-categories="b3JnYW5pY19pbm9yZ2FuaWNfaW50ZXJmYWNlcyUyQ3F1YW50dW1fZHluYW1pY3M=" data-listing-date-sort="1605567600000" data-listing-file-modified-sort="1779535659967" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
         <div class="thumbnail">
             <!-- <a href="/publications/2020_016_Multidimensional_hydrogen-PhysRevLett/index.qmd"> -->
 
@@ -690,7 +697,7 @@ window.Quarto = {
     
     
     
-    <div class="quarto-post image-right" data-index="4" data-categories="b3JnYW5pY19pbm9yZ2FuaWNfaW50ZXJmYWNlcyUyQ3F1YW50dW1fZHluYW1pY3M=" data-listing-date-sort="1514242800000" data-listing-file-modified-sort="1749485938881" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+    <div class="quarto-post image-right" data-index="4" data-categories="b3JnYW5pY19pbm9yZ2FuaWNfaW50ZXJmYWNlcyUyQ3F1YW50dW1fZHluYW1pY3M=" data-listing-date-sort="1514242800000" data-listing-file-modified-sort="1779535659965" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
         <div class="thumbnail">
             <!-- <a href="/publications/2018_005_QuantumTunneling_JCP/index.qmd"> -->
 
@@ -828,13 +835,14 @@ window.Quarto = {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -849,7 +857,7 @@ window.Quarto = {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/matiasandina\.netlify\.app");
+        var filterRegex = new RegExp("https:\/\/litman90\.github\.io\/webpage");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -1176,7 +1184,7 @@ window.Quarto = {
     }
   });
   </script>
-<script src="https://utteranc.es/client.js" repo="matiasandina/Webpage" issue-term="pathname" theme="github-dark" crossorigin="anonymous" async="">
+<script src="https://utteranc.es/client.js" repo="litman90/webpage" issue-term="pathname" theme="github-dark" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
 

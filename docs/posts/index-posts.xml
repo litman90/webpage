@@ -6,10 +6,10 @@
       version="2.0">
 <channel>
 <title>Yair Litman</title>
-<link>https://matiasandina.netlify.app/posts/#category=posts</link>
-<atom:link href="https://matiasandina.netlify.app/posts/index-posts.xml" rel="self" type="application/rss+xml"/>
+<link>https://litman90.github.io/webpage/posts/#category=posts</link>
+<atom:link href="https://litman90.github.io/webpage/posts/index-posts.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.7.31</generator>
-<lastBuildDate>Mon, 09 Jun 2025 17:07:09 GMT</lastBuildDate>
+<generator>quarto-1.9.37</generator>
+<lastBuildDate>Sat, 23 May 2026 11:55:18 GMT</lastBuildDate>
 </channel>
 </rss>

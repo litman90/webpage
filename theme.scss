@@ -2,6 +2,10 @@
 
 /*-- scss:rules --*/
 
+body {
+  overflow-x: hidden;
+}
+
 .layout-example {
   background: $gray-500;
   color: $white;
