@@ -1,0 +1,36 @@
+---
+title: &TITLE "Peiyao Wang"
+last: Wang
+first: Peiyao
+people_group: "postdoc"
+email: "peiyao.w@outlook.com"
+education:
+  - "Ph.D. Mechanical Engineering | University of Melbourne | 2021 <br> B.Eng. Materials Engineering | Wuhan University of Technology | 2015"
+subtitle: "Postdoctoral Researcher"
+description: ""
+image: avatar.jpg
+page-layout: full
+about:
+  id: about
+  template: trestles
+  image-shape: round
+  image: avatar.jpg
+  links:
+    - icon: envelope
+      text: Email
+      href: mailto:peiyao.w@outlook.com
+    - icon: file-earmark-pdf
+      text: CV
+      href: ../../CVs/Resume_Peiyao_Wang_-1.pdf
+---
+
+<hr>
+
+:::{#about}
+
+Peiyao is a postdoctoral researcher in the STREAM Group. Her PhD at the University of Melbourne focused on nanoscience-based continuum models for ion distribution in water-filled nanoslits. She subsequently worked as a Research Fellow in Chemical Engineering at Melbourne, where she studied ion transport in nanoporous electrodes and electrolyte behaviour at interfaces.
+
+## Education
+{{< meta education >}}
+
+:::

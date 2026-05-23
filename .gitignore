@@ -3,6 +3,8 @@
 .RData
 .Ruserdata
 
+CVs
+
 # Ignoring emails
 *.mbox
 *_Sent.csv

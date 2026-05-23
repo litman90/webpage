@@ -166,5 +166,14 @@
       "/publications/2019_008-Elucidating-JACS/index.html",
       "/publications/2018_004_Positional_Isotope_Exchange-JPCA/index.html"
     ]
+  },
+  {
+    "listing": "/people/index.html",
+    "items": [
+      "/people/litman-yair/index.html",
+      "/people/qian-shengjie/index.html",
+      "/people/wang-peiyao/index.html",
+      "/people/baumann-matthias/index.html"
+    ]
   }
 ]

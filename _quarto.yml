@@ -4,12 +4,13 @@ project:
   render:
     - "*.qmd"
     - "!publications/_template/"
+    - "!people/_template/"
 
 website:
   page-navigation: true
   reader-mode: false
-  title: "Yair Litman"
-  favicon: webpage_logo.png
+  title: "STREAM"
+  favicon: favicon.ico
   site-url: "https://litman90.github.io/webpage"
   repo-url: "https://github.com/litman90/webpage"
   repo-actions: [edit, issue]
@@ -23,11 +24,6 @@ website:
     type: overlay
     copy-button: true
     
-  comments:
-    utterances:
-      repo: litman90/webpage
-      label: "Comment"
-      theme: github-dark
 
   #page-footer:
     # using footer in _metadata
@@ -38,19 +34,19 @@ website:
     background: secondary
     search: true
     left:
-      - text: "Thoughts"
-        file: posts/index.qmd
-      # - text: "Projects"
-      #  file: projects/index.qmd
+      - text: "People"
+        file: people/index.qmd
       - text: "Research Areas"
         file: research/index.qmd
-      - href: publications/index.qmd
       - href: codes/index.qmd
         text: Software
-      - text: "CV"
-        href: files/CV.pdf
-      - text: "Past lives"
-        file: past_lives/index.qmd
+      - href: publications/index.qmd
+      - text: "About Yair"
+        href: CVs/Yair_Litman.pdf
+      - text: "Thoughts"
+        file: posts/index.qmd
+      - text: "Contact"
+        file: contact.qmd
     right: 
       #- icon: github
       #  href: https://github.com/matiasandina/
@@ -77,6 +73,7 @@ format:
     css: styles.css
     resources:
       - figures
+      - CVs
     # page formatting
     grid:
       #sidebar-width: 300px

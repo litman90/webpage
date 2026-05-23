@@ -1,0 +1,43 @@
+---
+title: &TITLE "Yair Litman"
+last: Litman
+first: Yair
+people_group: "pi"
+email: "litmany@mpip-mainz.mpg.de"
+education:
+  - "Dr. rer. nat. (summa cum laude) | Fritz Haber Institute / Freie Universität Berlin | 2020 <br> Licenciate in Chemical Sciences | University of Buenos Aires | 2014"
+subtitle: "Group Leader"
+description: ""
+image: avatar.jpg
+page-layout: full
+about:
+  id: about
+  template: trestles
+  image-shape: round
+  image: avatar.jpg
+  links:
+    - icon: envelope
+      text: Email
+      href: mailto:litmany@mpip-mainz.mpg.de
+    - text: "{{< ai google-scholar >}} Google Scholar"
+      href: https://scholar.google.de/citations?user=TZ9_wnEAAAAJ&hl=en
+    - text: "{{< ai orcid >}} ORCID"
+      href: https://orcid.org/0000-0002-6890-4052
+    - icon: twitter-x
+      text: Twitter/X
+      href: https://x.com/YairLitman
+    - icon: file-earmark-pdf
+      text: CV
+      href: ../../CVs/Yair_Litman.pdf
+---
+
+<hr>
+
+:::{#about}
+
+Yair leads the STREAM Group at the Max Planck Institute for Polymer Research (Department of Molecular Spectroscopy, Prof. Mischa Bonn) and holds a Junior Faculty position at the Max Planck Graduate Center. Previously, he was a Walter Benjamin Research Associate at the University of Cambridge and a postdoctoral researcher at MPIP and MPSD.
+
+## Education
+{{< meta education >}}
+
+:::
