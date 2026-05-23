@@ -38,7 +38,6 @@
   max-width: 1400px;
   margin: 1.5rem auto 3rem;
   padding: 0 2rem;
-  font-size: 0.348rem;
   line-height: 1.65;
 }
 
@@ -48,25 +47,28 @@
   text-align: left;
 }
 
-/* clearfix so the content div wraps the float */
-.landing-content::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
 .welcome-heading {
   font-size: 1.5rem;
   font-weight: 700;
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
 }
 
-/* floated image — text wraps around it */
-.landing-float-img {
-  float: right;
-  width: 52%;
-  margin: 0.25rem 0 1rem 1.75rem;
+.landing-grid {
+  display: grid;
+  grid-template-columns: 1fr 45%;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.landing-image {
+  display: flex;
+}
+
+.landing-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 6px;
   display: block;
 }
@@ -77,7 +79,6 @@
   gap: 1.1rem;
   margin-top: 1.5rem;
   font-size: 1.5rem;
-  clear: both;
 }
 
 .landing-links a {
@@ -89,4 +90,9 @@
 
 .landing-links a:hover {
   opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .landing-grid { grid-template-columns: 1fr; }
+  .landing-image { order: -1; max-height: 300px; }
 }

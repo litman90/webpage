@@ -30,8 +30,9 @@ website:
     #right: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
     #left: "&copy; CC-By Matias Andina, 2023"
   
-  navbar: 
+  navbar:
     background: secondary
+    logo: favicon.ico
     search: true
     left:
       - text: "People"

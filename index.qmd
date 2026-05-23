@@ -21,15 +21,17 @@ toc: false
 
 ## Welcome to the STREAM Group website! {.welcome-heading}
 
-We are a theory and simulation research group at Molecular Spectroscopy Deparment of the Max Planck Institute for Polymer Research in Mainz, Germany.
+:::{.landing-grid}
 
-<img src="figures/landing_small.webp" class="landing-float-img" alt="Research overview">
+:::{.landing-text}
+
+We are a theory and simulation research group at Molecular Spectroscopy Deparment of the Max Planck Institute for Polymer Research in Mainz, Germany.
 
 The STREAM Group — Simulations of Transformations at Electrochemical Aqueous Media — studies how chemical reactions occur at aqueous interfaces. Our work focuses on complex environments such as electrified interfaces, nanoconfined water, and liquid–solid boundaries, where molecular structure and dynamics control reactivity.
 
-To address these questions, we develop and apply atomistic simulation methods based on quantum mechanics, statistical mechanics, machine-learning potentials, enhanced sampling, and path-integral techniques. We also simulate vibrational spectroscopies such as SFG, IR, Raman, and TERS to connect our theoretical predictions with experiments.
+To address these questions, we develop and apply atomistic simulation methods based on quantum mechanics, statistical mechanics, machine-learning potentials, enhanced sampling, and path-integral techniques. We also simulate vibrational spectroscopies connect our theoretical predictions with experiments.
 
-Our goal is to build a microscopic understanding of interfacial reactivity and use it to guide the design of systems relevant for energy storage and conversion.
+Our ultimate goal is to build a microscopic understanding of interfacial reactivity and use it to guide the design of systems relevant for energy storage and conversion.
 
 :::{.landing-links}
 <a href="mailto:yl899@cam.ac.uk" title="Email"><i class="bi bi-envelope"></i></a>
@@ -37,6 +39,14 @@ Our goal is to build a microscopic understanding of interfacial reactivity and u
 <a href="https://www.linkedin.com/in/yair-litman-11345b30/" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
 [{{< ai orcid >}}](https://orcid.org/0000-0002-6890-4052){title="ORCID"}
 [{{< ai google-scholar >}}](https://scholar.google.de/citations?user=TZ9_wnEAAAAJ&hl=en){title="Google Scholar"}
+:::
+
+:::
+
+:::{.landing-image}
+<img src="figures/landing_small.webp" alt="Research overview">
+:::
+
 :::
 
 :::
