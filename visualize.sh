@@ -1,3 +1,2 @@
-# Publish
-quarto render
+# Visualize
 quarto preview
