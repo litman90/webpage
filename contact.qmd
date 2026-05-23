@@ -21,6 +21,8 @@ about:
 
 #### {{< fa map-location-dot >}} &nbsp; MPI for Polymer Research <br> Ackermannweg 10, 55128 Mainz, Germany
 
+#### {{< fa route >}} &nbsp; [How to reach us](#how-to-reach)
+
 :::
 
 <br>
@@ -36,3 +38,15 @@ about:
   <a href="https://www.openstreetmap.org/?mlat=49.9804&mlon=8.2356" target="_blank">View larger map</a>
 </p>
 ```
+
+## How to reach us {#how-to-reach}
+
+By **tram**, take lines 51, 53, or 59 from *Hauptbahnhof West* (below the highway) and exit at *Bretzenheim/Hochschule Mainz*. From there it is a short ~200 m walk to the institute entrance (see map below).
+
+Alternatively, **bus 75** stops at *Duesbergweg*, less than 100 m from the main entrance.
+
+Upon arrival, please announce yourself at reception and ask them to call office number **380**.
+
+Further travel information is available on the [MPIP directions page](https://www.mpip-mainz.mpg.de/en/directions).
+
+![Walking route from the tram stop to MPIP](figures/MPIP/tram.png){width=80% fig-align="center"}
