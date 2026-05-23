@@ -1,5 +1,37 @@
 /* css styles */
 
+/* ── Photo gallery ───────────────────────────────── */
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin: 1.5rem 0 3rem;
+}
+
+.photo-item img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 5px;
+  display: block;
+}
+
+.photo-item p {
+  font-size: 0.82rem;
+  color: #666;
+  margin-top: 0.4rem;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .photo-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .photo-grid { grid-template-columns: 1fr; }
+}
+
 /* ── Landing page ─────────────────────────────────── */
 
 .landing-content {

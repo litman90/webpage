@@ -1,0 +1,47 @@
+---
+title: "Photo Gallery"
+page-layout: full
+toc: false
+comments: false
+---
+
+```{=html}
+<div class="photo-grid">
+
+  <div class="photo-item">
+    <img src="../photos_gallery/Yair_1.jpg" alt="Yair at the interface between confusion and insight">
+    <p>Yair at "At the interface between confusion and insight"</p>
+  </div>
+
+  <div class="photo-item">
+    <img src="../photos_gallery/Psi-k%202025.jpg" alt="Psi-k 2025 Conference">
+    <p>Psi-k 2025 Conference, June 2025</p>
+  </div>
+
+  <div class="photo-item">
+    <img src="../photos_gallery/Yair_2.jpg" alt="Evidence that theory can be fun">
+    <p>Evidence that theory can be fun</p>
+  </div>
+
+  <div class="photo-item">
+    <img src="../photos_gallery/Stream_May-2025b.jpg" alt="STREAM group May 2025" style="object-position: top;">
+    <p>STREAM group, May 2025</p>
+  </div>
+
+  <div class="photo-item">
+    <img src="../photos_gallery/Stream_May-2025.jpg" alt="STREAM group May 2025">
+    <p>STREAM group, May 2025</p>
+  </div>
+
+  <div class="photo-item">
+    <img src="../photos_gallery/Yair_simplaix2.JPG" alt="Simplaix Workshop 2026">
+    <p>Simplaix Workshop 2026</p>
+  </div>
+
+  <div class="photo-item">
+    <img src="../photos_gallery/Yair_simplaix.JPG" alt="Simplaix Workshop 2026">
+    <p>Simplaix Workshop 2026</p>
+  </div>
+
+</div>
+```

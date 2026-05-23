@@ -45,6 +45,8 @@ website:
         file: people/litman-yair/index.qmd
       # - text: "Thoughts"
       #   file: posts/index.qmd
+      - text: "Photos"
+        file: gallery/index.qmd
       - text: "Contact"
         file: contact.qmd
     right: 
@@ -75,6 +77,7 @@ format:
       - figures
       - CVs
       - people
+      - photos_gallery
     # page formatting
     grid:
       #sidebar-width: 300px
