@@ -3,7 +3,7 @@ title: "Entropy Governs the Structure and Reactivity of Water Dissociation Under
 author: ["Yair Litman", "Angelos Michaelides"]
 date: 2025-11-01
 publication: "J. Am. Chem. Soc. **147**, 44885–44894 (2025)"
-categories: ["electrochemistry", "water"]
+categories: ["aqueous_interfaces"]
 url_source: https://doi.org/10.1021/jacs.5c12397
 url_preprint:
 journ: "J. Am.  Chem.  Soc."

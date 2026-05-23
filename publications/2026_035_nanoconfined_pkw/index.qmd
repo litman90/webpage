@@ -1,0 +1,15 @@
+---
+title: "How reactive is water at the nanoscale and how to control it?"
+author: ["Xavier R. Advincula","Yair Litman","Kara D. Fong","William C. Witt","Christoph Schran", "Angelos Michaelides"]
+date: 2026-04-14
+publication: "Sci. Adv (2026)"
+categories: ["aqueous_interfaces"]
+url_source: https://arxiv.org/abs/2508.13034v1
+url_preprint:
+journ: "Sci. Adv."
+issue: 
+page: "(accepted)"
+year: 2026
+image: featured.jpg
+pub_number: 35
+---

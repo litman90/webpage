@@ -1,6 +1,7 @@
 ---
-title: Aqueous Interfaces
+title: Aqueous (Electrified) Interfaces
 alias: &ALIAS aqueous_interfaces
+order: 1
 image: featured.jpg
 listing:
   id: pubs

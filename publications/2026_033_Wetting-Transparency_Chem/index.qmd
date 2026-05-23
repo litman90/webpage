@@ -3,7 +3,7 @@ title: "Wetting transparency of graphene across length scales"
 author: ["Yongkang Wang", "Yair Litman", "Minhaeng Cho", "Stephen J. Cox", "Mischa Bonn"]
 date: 2026-04-10
 publication: "Chem **12**, 103023 (2026)"
-categories: ["interfaces", "water", "graphene"]
+categories: ["aqueous_interfaces", "vibrational_spectroscopy"]
 url_source: https://doi.org/10.1016/j.chempr.2026.103023
 url_preprint:
 journ: "Chem"

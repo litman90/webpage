@@ -3,7 +3,7 @@ title: "Breaking the Air–Water Paradigm: Ion Behavior at Hydrophobic Solid–W
 author: ["Renelle Advincula", "Kathleen Fong", "Peiyao Wang", "Christoph Schran", "Mischa Bonn", "Angelos Michaelides", "Yair Litman"]
 date: 2026-04-01
 publication: "J. Am. Chem. Soc. **148**, 12753–12763 (2026)"
-categories: ["interfaces", "electrochemistry", "water"]
+categories: ["aqueous_interfaces", "vibrational_spectroscopy"]
 url_source: https://doi.org/10.1021/jacs.5c20209
 url_preprint:
 journ: "Journal of the American Chemical Society"

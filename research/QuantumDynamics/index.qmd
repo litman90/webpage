@@ -1,6 +1,7 @@
 ---
 title: Quantum Dynamics
 alias: &ALIAS quantum_dynamics
+order: 2
 image: featured.jpg
 listing:
   id: pubs

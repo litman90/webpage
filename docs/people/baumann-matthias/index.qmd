@@ -5,7 +5,7 @@ first: Matthias
 people_group: "gradstudent"
 email: "matthias.baumann1@rwth-aachen.de"
 education:
-  - "M.Sc. Chemistry (Grade 1.5) | RWTH Aachen University | 2024 <br> B.Sc. Chemistry (Grade 2.2) | Universität Tübingen | 2020"
+  - "M.Sc. Chemistry| RWTH Aachen University | 2024 <br> B.Sc. Chemistry | Universität Tübingen | 2020"
 subtitle: "PhD Student"
 description: ""
 image: avatar.png

@@ -1,6 +1,7 @@
 ---
 title: Organic/Inorganic  Interfaces
 alias: &ALIAS organic_inorganic_interfaces
+order: 4
 image: featured.jpg
 listing:
   id: pubs

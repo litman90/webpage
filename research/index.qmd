@@ -3,6 +3,7 @@ title: Research Areas
 listing:
   id: research
   type: grid
+  sort: "order asc"
 page-layout: full
 ---
 

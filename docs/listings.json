@@ -2,10 +2,10 @@
   {
     "listing": "/research/index.html",
     "items": [
-      "/research/VibrationalSpectroscopy/index.html",
       "/research/AqueousInterfaces/index.html",
-      "/research/OrganicInorganicInterfaces/index.html",
-      "/research/QuantumDynamics/index.html"
+      "/research/QuantumDynamics/index.html",
+      "/research/VibrationalSpectroscopy/index.html",
+      "/research/OrganicInorganicInterfaces/index.html"
     ]
   },
   {
@@ -29,6 +29,11 @@
   {
     "listing": "/research/AqueousInterfaces/index.html",
     "items": [
+      "/publications/2026_035_nanoconfined_pkw/index.html",
+      "/publications/2026_033_Wetting-Transparency_Chem/index.html",
+      "/publications/2026_032_Breaking-Air-Water_JACS/index.html",
+      "/publications/2025_030_Anomalous-Electric-Fields_JACS/index.html",
+      "/publications/2025_029_Entropy-Water-Dissociation_JACS/index.html",
       "/publications/2024_026_Learning-Electronic-Pol_JChemInfModel/index.html",
       "/publications/2024_025_Surface-stratification_NatChem/index.html",
       "/publications/2023_023_Full-First-Principles-SFG_JPhysChemLett/index.html",
@@ -114,6 +119,7 @@
   {
     "listing": "/publications/index.html",
     "items": [
+      "/publications/2026_035_nanoconfined_pkw/index.html",
       "/publications/2026_034_IR-Raman-Vibrational_JCP/index.html",
       "/publications/2026_033_Wetting-Transparency_Chem/index.html",
       "/publications/2026_032_Breaking-Air-Water_JACS/index.html",
@@ -152,6 +158,7 @@
   {
     "listing": "/research/OrganicInorganicInterfaces/index.html",
     "items": [
+      "/publications/2026_031_TERS-Ab-Initio_ACSNano/index.html",
       "/publications/2024_024_Point-defects-in-MX2_PhysStatSol/index.html",
       "/publications/2023_022_First-Principles-TERS/index.html",
       "/publications/2022_017_Charge-transfer_NanoLett/index.html",
@@ -162,6 +169,10 @@
   {
     "listing": "/research/VibrationalSpectroscopy/index.html",
     "items": [
+      "/publications/2026_034_IR-Raman-Vibrational_JCP/index.html",
+      "/publications/2026_033_Wetting-Transparency_Chem/index.html",
+      "/publications/2026_032_Breaking-Air-Water_JACS/index.html",
+      "/publications/2026_031_TERS-Ab-Initio_ACSNano/index.html",
       "/publications/2024_025_Surface-stratification_NatChem/index.html",
       "/publications/2024_024_Point-defects-in-MX2_PhysStatSol/index.html",
       "/publications/2023_023_Full-First-Principles-SFG_JPhysChemLett/index.html",

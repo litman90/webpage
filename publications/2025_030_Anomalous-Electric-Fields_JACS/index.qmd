@@ -3,7 +3,7 @@ title: "Reevaluating Anomalous Electric Fields at the Air–Water Interface"
 author: ["Ellen Shirley", "Wei Hsin Ng", "Tsung-Han Chiang", "Yuki Nagata", "Yair Litman", "Arij Singh Hazrah", "Mischa Bonn"]
 date: 2025-11-18
 publication: "J. Am. Chem. Soc. **147**, 46163–46173 (2025)"
-categories: ["interfaces", "water", "spectroscopy"]
+categories: ["aqueous_interfaces"]
 url_source: https://doi.org/10.1021/jacs.5c14541
 url_preprint:
 journ: "J. Am.  Chem.  Soc."

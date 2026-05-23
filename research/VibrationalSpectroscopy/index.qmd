@@ -1,7 +1,8 @@
 ---
 title: (Non Linear) Vibrational Spectroscopy
 alias: &ALIAS vibrational_spectroscopy
-image: featured.jpg
+order: 3
+image: featured.webp
 listing:
   id: pubs
   template: ../../_ejs/publications-people.ejs 
@@ -17,7 +18,7 @@ listing:
 Using light to reveal the mysteries of molecular motion.
 
 <figure style="text-align: center;">
-    <img src="featured.jpg" alt="Featured Image" style="display: block; margin-left: auto; margin-right: auto; width: 500px; height: auto;">
+    <img src="featured.webp" alt="Featured Image" style="display: block; margin-left: auto; margin-right: auto; width: 500px; height: auto;">
 </figure>
 
 
