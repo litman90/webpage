@@ -1,0 +1,36 @@
+---
+title: &TITLE "Matthias Baumann"
+last: Baumann
+first: Matthias
+people_group: "gradstudent"
+email: "matthias.baumann1@rwth-aachen.de"
+education:
+  - "M.Sc. Chemistry (Grade 1.5) | RWTH Aachen University | 2024 <br> B.Sc. Chemistry (Grade 2.2) | Universität Tübingen | 2020"
+subtitle: "PhD Student"
+description: ""
+image: avatar.png
+page-layout: full
+about:
+  id: about
+  template: trestles
+  image-shape: round
+  image: avatar.png
+  links:
+    - icon: envelope
+      text: Email
+      href: mailto:matthias.baumann1@rwth-aachen.de
+    - icon: file-earmark-pdf
+      text: CV
+      href: ../../CVs/CV_MB.pdf
+---
+
+<hr>
+
+:::{#about}
+
+Matthias is a PhD student in the STREAM Group. His Master's thesis at RWTH Aachen focused on the development and application of ab initio neural network potentials for the simulation of the thermodynamics and kinetics of photoresponsive materials (Grade 1.0). His background spans computational chemistry, spectroscopy, and catalysis.
+
+## Education
+{{< meta education >}}
+
+:::

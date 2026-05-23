@@ -1,0 +1,33 @@
+---
+title: &TITLE "Name"
+last:
+first:
+people_group: "pi | postdoc | gradstudent | alumni"
+email:
+education:
+  - "Degree | Institution | Year"
+subtitle: "Role"
+description: ""
+image: avatar.jpg
+page-layout: full
+about:
+  id: about
+  template: trestles
+  image-shape: round
+  image: avatar.jpg
+  links:
+    - icon: envelope
+      text: Email
+      href: mailto:email@example.org
+---
+
+<hr>
+
+:::{#about}
+
+Short bio here.
+
+## Education
+{{< meta education >}}
+
+:::

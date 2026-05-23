@@ -42,9 +42,9 @@ website:
         text: Software
       - href: publications/index.qmd
       - text: "About Yair"
-        href: CVs/Yair_Litman.pdf
-      - text: "Thoughts"
-        file: posts/index.qmd
+        file: people/litman-yair/index.qmd
+      # - text: "Thoughts"
+      #   file: posts/index.qmd
       - text: "Contact"
         file: contact.qmd
     right: 
@@ -74,6 +74,7 @@ format:
     resources:
       - figures
       - CVs
+      - people
     # page formatting
     grid:
       #sidebar-width: 300px

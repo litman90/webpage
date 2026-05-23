@@ -4,15 +4,22 @@ comments: false
 about:
   id: contact
   template: solana
-  image-shape: round
-  image: profile.jpg
+  image-shape: rectangle
+  image: figures/MPIP/standard.webp
+  image-width: 600px
 ---
+
+<style>
+#contact h4 { font-size: 1rem; margin-bottom: 0.5rem; font-weight: 400; }
+</style>
 
 :::{#contact}
 
-#### {{< fa envelope >}} &nbsp; yl899@cam.ac.uk
+#### {{< fa envelope >}} &nbsp; litmany@mpip-mainz.mpg.de
 
-#### {{< fa map-location-dot >}} &nbsp; Max Planck Institute for Polymer Research <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ackermannweg 10, 55128 Mainz, Germany
+#### {{< fa phone >}} &nbsp; +49 6131 379-380
+
+#### {{< fa map-location-dot >}} &nbsp; MPI for Polymer Research <br> Ackermannweg 10, 55128 Mainz, Germany
 
 :::
 
