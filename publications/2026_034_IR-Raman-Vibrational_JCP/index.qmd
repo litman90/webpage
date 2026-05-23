@@ -1,0 +1,15 @@
+---
+title: "Infrared and Raman perspectives on vibrational coupling in liquid water"
+author: ["Hamish Haggard", "Yair Litman", "Stuart C. Althorpe"]
+date: 2026-04-14
+publication: "J. Chem. Phys. **164**, 144120 (2026)"
+categories: ["spectroscopy", "water", "quantum_dynamics"]
+url_source: https://doi.org/10.1063/5.0325115
+url_preprint:
+journ: "Journal of Chemical Physics"
+issue: 164
+page: "144120"
+year: 2026
+image: featured.png
+pub_number: 34
+---

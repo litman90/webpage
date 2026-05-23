@@ -21,7 +21,7 @@ toc: false
 
 ## Welcome to the STREAM Group website! {.welcome-heading}
 
-We are a theory and simulation research group at the Max Planck Institute for Polymer Research in Mainz, Germany.
+We are a theory and simulation research group at Molecular Spectroscopy Deparment of the Max Planck Institute for Polymer Research in Mainz, Germany.
 
 <img src="figures/landing_small.webp" class="landing-float-img" alt="Research overview">
 
@@ -29,7 +29,7 @@ The STREAM Group — Simulations of Transformations at Electrochemical Aqueous M
 
 To address these questions, we develop and apply atomistic simulation methods based on quantum mechanics, statistical mechanics, machine-learning potentials, enhanced sampling, and path-integral techniques. We also simulate vibrational spectroscopies such as SFG, IR, Raman, and TERS to connect our theoretical predictions with experiments.
 
-Our goal is to build a microscopic understanding of interfacial reactivity and use it to guide the design of systems relevant to electrochemistry, spectroscopy, and energy conversion.
+Our goal is to build a microscopic understanding of interfacial reactivity and use it to guide the design of systems relevant for energy storage and conversion.
 
 :::{.landing-links}
 <a href="mailto:yl899@cam.ac.uk" title="Email"><i class="bi bi-envelope"></i></a>

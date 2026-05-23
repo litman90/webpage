@@ -1,0 +1,15 @@
+---
+title: "Tip-Enhanced Raman Images of Realistic Systems through Ab Initio Modeling"
+author: ["Krystof Brezina", "Yair Litman", "Mariana Rossi"]
+date: 2026-02-18
+publication: "ACS Nano **20**, 5550–5560 (2026)"
+categories: ["spectroscopy", "TERS"]
+url_source: https://doi.org/10.1021/acsnano.5c16052
+url_preprint:
+journ: "ACS Nano"
+issue: 20
+page: "5550-5560"
+year: 2026
+pub_number: 31
+image: featured.webp
+---

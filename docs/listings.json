@@ -11,6 +11,7 @@
   {
     "listing": "/research/QuantumDynamics/index.html",
     "items": [
+      "/publications/2026_034_IR-Raman-Vibrational_JCP/index.html",
       "/publications/2024_028_ipiv3_JCP/index.html",
       "/publications/2024_027_Quantum_rates_JCP/index.html",
       "/publications/2023_020_Is-unified-understanding_JPhysChemLett/index.html",
@@ -113,6 +114,12 @@
   {
     "listing": "/publications/index.html",
     "items": [
+      "/publications/2026_034_IR-Raman-Vibrational_JCP/index.html",
+      "/publications/2026_033_Wetting-Transparency_Chem/index.html",
+      "/publications/2026_032_Breaking-Air-Water_JACS/index.html",
+      "/publications/2026_031_TERS-Ab-Initio_ACSNano/index.html",
+      "/publications/2025_030_Anomalous-Electric-Fields_JACS/index.html",
+      "/publications/2025_029_Entropy-Water-Dissociation_JACS/index.html",
       "/publications/2024_028_ipiv3_JCP/index.html",
       "/publications/2024_027_Quantum_rates_JCP/index.html",
       "/publications/2024_026_Learning-Electronic-Pol_JChemInfModel/index.html",
