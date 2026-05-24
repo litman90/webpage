@@ -41,6 +41,36 @@
     ]
   },
   {
+    "listing": "/past_lives/Photochemistry/index.html",
+    "items": [
+      "/publications/2018_007_Photophysics_PhotoPhotobio/index.html",
+      "/publications/2016_003_Tuning_PhotoPhotobio/index.html",
+      "/publications/2014_002_Effect_of_concentraion_JPCA/index.html"
+    ]
+  },
+  {
+    "listing": "/past_lives/Bacon/index.html",
+    "items": [
+      "/publications/2012_001_Novel-simple-and-fast_Choline/index.html"
+    ]
+  },
+  {
+    "listing": "/past_lives/index.html",
+    "items": [
+      "/past_lives/Photochemistry/index.html",
+      "/past_lives/Bacon/index.html"
+    ]
+  },
+  {
+    "listing": "/people/index.html",
+    "items": [
+      "/people/litman-yair/index.html",
+      "/people/qian-shengjie/index.html",
+      "/people/wang-peiyao/index.html",
+      "/people/baumann-matthias/index.html"
+    ]
+  },
+  {
     "listing": "/posts/index.html",
     "items": [
       "/posts/2024-01-12-recoding-america/index.html",
@@ -93,27 +123,6 @@
       "/posts/2017-11-30-about-good-discussions/index.html",
       "/posts/2017-11-16-about-teaching-nonsense/index.html",
       "/posts/2017-11-14-how-to-make-a-cake/index.html"
-    ]
-  },
-  {
-    "listing": "/past_lives/Photochemistry/index.html",
-    "items": [
-      "/publications/2018_007_Photophysics_PhotoPhotobio/index.html",
-      "/publications/2016_003_Tuning_PhotoPhotobio/index.html",
-      "/publications/2014_002_Effect_of_concentraion_JPCA/index.html"
-    ]
-  },
-  {
-    "listing": "/past_lives/Bacon/index.html",
-    "items": [
-      "/publications/2012_001_Novel-simple-and-fast_Choline/index.html"
-    ]
-  },
-  {
-    "listing": "/past_lives/index.html",
-    "items": [
-      "/past_lives/Photochemistry/index.html",
-      "/past_lives/Bacon/index.html"
     ]
   },
   {
@@ -183,15 +192,6 @@
       "/publications/2019_009-ipiv2/index.html",
       "/publications/2019_008-Elucidating-JACS/index.html",
       "/publications/2018_004_Positional_Isotope_Exchange-JPCA/index.html"
-    ]
-  },
-  {
-    "listing": "/people/index.html",
-    "items": [
-      "/people/litman-yair/index.html",
-      "/people/qian-shengjie/index.html",
-      "/people/wang-peiyao/index.html",
-      "/people/baumann-matthias/index.html"
     ]
   }
 ]
