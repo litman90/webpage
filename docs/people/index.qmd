@@ -1,0 +1,52 @@
+---
+title: "Meet the Group"
+listing:
+  - id: pi
+    include:
+      people_group: "pi"
+    template: ../_ejs/people-box.ejs
+    type: grid
+    fields: [title, subtitle, image, education]
+  - id: postdoc
+    include:
+      people_group: "postdoc"
+    template: ../_ejs/people-box.ejs
+    sort: last
+    type: grid
+    fields: [title, subtitle, image, education]
+  - id: gradstudent
+    include:
+      people_group: "gradstudent"
+    template: ../_ejs/people-box.ejs
+    sort: last
+    type: grid
+    fields: [title, subtitle, image, education]
+  - id: alumni
+    include:
+      people_group: "alumni"
+    template: ../_ejs/alumni-box.ejs
+    sort: last
+    type: grid
+    fields: [title, subtitle, image, education, altsubtitle, alteducation]
+page-layout: full
+---
+
+## Group Leader
+
+::: {#pi}
+:::
+
+## Postdoctoral Fellows
+
+::: {#postdoc}
+:::
+
+## Graduate Students
+
+::: {#gradstudent}
+:::
+
+<!-- ## Alumni
+
+::: {#alumni}
+::: -->

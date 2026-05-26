@@ -1,0 +1,49 @@
+---
+title: &TITLE "Yair Litman"
+last: Litman
+first: Yair
+people_group: "pi"
+email: "litmany@mpip-mainz.mpg.de"
+education:
+  - "Dr. rer. nat. (summa cum laude) | Fritz Haber Institute / Freie Universität Berlin | 2020 <br> Licenciate in Chemical Sciences | University of Buenos Aires | 2014"
+subtitle: "Group Leader"
+description: ""
+image: avatar.jpg
+page-layout: full
+about:
+  id: about
+  template: trestles
+  image-shape: round
+  image: avatar.jpg
+  links:
+    - icon: envelope
+      text: Email
+      href: mailto:litmany@mpip-mainz.mpg.de
+    - text: "{{< ai google-scholar >}} Google Scholar"
+      href: https://scholar.google.de/citations?user=TZ9_wnEAAAAJ&hl=en
+    - text: "{{< ai orcid >}} ORCID"
+      href: https://orcid.org/0000-0002-6890-4052
+    - icon: twitter-x
+      text: Twitter/X
+      href: https://x.com/YairLitman
+    - icon: file-earmark-pdf
+      text: CV
+      href: /CVs/Yair_Litman.pdf
+---
+
+<hr>
+
+:::{#about}
+
+Yair Litman received his diploma in Chemistry from the University of Buenos Aires in 2014, where he began his research career with Prof. Daniel Laria applying path integral simulations to isotope effects in water clusters. In 2016, he joined the group of Dr. Mariana Rossi at the Fritz Haber Institute of the Max Planck Society in Berlin, earning his PhD in theoretical chemistry in 2020. His doctoral work focused on nuclear quantum effects in hydrogen-bonded systems at hybrid organic/inorganic interfaces.
+
+After his PhD, Yair continued his research at the Max Planck Institute for Structure and Dynamics of Matter, the Max Planck Institute for Polymer Research, and the University of Cambridge, working on aqueous interfaces, electrochemical reactivity, and nonlinear vibrational spectroscopies. In April 2025, he joined the Max Planck Institute for Polymer Research as a group leader, founding the STREAM Group — Simulations of Transformations at Electrochemical Aqueous Media. Since 2026, he has also been Junior Faculty at the Max Planck Graduate Center.
+
+Yair is one of the core developers of i-PI and has contributed to community software packages including FHI-aims and MW.
+
+## Education
+{{< meta education >}}
+
+You can find Yair's CV [here](../../CVs/Yair_Litman.pdf), and read more about his previous scientific [lives](../../past_lives/index.qmd).
+
+:::
