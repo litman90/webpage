@@ -28,7 +28,7 @@ about:
       href: https://x.com/YairLitman
     - icon: file-earmark-pdf
       text: CV
-      href: /CVs/Yair_Litman.pdf
+      href: /files/Yair_Litman.pdf
 ---
 
 <hr>
@@ -44,6 +44,6 @@ Yair is one of the core developers of i-PI and has contributed to community soft
 ## Education
 {{< meta education >}}
 
-You can find Yair's CV [here](../../CVs/Yair_Litman.pdf), and read more about his previous scientific [lives](../../past_lives/index.qmd).
+You can find Yair's CV [here](../../files/Yair_Litman.pdf), and read more about his previous scientific [lives](../../past_lives/index.qmd).
 
 :::
