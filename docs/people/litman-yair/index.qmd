@@ -28,7 +28,7 @@ about:
       href: https://x.com/YairLitman
     - icon: file-earmark-pdf
       text: CV
-      href: ../../CVs/Yair_Litman.pdf
+      href: /CVs/Yair_Litman.pdf
 ---
 
 <hr>
