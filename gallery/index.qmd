@@ -9,8 +9,18 @@ comments: false
 <div class="photo-grid">
 
   <div class="photo-item">
+    <img src="../photos_gallery/Group-May-2026_sun.jpeg" alt="Group May 2026">
+    <p>Group May 2026</p>
+  </div>
+
+  <div class="photo-item">
+    <img src="../photos_gallery/Group-May-2026_close.jpeg" alt="Group May 2026 (so much sun!)">
+    <p>Group May 2026 — ab initio evidence that Mainz has a summer</p>
+  </div>
+
+  <div class="photo-item">
     <img src="../photos_gallery/Yair_naquaWindsow_2026.jpg" alt="n-aqua workshop (Windsor 2026)">
-    <p>Naqua workshop, Windsor 2026</p>
+    <p>n-aqua workshop (Windsor 2026)</p>
   </div>
 
   <div class="photo-item">
