@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Matthias Baumann – STREAM</title>
+<title>Organic/Inorganic Interfaces – STREAM</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -34,10 +34,13 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
 <link href="../../favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-listing/list.min.js"></script>
+<script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
@@ -75,22 +78,76 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-pubs .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-publication','listing-title','listing-categories','listing-image','listing-date','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      
+      searchColumns: ["listing-project","listing-website","listing-format","listing-editor","listing-engines","listing-language","listing-title:"Quantum tunneling in real space","listing-author","listing-date","listing-publication","listing-categories","listing-url_source","listing-url_preprint","listing-journ","listing-issue","listing-page","listing-year","listing-image","listing-pub_number","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-title"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-pubs'] = new List('listing-pubs', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Matthias Baumann – STREAM">
-<meta property="og:description" content="PhD Student">
-<meta property="og:image" content="https://litman90.github.io/webpage/people/baumann-matthias/avatar.png">
+<meta property="og:title" content="Organic/Inorganic Interfaces – STREAM">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://litman90.github.io/webpage/research/OrganicInorganicInterfaces/featured.jpg">
 <meta property="og:site_name" content="STREAM">
-<meta property="og:image:height" content="814">
-<meta property="og:image:width" content="675">
-<meta name="twitter:title" content="Matthias Baumann – STREAM">
-<meta name="twitter:description" content="PhD Student">
-<meta name="twitter:image" content="https://litman90.github.io/webpage/people/baumann-matthias/avatar.png">
+<meta name="twitter:title" content="Organic/Inorganic Interfaces – STREAM">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="https://litman90.github.io/webpage/research/OrganicInorganicInterfaces/featured.jpg">
 <meta name="twitter:creator" content="Yair Litman">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image-height" content="814">
-<meta name="twitter:image-width" content="675">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -338,53 +395,454 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#related-publications" id="toc-related-publications" class="nav-link active" data-scroll-target="#related-publications">Related Publications</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/litman90/webpage/edit/main/research/OrganicInorganicInterfaces/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/litman90/webpage/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 
-
-
-
-<hr>
-<div class="quarto-about-trestles column-page">
-  <div class="about-entity">
-    <img src="avatar.png" class="about-image
-  round " style="height: 20em; width: 20em;">
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Matthias Baumann</h1>
-<p class="subtitle lead">PhD Student</p>
+<h1 class="title">Organic/Inorganic Interfaces</h1>
 </div>
-<div class="quarto-title-meta column-page">
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
   </div>
+  
+
+
 </header>
-    <div class="about-links">
-  <a href="mailto:matthias.baumann1@rwth-aachen.de" class="about-link" rel="" target="">
-    <i class="bi bi-envelope"></i>
-     <span class="about-link-text">Email</span>
-  </a>
-  <a href="/../../CVs/CV_MB.pdf" class="about-link" rel="" target="">
-    <i class="bi bi-file-earmark-pdf"></i>
-     <span class="about-link-text">CV</span>
-  </a>
+
+
+<p>Exploring the fascinating intersection where organic and inorganic worlds collide.</p>
+<figure style="text-align: center;" class="figure">
+<img src="featured.jpg" alt="Featured Image" style="display: block; margin-left: auto; margin-right: auto; width: 500px; height: auto;" class="figure-img">
+</figure>
+<section id="related-publications" class="level2">
+<h2 class="anchored" data-anchor-id="related-publications">Related Publications</h2>
+<div id="listing-pubs" class="quarto-listing quarto-listing-container-custom">
+<div class="listing-actions-group">
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
 </div>
-  </div>
-  <div class="about-contents"><div id="about">
-<p>Matthias is a PhD student in the STREAM Group. His Master’s thesis at RWTH Aachen focused on the development and application of ab initio neural network potentials for the simulation of the thermodynamics and kinetics of photoresponsive materials (Grade 1.0). His background spans computational chemistry, spectroscopy, and catalysis.</p>
-<section id="education" class="level2">
-<h2 data-anchor-id="education">Education</h2>
-<p>M.Sc. Chemistry| RWTH Aachen University | 2024 <br> B.Sc. Chemistry | Universität Tübingen | 2020</p>
+<div class="list quarto-listing-default">
+    
+    
+    <div class="quarto-post image-right" data-index="0" data-categories="dmlicmF0aW9uYWxfc3BlY3Ryb3Njb3B5JTJDb3JnYW5pY19pbm9yZ2FuaWNfaW50ZXJmYWNlcw==" data-listing-date-sort="1771369200000" data-listing-file-modified-sort="1779787788889" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+        <div class="thumbnail">
+            <!-- <a href="/publications/2026_031_TERS-Ab-Initio_ACSNano/index.qmd"> -->
+
+                <p>
+                    
+                    <img alt="Tip-Enhanced Raman Images of Realistic Systems through Ab Initio Modeling" src="../../publications/2026_031_TERS-Ab-Initio_ACSNano/featured.webp" class="thumbnail-image">
+                    
+
+                </p>
+      
+
+            <!-- </a> -->
+        </div>
+        <div class="body">
+            <!-- <a href="/publications/2026_031_TERS-Ab-Initio_ACSNano/index.qmd"> -->
+            <div class="no-anchor listing-pub-title listing-title">Tip-Enhanced Raman Images of Realistic Systems through Ab Initio Modeling</div>
+            <!-- </a> -->
+            <!-- <a href="/publications/2026_031_TERS-Ab-Initio_ACSNano/index.qmd"> -->
+                
+                <div class="listing-pub-author listing-author">
+                    Krystof Brezina, Yair Litman, Mariana Rossi<br> 
+                </div>
+                
+                <div class="metadata-value listing-pub-journal listing-publication">
+                    
+                        <i>ACS Nano</i>, <b>20</b>, 5550-5560 (2026)<br>
+                        
+                        
+                        
+                        
+                        
+                        
+                </div>
+                    
+                    
+                    
+            <!-- </a> -->
+ <!--               <div class="listing-categories">
+                
+                <div class="listing-category" onclick="window.quartoListingCategory('vibrational_spectroscopy'); return false;">vibrational_spectroscopy</div>
+                
+                <div class="listing-category" onclick="window.quartoListingCategory('organic_inorganic_interfaces'); return false;">organic_inorganic_interfaces</div>
+                
+                </div>
+                -->
+        </div>
+        <div class="metadata">
+
+            
+            <div class="listing-pub-url">
+
+                    <a href="https://doi.org/10.1021/acsnano.5c16052">
+                    <p style="color:#8250E6;">journal URL <i class="bi bi-box-arrow-up-right"></i></p>
+                    </a>
+                </div>
+                    
+  
+              
+
+        </div>
+    </div>
+    
+    
+    
+    <div class="quarto-post image-right" data-index="1" data-categories="b3JnYW5pY19pbm9yZ2FuaWNfaW50ZXJmYWNlcyUyQ3ZpYnJhdGlvbmFsX3NwZWN0cm9zY29weQ==" data-listing-date-sort="1684188000000" data-listing-file-modified-sort="1779787788869" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+        <div class="thumbnail">
+            <!-- <a href="/publications/2024_024_Point-defects-in-MX2_PhysStatSol/index.qmd"> -->
+
+                <p>
+                    
+                    <img alt="A Hybrid-DFT Study of Intrinsic Point Defects in MX2 (M=Mo, W; X=S, Se) Monolayers" src="../../publications/2024_024_Point-defects-in-MX2_PhysStatSol/featured.jpg" class="thumbnail-image">
+                    
+
+                </p>
+      
+
+            <!-- </a> -->
+        </div>
+        <div class="body">
+            <!-- <a href="/publications/2024_024_Point-defects-in-MX2_PhysStatSol/index.qmd"> -->
+            <div class="no-anchor listing-pub-title listing-title">A Hybrid-DFT Study of Intrinsic Point Defects in MX2 (M=Mo, W; X=S, Se) Monolayers</div>
+            <!-- </a> -->
+            <!-- <a href="/publications/2024_024_Point-defects-in-MX2_PhysStatSol/index.qmd"> -->
+                
+                <div class="listing-pub-author listing-author">
+                    Alaa Akkoush, Yair Litman, Mariana Rossi<br> 
+                </div>
+                
+                <div class="metadata-value listing-pub-journal listing-publication">
+                    
+                        <i>Phys. Status Solidi A</i>, <b>221</b>, 2300180 (2024)<br>
+                        
+                        
+                        
+                        
+                        
+                        
+                </div>
+                    
+                    
+                    
+            <!-- </a> -->
+ <!--               <div class="listing-categories">
+                
+                <div class="listing-category" onclick="window.quartoListingCategory('organic_inorganic_interfaces'); return false;">organic_inorganic_interfaces</div>
+                
+                <div class="listing-category" onclick="window.quartoListingCategory('vibrational_spectroscopy'); return false;">vibrational_spectroscopy</div>
+                
+                </div>
+                -->
+        </div>
+        <div class="metadata">
+
+            
+            <div class="listing-pub-url">
+
+                    <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/pssa.202300180">
+                    <p style="color:#8250E6;">journal URL <i class="bi bi-box-arrow-up-right"></i></p>
+                    </a>
+                </div>
+                    
+  
+              
+
+        </div>
+    </div>
+    
+    
+    
+    <div class="quarto-post image-right" data-index="2" data-categories="b3JnYW5pY19pbm9yZ2FuaWNfaW50ZXJmYWNlcyUyQ3ZpYnJhdGlvbmFsX3NwZWN0cm9zY29weQ==" data-listing-date-sort="1687557600000" data-listing-file-modified-sort="1779787788865" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+        <div class="thumbnail">
+            <!-- <a href="/publications/2023_022_First-Principles-TERS/index.qmd"> -->
+
+                <p>
+                    
+                    <img alt="First-Principles Simulations of Tip Enhanced Raman Scattering Reveal Active Role of Substrate on High-Resolution Images" src="../../publications/2023_022_First-Principles-TERS/featured.jpg" class="thumbnail-image">
+                    
+
+                </p>
+      
+
+            <!-- </a> -->
+        </div>
+        <div class="body">
+            <!-- <a href="/publications/2023_022_First-Principles-TERS/index.qmd"> -->
+            <div class="no-anchor listing-pub-title listing-title">First-Principles Simulations of Tip Enhanced Raman Scattering Reveal Active Role of Substrate on High-Resolution Images</div>
+            <!-- </a> -->
+            <!-- <a href="/publications/2023_022_First-Principles-TERS/index.qmd"> -->
+                
+                <div class="listing-pub-author listing-author">
+                    Yair Litman, Franco P. Bonafé, Alaa Akkoush, Heiko Appel, Mariana Rossi<br> 
+                </div>
+                
+                <div class="metadata-value listing-pub-journal listing-publication">
+                    
+                        <i>J. Phys. Chem. Lett.</i>, <b>14</b>, 6850-6859 (2023)<br>
+                        
+                        
+                        
+                        
+                        
+                        
+                </div>
+                    
+                    
+                    
+            <!-- </a> -->
+ <!--               <div class="listing-categories">
+                
+                <div class="listing-category" onclick="window.quartoListingCategory('organic_inorganic_interfaces'); return false;">organic_inorganic_interfaces</div>
+                
+                <div class="listing-category" onclick="window.quartoListingCategory('vibrational_spectroscopy'); return false;">vibrational_spectroscopy</div>
+                
+                </div>
+                -->
+        </div>
+        <div class="metadata">
+
+            
+            <div class="listing-pub-url">
+
+                    <a href="https://doi.org/10.1021/acs.jpclett.3c01216">
+                    <p style="color:#8250E6;">journal URL <i class="bi bi-box-arrow-up-right"></i></p>
+                    </a>
+                </div>
+                    
+  
+              
+
+        </div>
+    </div>
+    
+    
+    
+    <div class="quarto-post image-right" data-index="3" data-categories="dmlicmF0aW9uYWxfc3BlY3Ryb3Njb3B5JTJDb3JnYW5pY19pbm9yZ2FuaWNfaW50ZXJmYWNlcw==" data-listing-date-sort="1679439600000" data-listing-file-modified-sort="1779787788865" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+        <div class="thumbnail">
+            <!-- <a href="/publications/2022_017_Charge-transfer_NanoLett/index.qmd"> -->
+
+                <p>
+                    
+                    <img alt="Charge Transfer-Mediated Dramatic Enhancement of Raman Scattering upon Molecular Point Contact Formation" src="../../publications/2022_017_Charge-transfer_NanoLett/featured.jpg" class="thumbnail-image">
+                    
+
+                </p>
+      
+
+            <!-- </a> -->
+        </div>
+        <div class="body">
+            <!-- <a href="/publications/2022_017_Charge-transfer_NanoLett/index.qmd"> -->
+            <div class="no-anchor listing-pub-title listing-title">Charge Transfer-Mediated Dramatic Enhancement of Raman Scattering upon Molecular Point Contact Formation</div>
+            <!-- </a> -->
+            <!-- <a href="/publications/2022_017_Charge-transfer_NanoLett/index.qmd"> -->
+                
+                <div class="listing-pub-author listing-author">
+                    Borja Cirera, Yair Litman, Chenfang Lin, Alaa Akkoush, Adnan Hammud, Martin Wolf, Mariana Rossi, Takashi Kumagai<br> 
+                </div>
+                
+                <div class="metadata-value listing-pub-journal listing-publication">
+                    
+                        <i>Nano Lett..</i>, <b>22</b>, 2170-2176 (2022)<br>
+                        
+                        
+                        
+                        
+                        
+                        
+                </div>
+                    
+                    
+                    
+            <!-- </a> -->
+ <!--               <div class="listing-categories">
+                
+                <div class="listing-category" onclick="window.quartoListingCategory('vibrational_spectroscopy'); return false;">vibrational_spectroscopy</div>
+                
+                <div class="listing-category" onclick="window.quartoListingCategory('organic_inorganic_interfaces'); return false;">organic_inorganic_interfaces</div>
+                
+                </div>
+                -->
+        </div>
+        <div class="metadata">
+
+            
+            <div class="listing-pub-url">
+
+                    <a href="https://doi.org/10.1021/acs.nanolett.1c02626">
+                    <p style="color:#8250E6;">journal URL <i class="bi bi-box-arrow-up-right"></i></p>
+                    </a>
+                </div>
+                    
+  
+              
+
+        </div>
+    </div>
+    
+    
+    
+    <div class="quarto-post image-right" data-index="4" data-categories="b3JnYW5pY19pbm9yZ2FuaWNfaW50ZXJmYWNlcyUyQ3F1YW50dW1fZHluYW1pY3M=" data-listing-date-sort="1605567600000" data-listing-file-modified-sort="1779787788865" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+        <div class="thumbnail">
+            <!-- <a href="/publications/2020_016_Multidimensional_hydrogen-PhysRevLett/index.qmd"> -->
+
+                <p>
+                    
+                    <img alt="Multidimensional Hydrogen Tunneling in Supported Molecular Switches: The Role   of Surface Interactions" src="../../publications/2020_016_Multidimensional_hydrogen-PhysRevLett/featured.jpg" class="thumbnail-image">
+                    
+
+                </p>
+      
+
+            <!-- </a> -->
+        </div>
+        <div class="body">
+            <!-- <a href="/publications/2020_016_Multidimensional_hydrogen-PhysRevLett/index.qmd"> -->
+            <div class="no-anchor listing-pub-title listing-title">Multidimensional Hydrogen Tunneling in Supported Molecular Switches: The Role   of Surface Interactions</div>
+            <!-- </a> -->
+            <!-- <a href="/publications/2020_016_Multidimensional_hydrogen-PhysRevLett/index.qmd"> -->
+                
+                <div class="listing-pub-author listing-author">
+                    Yair Litman, Mariana Rossi<br> 
+                </div>
+                
+                <div class="metadata-value listing-pub-journal listing-publication">
+                    
+                        <i>Phys. Rev.  Lett.</i>, <b>125</b>, 216001 (2020)<br>
+                        
+                        
+                        
+                        
+                        
+                        
+                </div>
+                    
+                    
+                    
+            <!-- </a> -->
+ <!--               <div class="listing-categories">
+                
+                <div class="listing-category" onclick="window.quartoListingCategory('organic_inorganic_interfaces'); return false;">organic_inorganic_interfaces</div>
+                
+                <div class="listing-category" onclick="window.quartoListingCategory('quantum_dynamics'); return false;">quantum_dynamics</div>
+                
+                </div>
+                -->
+        </div>
+        <div class="metadata">
+
+            
+            <div class="listing-pub-url">
+
+                    <a href="https://link.aps.org/doi/10.1103/PhysRevLett.125.216001">
+                    <p style="color:#8250E6;">journal URL <i class="bi bi-box-arrow-up-right"></i></p>
+                    </a>
+                </div>
+                    
+  
+              
+
+        </div>
+    </div>
+    
+    
+    
+    <div class="quarto-post image-right" data-index="5" data-categories="b3JnYW5pY19pbm9yZ2FuaWNfaW50ZXJmYWNlcyUyQ3F1YW50dW1fZHluYW1pY3M=" data-listing-date-sort="1514242800000" data-listing-file-modified-sort="1779787788865" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+        <div class="thumbnail">
+            <!-- <a href="/publications/2018_005_QuantumTunneling_JCP/index.qmd"> -->
+
+                <p>
+                    
+                    <img alt="" src="../../publications/2018_005_QuantumTunneling_JCP/featured.png" class="thumbnail-image">
+                    
+
+                </p>
+      
+
+            <!-- </a> -->
+        </div>
+        <div class="body">
+            <!-- <a href="/publications/2018_005_QuantumTunneling_JCP/index.qmd"> -->
+            <div class="no-anchor listing-pub-title listing-title"></div>
+            <!-- </a> -->
+            <!-- <a href="/publications/2018_005_QuantumTunneling_JCP/index.qmd"> -->
+                
+                <div class="listing-pub-author listing-author">
+                    Takashi Kumagai, Janina N. Ladenthin, Yair Litman, Mariana Rossi, Leonhard Grill, Sylwester Gawinkowski, Jacek Waluk, Mats Persson<br> 
+                </div>
+                
+                <div class="metadata-value listing-pub-journal listing-publication">
+                    
+                        <i>J. Chem. Phys.</i>, <b>148</b>, 102330 (2018)<br>
+                        
+                        
+                        
+                        
+                        
+                        
+                </div>
+                    
+                    
+                    
+            <!-- </a> -->
+ <!--               <div class="listing-categories">
+                
+                <div class="listing-category" onclick="window.quartoListingCategory('organic_inorganic_interfaces'); return false;">organic_inorganic_interfaces</div>
+                
+                <div class="listing-category" onclick="window.quartoListingCategory('quantum_dynamics'); return false;">quantum_dynamics</div>
+                
+                </div>
+                -->
+        </div>
+        <div class="metadata">
+
+            
+            <div class="listing-pub-url">
+
+                    <a href="https://aip.scitation.org/doi/10.1063/1.5004602">
+                    <p style="color:#8250E6;">journal URL <i class="bi bi-box-arrow-up-right"></i></p>
+                    </a>
+                </div>
+                    
+  
+              
+
+        </div>
+    </div>
+    
+    
+    </div>
+
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+
+
+
 </section>
-</div></div>
-</div>
-
-
-
-
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -402,6 +860,13 @@ ul.task-list li input[type="checkbox"] {
       window.document.body.appendChild(a);
     }
     setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
@@ -798,4 +1263,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/litman90/webpage/edit/main/people/baumann-matthias/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/litman90/webpage/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/litman90/webpage/edit/main/research/OrganicInorganicInterfaces/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/litman90/webpage/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

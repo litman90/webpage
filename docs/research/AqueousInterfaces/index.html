@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Matthias Baumann – STREAM</title>
+<title>Aqueous (Electrified) Interfaces – STREAM</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -34,10 +34,13 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
 <link href="../../favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-listing/list.min.js"></script>
+<script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
@@ -75,22 +78,76 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-pubs .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-publication','listing-title','listing-categories','listing-image','listing-date','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      
+      searchColumns: ["listing-project","listing-website","listing-format","listing-editor","listing-engines","listing-language","listing-title","listing-author","listing-date","listing-publication","listing-categories","listing-url_source","listing-url_preprint","listing-journ","listing-issue","listing-page","listing-year","listing-image","listing-pub_number","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-pubs'] = new List('listing-pubs', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Matthias Baumann – STREAM">
-<meta property="og:description" content="PhD Student">
-<meta property="og:image" content="https://litman90.github.io/webpage/people/baumann-matthias/avatar.png">
+<meta property="og:title" content="Aqueous (Electrified) Interfaces – STREAM">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://litman90.github.io/webpage/research/AqueousInterfaces/featured.jpg">
 <meta property="og:site_name" content="STREAM">
-<meta property="og:image:height" content="814">
-<meta property="og:image:width" content="675">
-<meta name="twitter:title" content="Matthias Baumann – STREAM">
-<meta name="twitter:description" content="PhD Student">
-<meta name="twitter:image" content="https://litman90.github.io/webpage/people/baumann-matthias/avatar.png">
+<meta name="twitter:title" content="Aqueous (Electrified) Interfaces – STREAM">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="https://litman90.github.io/webpage/research/AqueousInterfaces/featured.jpg">
 <meta name="twitter:creator" content="Yair Litman">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image-height" content="814">
-<meta name="twitter:image-width" content="675">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -338,53 +395,644 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#related-publications" id="toc-related-publications" class="nav-link active" data-scroll-target="#related-publications">Related Publications</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/litman90/webpage/edit/main/research/AqueousInterfaces/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/litman90/webpage/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 
-
-
-
-<hr>
-<div class="quarto-about-trestles column-page">
-  <div class="about-entity">
-    <img src="avatar.png" class="about-image
-  round " style="height: 20em; width: 20em;">
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Matthias Baumann</h1>
-<p class="subtitle lead">PhD Student</p>
+<h1 class="title">Aqueous (Electrified) Interfaces</h1>
 </div>
-<div class="quarto-title-meta column-page">
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
   </div>
+  
+
+
 </header>
-    <div class="about-links">
-  <a href="mailto:matthias.baumann1@rwth-aachen.de" class="about-link" rel="" target="">
-    <i class="bi bi-envelope"></i>
-     <span class="about-link-text">Email</span>
-  </a>
-  <a href="/../../CVs/CV_MB.pdf" class="about-link" rel="" target="">
-    <i class="bi bi-file-earmark-pdf"></i>
-     <span class="about-link-text">CV</span>
-  </a>
+
+
+<p>Where water meets the world: exploring the dynamic and complex realm of aqueous interfaces</p>
+<figure style="text-align: center;" class="figure">
+<img src="featured.jpg" alt="Featured Image" style="display: block; margin-left: auto; margin-right: auto; width: 500px; height: auto;" class="figure-img">
+<figcaption>
+NaCl (aq) - air interface
+</figcaption>
+</figure>
+<section id="related-publications" class="level2">
+<h2 class="anchored" data-anchor-id="related-publications">Related Publications</h2>
+<div id="listing-pubs" class="quarto-listing quarto-listing-container-custom">
+<div class="listing-actions-group">
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
 </div>
-  </div>
-  <div class="about-contents"><div id="about">
-<p>Matthias is a PhD student in the STREAM Group. His Master’s thesis at RWTH Aachen focused on the development and application of ab initio neural network potentials for the simulation of the thermodynamics and kinetics of photoresponsive materials (Grade 1.0). His background spans computational chemistry, spectroscopy, and catalysis.</p>
-<section id="education" class="level2">
-<h2 data-anchor-id="education">Education</h2>
-<p>M.Sc. Chemistry| RWTH Aachen University | 2024 <br> B.Sc. Chemistry | Universität Tübingen | 2020</p>
+<div class="list quarto-listing-default">
+    
+    
+    <div class="quarto-post image-right" data-index="0" data-categories="YXF1ZW91c19pbnRlcmZhY2Vz" data-listing-date-sort="1776117600000" data-listing-file-modified-sort="1779787788897" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+        <div class="thumbnail">
+            <!-- <a href="/publications/2026_035_nanoconfined_pkw/index.qmd"> -->
+
+                <p>
+                    
+                    <img alt="How reactive is water at the nanoscale and how to control it?" src="../../publications/2026_035_nanoconfined_pkw/featured.jpg" class="thumbnail-image">
+                    
+
+                </p>
+      
+
+            <!-- </a> -->
+        </div>
+        <div class="body">
+            <!-- <a href="/publications/2026_035_nanoconfined_pkw/index.qmd"> -->
+            <div class="no-anchor listing-pub-title listing-title">How reactive is water at the nanoscale and how to control it?</div>
+            <!-- </a> -->
+            <!-- <a href="/publications/2026_035_nanoconfined_pkw/index.qmd"> -->
+                
+                <div class="listing-pub-author listing-author">
+                    Xavier R. Advincula, Yair Litman, Kara D. Fong, William C. Witt, Christoph Schran, Angelos Michaelides<br> 
+                </div>
+                
+                <div class="metadata-value listing-pub-journal listing-publication">
+                    
+                        <i>Sci. Adv.</i>, (accepted) (2026)<br>
+                        
+                        
+                        
+                        
+                        
+                        
+                </div>
+                    
+                    
+                    
+            <!-- </a> -->
+ <!--               <div class="listing-categories">
+                
+                <div class="listing-category" onclick="window.quartoListingCategory('aqueous_interfaces'); return false;">aqueous_interfaces</div>
+                
+                </div>
+                -->
+        </div>
+        <div class="metadata">
+
+            
+            <div class="listing-pub-url">
+
+                    <a href="https://arxiv.org/abs/2508.13034v1">
+                    <p style="color:#8250E6;">journal URL <i class="bi bi-box-arrow-up-right"></i></p>
+                    </a>
+                </div>
+                    
+  
+              
+
+        </div>
+    </div>
+    
+    
+    
+    <div class="quarto-post image-right" data-index="1" data-categories="YXF1ZW91c19pbnRlcmZhY2VzJTJDdmlicmF0aW9uYWxfc3BlY3Ryb3Njb3B5" data-listing-date-sort="1775772000000" data-listing-file-modified-sort="1779787788893" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+        <div class="thumbnail">
+            <!-- <a href="/publications/2026_033_Wetting-Transparency_Chem/index.qmd"> -->
+
+                <p>
+                    
+                    <img alt="Wetting transparency of graphene across length scales" src="../../publications/2026_033_Wetting-Transparency_Chem/featured.jpg" class="thumbnail-image">
+                    
+
+                </p>
+      
+
+            <!-- </a> -->
+        </div>
+        <div class="body">
+            <!-- <a href="/publications/2026_033_Wetting-Transparency_Chem/index.qmd"> -->
+            <div class="no-anchor listing-pub-title listing-title">Wetting transparency of graphene across length scales</div>
+            <!-- </a> -->
+            <!-- <a href="/publications/2026_033_Wetting-Transparency_Chem/index.qmd"> -->
+                
+                <div class="listing-pub-author listing-author">
+                    Yongkang Wang, Yair Litman, Minhaeng Cho, Stephen J. Cox, Mischa Bonn<br> 
+                </div>
+                
+                <div class="metadata-value listing-pub-journal listing-publication">
+                    
+                        <i>Chem</i>, <b>12</b>, 103023 (2026)<br>
+                        
+                        
+                        
+                        
+                        
+                        
+                </div>
+                    
+                    
+                    
+            <!-- </a> -->
+ <!--               <div class="listing-categories">
+                
+                <div class="listing-category" onclick="window.quartoListingCategory('aqueous_interfaces'); return false;">aqueous_interfaces</div>
+                
+                <div class="listing-category" onclick="window.quartoListingCategory('vibrational_spectroscopy'); return false;">vibrational_spectroscopy</div>
+                
+                </div>
+                -->
+        </div>
+        <div class="metadata">
+
+            
+            <div class="listing-pub-url">
+
+                    <a href="https://doi.org/10.1016/j.chempr.2026.103023">
+                    <p style="color:#8250E6;">journal URL <i class="bi bi-box-arrow-up-right"></i></p>
+                    </a>
+                </div>
+                    
+  
+              
+
+        </div>
+    </div>
+    
+    
+    
+    <div class="quarto-post image-right" data-index="2" data-categories="YXF1ZW91c19pbnRlcmZhY2VzJTJDdmlicmF0aW9uYWxfc3BlY3Ryb3Njb3B5" data-listing-date-sort="1774994400000" data-listing-file-modified-sort="1779787788889" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+        <div class="thumbnail">
+            <!-- <a href="/publications/2026_032_Breaking-Air-Water_JACS/index.qmd"> -->
+
+                <p>
+                    
+                    <img alt="Breaking the Air–Water Paradigm: Ion Behavior at Hydrophobic Solid–Water Interfaces" src="../../publications/2026_032_Breaking-Air-Water_JACS/featured.webp" class="thumbnail-image">
+                    
+
+                </p>
+      
+
+            <!-- </a> -->
+        </div>
+        <div class="body">
+            <!-- <a href="/publications/2026_032_Breaking-Air-Water_JACS/index.qmd"> -->
+            <div class="no-anchor listing-pub-title listing-title">Breaking the Air–Water Paradigm: Ion Behavior at Hydrophobic Solid–Water Interfaces</div>
+            <!-- </a> -->
+            <!-- <a href="/publications/2026_032_Breaking-Air-Water_JACS/index.qmd"> -->
+                
+                <div class="listing-pub-author listing-author">
+                    Xavi R. Advincula, Kara D. Fong, Yongkang Wang, Christoph Schran, Mischa Bonn, Angelos Michaelides, Yair Litman<br> 
+                </div>
+                
+                <div class="metadata-value listing-pub-journal listing-publication">
+                    
+                        <i>J. Am. Chem. Soc.</i>, <b>148</b>, 12753-12763 (2026)<br>
+                        
+                        
+                        
+                        
+                        
+                        
+                </div>
+                    
+                    
+                    
+            <!-- </a> -->
+ <!--               <div class="listing-categories">
+                
+                <div class="listing-category" onclick="window.quartoListingCategory('aqueous_interfaces'); return false;">aqueous_interfaces</div>
+                
+                <div class="listing-category" onclick="window.quartoListingCategory('vibrational_spectroscopy'); return false;">vibrational_spectroscopy</div>
+                
+                </div>
+                -->
+        </div>
+        <div class="metadata">
+
+            
+            <div class="listing-pub-url">
+
+                    <a href="https://doi.org/10.1021/jacs.5c20209">
+                    <p style="color:#8250E6;">journal URL <i class="bi bi-box-arrow-up-right"></i></p>
+                    </a>
+                </div>
+                    
+  
+              
+
+        </div>
+    </div>
+    
+    
+    
+    <div class="quarto-post image-right" data-index="3" data-categories="YXF1ZW91c19pbnRlcmZhY2Vz" data-listing-date-sort="1763420400000" data-listing-file-modified-sort="1779787788889" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+        <div class="thumbnail">
+            <!-- <a href="/publications/2025_030_Anomalous-Electric-Fields_JACS/index.qmd"> -->
+
+                <p>
+                    
+                    <img alt="Reevaluating Anomalous Electric Fields at the Air–Water Interface" src="../../publications/2025_030_Anomalous-Electric-Fields_JACS/featured.gif" class="thumbnail-image">
+                    
+
+                </p>
+      
+
+            <!-- </a> -->
+        </div>
+        <div class="body">
+            <!-- <a href="/publications/2025_030_Anomalous-Electric-Fields_JACS/index.qmd"> -->
+            <div class="no-anchor listing-pub-title listing-title">Reevaluating Anomalous Electric Fields at the Air–Water Interface</div>
+            <!-- </a> -->
+            <!-- <a href="/publications/2025_030_Anomalous-Electric-Fields_JACS/index.qmd"> -->
+                
+                <div class="listing-pub-author listing-author">
+                    Joseph C. Shirley, Zi Xuan Ng, Kuo-Yang Chiang, Yuki Nagata, Yair Litman, Arsh S. Hazrah, Mischa Bonn<br> 
+                </div>
+                
+                <div class="metadata-value listing-pub-journal listing-publication">
+                    
+                        <i>J. Am.  Chem.  Soc.</i>, <b>147</b>, 46163-46173 (2025)<br>
+                        
+                        
+                        
+                        
+                        
+                        
+                </div>
+                    
+                    
+                    
+            <!-- </a> -->
+ <!--               <div class="listing-categories">
+                
+                <div class="listing-category" onclick="window.quartoListingCategory('aqueous_interfaces'); return false;">aqueous_interfaces</div>
+                
+                </div>
+                -->
+        </div>
+        <div class="metadata">
+
+            
+            <div class="listing-pub-url">
+
+                    <a href="https://doi.org/10.1021/jacs.5c14541">
+                    <p style="color:#8250E6;">journal URL <i class="bi bi-box-arrow-up-right"></i></p>
+                    </a>
+                </div>
+                    
+  
+              
+
+        </div>
+    </div>
+    
+    
+    
+    <div class="quarto-post image-right" data-index="4" data-categories="YXF1ZW91c19pbnRlcmZhY2Vz" data-listing-date-sort="1761951600000" data-listing-file-modified-sort="1779787788889" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+        <div class="thumbnail">
+            <!-- <a href="/publications/2025_029_Entropy-Water-Dissociation_JACS/index.qmd"> -->
+
+                <p>
+                    
+                    <img alt="Entropy Governs the Structure and Reactivity of Water Dissociation Under Electric Fields" src="../../publications/2025_029_Entropy-Water-Dissociation_JACS/featured.jpg" class="thumbnail-image">
+                    
+
+                </p>
+      
+
+            <!-- </a> -->
+        </div>
+        <div class="body">
+            <!-- <a href="/publications/2025_029_Entropy-Water-Dissociation_JACS/index.qmd"> -->
+            <div class="no-anchor listing-pub-title listing-title">Entropy Governs the Structure and Reactivity of Water Dissociation Under Electric Fields</div>
+            <!-- </a> -->
+            <!-- <a href="/publications/2025_029_Entropy-Water-Dissociation_JACS/index.qmd"> -->
+                
+                <div class="listing-pub-author listing-author">
+                    Yair Litman, Angelos Michaelides<br> 
+                </div>
+                
+                <div class="metadata-value listing-pub-journal listing-publication">
+                    
+                        <i>J. Am.  Chem.  Soc.</i>, <b>147</b>, 44885-44894 (2025)<br>
+                        
+                        
+                        
+                        
+                        
+                        
+                </div>
+                    
+                    
+                    
+            <!-- </a> -->
+ <!--               <div class="listing-categories">
+                
+                <div class="listing-category" onclick="window.quartoListingCategory('aqueous_interfaces'); return false;">aqueous_interfaces</div>
+                
+                </div>
+                -->
+        </div>
+        <div class="metadata">
+
+            
+            <div class="listing-pub-url">
+
+                    <a href="https://doi.org/10.1021/jacs.5c12397">
+                    <p style="color:#8250E6;">journal URL <i class="bi bi-box-arrow-up-right"></i></p>
+                    </a>
+                </div>
+                    
+  
+              
+
+        </div>
+    </div>
+    
+    
+    
+    <div class="quarto-post image-right" data-index="5" data-categories="YXF1ZW91c19pbnRlcmZhY2Vz" data-listing-date-sort="1716847200000" data-listing-file-modified-sort="1779787788869" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+        <div class="thumbnail">
+            <!-- <a href="/publications/2024_026_Learning-Electronic-Pol_JChemInfModel/index.qmd"> -->
+
+                <p>
+                    
+                    <img alt="Learning Electronic Polarizations in Aqueous Systems" src="../../publications/2024_026_Learning-Electronic-Pol_JChemInfModel/featured.jpeg" class="thumbnail-image">
+                    
+
+                </p>
+      
+
+            <!-- </a> -->
+        </div>
+        <div class="body">
+            <!-- <a href="/publications/2024_026_Learning-Electronic-Pol_JChemInfModel/index.qmd"> -->
+            <div class="no-anchor listing-pub-title listing-title">Learning Electronic Polarizations in Aqueous Systems</div>
+            <!-- </a> -->
+            <!-- <a href="/publications/2024_026_Learning-Electronic-Pol_JChemInfModel/index.qmd"> -->
+                
+                <div class="listing-pub-author listing-author">
+                    Arnab Jana, Sam Shepherd, Yair Litman, David M. Wilkins<br> 
+                </div>
+                
+                <div class="metadata-value listing-pub-journal listing-publication">
+                    
+                        <i>J. Chem. Inf. Model.</i>, <b>64</b>, 4426-4435 (2024)<br>
+                        
+                        
+                        
+                        
+                        
+                        
+                </div>
+                    
+                    
+                    
+            <!-- </a> -->
+ <!--               <div class="listing-categories">
+                
+                <div class="listing-category" onclick="window.quartoListingCategory('aqueous_interfaces'); return false;">aqueous_interfaces</div>
+                
+                </div>
+                -->
+        </div>
+        <div class="metadata">
+
+            
+            <div class="listing-pub-url">
+
+                    <a href="https://doi.org/10.1021/acs.jcim.4c00421">
+                    <p style="color:#8250E6;">journal URL <i class="bi bi-box-arrow-up-right"></i></p>
+                    </a>
+                </div>
+                    
+  
+              
+
+        </div>
+    </div>
+    
+    
+    
+    <div class="quarto-post image-right" data-index="6" data-categories="YXF1ZW91c19pbnRlcmZhY2VzJTJDdmlicmF0aW9uYWxfc3BlY3Ryb3Njb3B5" data-listing-date-sort="1705273200000" data-listing-file-modified-sort="1779787788869" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+        <div class="thumbnail">
+            <!-- <a href="/publications/2024_025_Surface-stratification_NatChem/index.qmd"> -->
+
+                <p>
+                    
+                    <img alt="Surface stratification determines the interfacial water structure of simple electrolyte solutions" src="../../publications/2024_025_Surface-stratification_NatChem/featured.png" class="thumbnail-image">
+                    
+
+                </p>
+      
+
+            <!-- </a> -->
+        </div>
+        <div class="body">
+            <!-- <a href="/publications/2024_025_Surface-stratification_NatChem/index.qmd"> -->
+            <div class="no-anchor listing-pub-title listing-title">Surface stratification determines the interfacial water structure of simple electrolyte solutions</div>
+            <!-- </a> -->
+            <!-- <a href="/publications/2024_025_Surface-stratification_NatChem/index.qmd"> -->
+                
+                <div class="listing-pub-author listing-author">
+                    Yair Litman, Kuo-Yang Chiang, Takakazu Seki, Yuki Nagata, Mischa Bonn<br> 
+                </div>
+                
+                <div class="metadata-value listing-pub-journal listing-publication">
+                    
+                        <i>Nature Chemistry</i>, <b>16</b>, 644-650 (2024)<br>
+                        
+                        
+                        
+                        
+                        
+                        
+                </div>
+                    
+                    
+                    
+            <!-- </a> -->
+ <!--               <div class="listing-categories">
+                
+                <div class="listing-category" onclick="window.quartoListingCategory('aqueous_interfaces'); return false;">aqueous_interfaces</div>
+                
+                <div class="listing-category" onclick="window.quartoListingCategory('vibrational_spectroscopy'); return false;">vibrational_spectroscopy</div>
+                
+                </div>
+                -->
+        </div>
+        <div class="metadata">
+
+            
+            <div class="listing-pub-url">
+
+                    <a href="https://doi.org/10.1038/s41557-023-01416-6">
+                    <p style="color:#8250E6;">journal URL <i class="bi bi-box-arrow-up-right"></i></p>
+                    </a>
+                </div>
+                    
+  
+              
+
+        </div>
+    </div>
+    
+    
+    
+    <div class="quarto-post image-right" data-index="7" data-categories="YXF1ZW91c19pbnRlcmZhY2VzJTJDdmlicmF0aW9uYWxfc3BlY3Ryb3Njb3B5" data-listing-date-sort="1705273200000" data-listing-file-modified-sort="1779787788865" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+        <div class="thumbnail">
+            <!-- <a href="/publications/2023_023_Full-First-Principles-SFG_JPhysChemLett/index.qmd"> -->
+
+                <p>
+                    
+                    <img alt="Fully First-Principles Surface Spectroscopy with Machine Learning" src="../../publications/2023_023_Full-First-Principles-SFG_JPhysChemLett/featured.jpg" class="thumbnail-image">
+                    
+
+                </p>
+      
+
+            <!-- </a> -->
+        </div>
+        <div class="body">
+            <!-- <a href="/publications/2023_023_Full-First-Principles-SFG_JPhysChemLett/index.qmd"> -->
+            <div class="no-anchor listing-pub-title listing-title">Fully First-Principles Surface Spectroscopy with Machine Learning</div>
+            <!-- </a> -->
+            <!-- <a href="/publications/2023_023_Full-First-Principles-SFG_JPhysChemLett/index.qmd"> -->
+                
+                <div class="listing-pub-author listing-author">
+                    Yair Litman, Jinggang Lan, Yuki Nagata, David M. Wilkins<br> 
+                </div>
+                
+                <div class="metadata-value listing-pub-journal listing-publication">
+                    
+                        <i>J. Phys. Chem. Lett</i>, <b>14</b>, 8175-8182 (2023)<br>
+                        
+                        
+                        
+                        
+                        
+                        
+                </div>
+                    
+                    
+                    
+            <!-- </a> -->
+ <!--               <div class="listing-categories">
+                
+                <div class="listing-category" onclick="window.quartoListingCategory('aqueous_interfaces'); return false;">aqueous_interfaces</div>
+                
+                <div class="listing-category" onclick="window.quartoListingCategory('vibrational_spectroscopy'); return false;">vibrational_spectroscopy</div>
+                
+                </div>
+                -->
+        </div>
+        <div class="metadata">
+
+            
+            <div class="listing-pub-url">
+
+                    <a href="https://doi.org/10.1021/acs.jpclett.3c01989">
+                    <p style="color:#8250E6;">journal URL <i class="bi bi-box-arrow-up-right"></i></p>
+                    </a>
+                </div>
+                    
+  
+              
+
+        </div>
+    </div>
+    
+    
+    
+    <div class="quarto-post image-right" data-index="8" data-categories="YXF1ZW91c19pbnRlcmZhY2VzJTJDcXVhbnR1bV9keW5hbWljcw==" data-listing-date-sort="1511305200000" data-listing-file-modified-sort="1779787788865" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+        <div class="thumbnail">
+            <!-- <a href="/publications/2018_006_Decisive_role_JCP/index.qmd"> -->
+
+                <p>
+                    
+                    <img alt="Decisive role of nuclear quantum effects on surface mediated water dissociation at finite temperature" src="../../publications/2018_006_Decisive_role_JCP/featured.jpg" class="thumbnail-image">
+                    
+
+                </p>
+      
+
+            <!-- </a> -->
+        </div>
+        <div class="body">
+            <!-- <a href="/publications/2018_006_Decisive_role_JCP/index.qmd"> -->
+            <div class="no-anchor listing-pub-title listing-title">Decisive role of nuclear quantum effects on surface mediated water dissociation at finite temperature</div>
+            <!-- </a> -->
+            <!-- <a href="/publications/2018_006_Decisive_role_JCP/index.qmd"> -->
+                
+                <div class="listing-pub-author listing-author">
+                    Yair Litman, Davide Donadio, Michele Ceriotti, Mariana Rossi<br> 
+                </div>
+                
+                <div class="metadata-value listing-pub-journal listing-publication">
+                    
+                        <i>J. Chem. Phys.</i>, <b>148</b>, 102320 (2018)<br>
+                        
+                        
+                        
+                        
+                        
+                        
+                </div>
+                    
+                    
+                    
+            <!-- </a> -->
+ <!--               <div class="listing-categories">
+                
+                <div class="listing-category" onclick="window.quartoListingCategory('aqueous_interfaces'); return false;">aqueous_interfaces</div>
+                
+                <div class="listing-category" onclick="window.quartoListingCategory('quantum_dynamics'); return false;">quantum_dynamics</div>
+                
+                </div>
+                -->
+        </div>
+        <div class="metadata">
+
+            
+            <div class="listing-pub-url">
+
+                    <a href="https://aip.scitation.org/doi/10.1063/1.5002537">
+                    <p style="color:#8250E6;">journal URL <i class="bi bi-box-arrow-up-right"></i></p>
+                    </a>
+                </div>
+                    
+  
+              
+
+        </div>
+    </div>
+    
+    
+    </div>
+
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+
+
+
 </section>
-</div></div>
-</div>
-
-
-
-
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -402,6 +1050,13 @@ ul.task-list li input[type="checkbox"] {
       window.document.body.appendChild(a);
     }
     setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
@@ -798,4 +1453,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/litman90/webpage/edit/main/people/baumann-matthias/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/litman90/webpage/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/litman90/webpage/edit/main/research/AqueousInterfaces/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/litman90/webpage/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
