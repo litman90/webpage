@@ -1,2 +1,3 @@
+#  conda activate website
 # Visualize
-quarto preview
+  quarto preview        # live local preview
