@@ -27,12 +27,6 @@ Spectrodynamics 2026 conference dinner, where the real discussions happen
 :::
 
 ::: {.photo-item}
-![](<../photos_gallery/ASE-CECAM-Workshop_Mainz_June-2026.jpeg>){group="gallery" description="ASE/CECAM workshop (Mainz 2026), proudly hosted by STREAM as local co-organizers"}
-
-ASE/CECAM workshop (Mainz 2026), proudly hosted by STREAM as local co-organizers
-:::
-
-::: {.photo-item}
 ![](<../photos_gallery/Group-Aug-2026_mexican-dinner.jpg>){group="gallery" description="STREAM exploring Mexican food in Mainz (August 2026)"}
 
 STREAM exploring Mexican food in Mainz (August 2026)
@@ -42,6 +36,12 @@ STREAM exploring Mexican food in Mainz (August 2026)
 ![](<../photos_gallery/Group-Aug-2026_tacos.jpg>){group="gallery" description="Tacos: experimentally verified (Mainz, August 2026)"}
 
 Tacos: experimentally verified (Mainz, August 2026)
+:::
+
+::: {.photo-item}
+![](<../photos_gallery/ASE-CECAM-Workshop_Mainz_June-2026.jpeg>){group="gallery" description="ASE/CECAM workshop (Mainz 2026), proudly hosted by STREAM as local co-organizers"}
+
+ASE/CECAM workshop (Mainz 2026), proudly hosted by STREAM as local co-organizers
 :::
 
 ::: {.photo-item}
