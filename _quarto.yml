@@ -54,8 +54,6 @@ website:
       #  href: https://github.com/matiasandina/
       - icon: envelope
         href: mailto:litmany@mpip-mainz.mpg.de
-      - icon: twitter
-        href: https://x.com/YairLitman
       - icon: linkedin
         href: https://www.linkedin.com/in/yair-litman-11345b30/
       - text: "{{< ai orcid >}}" 

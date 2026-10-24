@@ -35,7 +35,6 @@ Our ultimate goal is to build a microscopic understanding of interfacial reactiv
 
 :::{.landing-links}
 <a href="mailto:litmany@mpip-mainz.mpg.de" title="Email"><i class="bi bi-envelope"></i></a>
-<a href="https://x.com/YairLitman" title="Twitter/X"><i class="bi bi-twitter-x"></i></a>
 <a href="https://www.linkedin.com/in/yair-litman-11345b30/" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
 [{{< ai orcid >}}](https://orcid.org/0000-0002-6890-4052){title="ORCID"}
 [{{< ai google-scholar >}}](https://scholar.google.de/citations?user=TZ9_wnEAAAAJ&hl=en){title="Google Scholar"}
