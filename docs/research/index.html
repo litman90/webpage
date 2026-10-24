@@ -88,9 +88,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-description','listing-image','listing-path','listing-order',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
+      searchColumns: ["listing-project","listing-website","listing-format","listing-editor","listing-engines","listing-language","listing-title","listing-alias","listing-order","listing-image","listing-toc","listing-listing","listing-path","listing-outputHref","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -143,11 +143,13 @@ window.Quarto = {
 <meta property="og:description" content="STREAM group at the Max Planck Institute for Polymer Research, Mainz: atomistic simulations of chemical reactions at aqueous and electrified interfaces, led by Yair Litman.">
 <meta property="og:image" content="https://litman90.github.io/webpage/research/AqueousInterfaces/featured.jpg">
 <meta property="og:site_name" content="STREAM">
+<meta property="og:image:alt" content="Aqueous (Electrified) Interfaces">
 <meta name="twitter:title" content="Research Areas – STREAM">
 <meta name="twitter:description" content="STREAM group at the Max Planck Institute for Polymer Research, Mainz: atomistic simulations of chemical reactions at aqueous and electrified interfaces, led by Yair Litman.">
 <meta name="twitter:image" content="https://litman90.github.io/webpage/research/AqueousInterfaces/featured.jpg">
 <meta name="twitter:creator" content="Yair Litman">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:alt" content="Aqueous (Electrified) Interfaces">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -431,71 +433,27 @@ window.Quarto = {
 
 
 
-<div class="quarto-listing quarto-listing-container-grid" id="listing-research">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1792872606283" data-listing-reading-time-sort="2" data-listing-word-count-sort="241">
-<a href="../research/AqueousInterfaces/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../research/AqueousInterfaces/featured.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Aqueous (Electrified) Interfaces
-</h5>
-<div class="card-text listing-description delink">
-Where water meets the world: exploring the dynamic and complex realm of aqueous interfaces
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
+<div class="quarto-listing quarto-listing-container-custom" id="listing-research">
+<div class="research-grid">
 
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1792872696551" data-listing-reading-time-sort="2" data-listing-word-count-sort="223">
-<a href="../research/QuantumDynamics/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../research/QuantumDynamics/featured.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Quantum Dynamics
-</h5>
-<div class="card-text listing-description delink">
-Understanding, predicting and manipulating nuclear quantum dynamics.
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
+  <a href="../research/AqueousInterfaces/index.html" class="research-item">
+    <div class="research-title">Aqueous (Electrified) Interfaces</div>
+    <img src="../research/AqueousInterfaces/featured.jpg" alt="Aqueous (Electrified) Interfaces" class="research-image">
+    <p class="research-tagline">Where water meets the world: exploring the dynamic and complex realm of aqueous interfaces</p>
+  </a>
 
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1792871793981" data-listing-reading-time-sort="2" data-listing-word-count-sort="218">
-<a href="../research/VibrationalSpectroscopy/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../research/VibrationalSpectroscopy/featured.webp" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Nonlinear Vibrational Spectroscopy
-</h5>
-<div class="card-text listing-description delink">
-Using light to reveal the mysteries of molecular motion.
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
+  <a href="../research/QuantumDynamics/index.html" class="research-item">
+    <div class="research-title">Quantum Dynamics</div>
+    <img src="../research/QuantumDynamics/featured.jpg" alt="Quantum Dynamics" class="research-image">
+    <p class="research-tagline">Understanding, predicting and manipulating nuclear quantum dynamics.</p>
+  </a>
 
-</div>
-</div>
-</div>
-</div></a>
-</div>
+  <a href="../research/VibrationalSpectroscopy/index.html" class="research-item">
+    <div class="research-title">Nonlinear Vibrational Spectroscopy</div>
+    <img src="../research/VibrationalSpectroscopy/featured.webp" alt="Nonlinear Vibrational Spectroscopy" class="research-image">
+    <p class="research-tagline">Using light to reveal the mysteries of molecular motion.</p>
+  </a>
+
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
 </div></main> <!-- /main -->
