@@ -9,6 +9,26 @@ comments: false
 <div class="photo-grid">
 
   <div class="photo-item">
+    <img src="../photos_gallery/Spectrodynamics-2026_organizers.jpg" alt="Three proud organizers of Spectrodynamics 2026 (Lausanne 2026)">
+    <p>Three proud organizers of Spectrodynamics 2026 (Lausanne 2026)</p>
+  </div>
+
+  <div class="photo-item">
+    <img src="../photos_gallery/Spectrodynamics-2026_MPIP.jpg" alt="The MPI-P delegation at Spectrodynamics 2026 (Lausanne 2026)">
+    <p>The MPI-P delegation at Spectrodynamics 2026 (Lausanne 2026)</p>
+  </div>
+
+  <div class="photo-item">
+    <img src="../photos_gallery/Spectrodynamics-2026_dinner.jpg" alt="Spectrodynamics 2026 conference dinner">
+    <p>Spectrodynamics 2026 conference dinner, where the real discussions happen</p>
+  </div>
+
+  <div class="photo-item">
+    <img src="../photos_gallery/ASE-CECAM-Workshop_Mainz_June-2026.jpeg" alt="ASE/CECAM workshop (Mainz 2026)">
+    <p>ASE/CECAM workshop (Mainz 2026), proudly hosted by STREAM as local co-organizers</p>
+  </div>
+
+  <div class="photo-item">
     <img src="../photos_gallery/Group-May-2026_sun.jpeg" alt="Group May 2026">
     <p>Group May 2026</p>
   </div>

@@ -10,3 +10,7 @@ Yair_aerosol_2026.jpg,order=8,"Chemical reactivity on droplets and air/water int
 Yair_naquaWindsow_2026.jpg,order=9,"n-aqua workshop (Windsor 2026)"
 Group-May-2026_close.jpeg,order=10,"Group May 2026 (so much sun!)"
 Group-May-2026_sun.jpeg,order=11,"Group May 2026 — ab initio evidence that Mainz has a summer"
+ASE-CECAM-Workshop_Mainz_June-2026.jpeg,order=12,"ASE/CECAM workshop (Mainz 2026), proudly hosted by STREAM as local co-organizers"
+Spectrodynamics-2026_dinner.jpg,order=13,"Spectrodynamics 2026 conference dinner, where the real discussions happen"
+Spectrodynamics-2026_MPIP.jpg,order=14,"The MPI-P delegation at Spectrodynamics 2026 (Lausanne 2026)"
+Spectrodynamics-2026_organizers.jpg,order=15,"Three proud organizers of Spectrodynamics 2026 (Lausanne 2026)"
