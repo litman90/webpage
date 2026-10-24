@@ -3,7 +3,7 @@ title: "First-Principles Simulations of Tip Enhanced Raman Scattering Reveal Act
 author: ["Yair Litman", "Franco P. Bonafé", "Alaa Akkoush", "Heiko Appel", "Mariana Rossi"]
 date: 2023-06-24
 publication: "J. Phys. Chem. Lett. , **14**, _6850-6859_ (2023)."
-categories: ["organic_inorganic_interfaces","vibrational_spectroscopy"]
+categories: ["vibrational_spectroscopy"]
 url_source: https://doi.org/10.1021/acs.jpclett.3c01216
 url_preprint: 
 journ: "J. Phys. Chem. Lett."
