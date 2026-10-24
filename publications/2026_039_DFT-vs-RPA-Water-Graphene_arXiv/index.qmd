@@ -1,0 +1,15 @@
+---
+title: "How Good Is DFT for Solid-Liquid Interfaces? A Comparison With the Random-Phase Approximation for Water on Graphene"
+author: ["Xavier R. Advincula", "Yair Litman", "Jiuyang Shi", "Flaviano Della Pia", "Christoph Schran", "Angelos Michaelides"]
+date: 2026-10-07
+publication: "arXiv:2610.09685 (2026)"
+categories: ["aqueous_interfaces"]
+url_source:
+url_preprint: https://arxiv.org/abs/2610.09685
+journ: "arXiv"
+issue:
+page: "2610.09685"
+year: 2026
+image: featured.png
+pub_number: 39
+---

@@ -1,0 +1,15 @@
+---
+title: "Interfacial Water Responds Linearly to Charge yet Is Charge-Asymmetric"
+author: ["Yair Litman", "Yongkang Wang", "Stephen J. Cox", "Mischa Bonn"]
+date: 2026-10-07
+publication: "arXiv:2610.09705 (2026)"
+categories: ["aqueous_interfaces", "vibrational_spectroscopy"]
+url_source:
+url_preprint: https://arxiv.org/abs/2610.09705
+journ: "arXiv"
+issue:
+page: "2610.09705"
+year: 2026
+image: featured.png
+pub_number: 40
+---

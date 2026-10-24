@@ -1,0 +1,15 @@
+---
+title: "Disentangling Surface Charge and Electrolyte Effects on Interfacial Water at Electrified Pt(111)"
+author: ["Thorben Eggert", "Lang Li", "Yair Litman", "Karsten Reuter", "Nicolas G. Hörmann", "Clotilde S. Cucinotta"]
+date: 2026-09-22
+publication: "arXiv:2609.26685 (2026)"
+categories: ["aqueous_interfaces"]
+url_source:
+url_preprint: https://arxiv.org/abs/2609.26685
+journ: "arXiv"
+issue:
+page: "2609.26685"
+year: 2026
+image: featured.png
+pub_number: 38
+---

@@ -30,6 +30,9 @@
   {
     "listing": "/research/AqueousInterfaces/index.html",
     "items": [
+      "/publications/2026_040_Charge-Asymmetric-Interfacial-Water_arXiv/index.html",
+      "/publications/2026_039_DFT-vs-RPA-Water-Graphene_arXiv/index.html",
+      "/publications/2026_038_Electrified-Pt111-Water_arXiv/index.html",
       "/publications/2026_036_Water-Magnetite_JCIS/index.html",
       "/publications/2026_035_nanoconfined_pkw/index.html",
       "/publications/2026_033_Wetting-Transparency_Chem/index.html",
@@ -43,24 +46,10 @@
     ]
   },
   {
-    "listing": "/past_lives/Photochemistry/index.html",
+    "listing": "/posts/index.html",
     "items": [
-      "/publications/2018_007_Photophysics_PhotoPhotobio/index.html",
-      "/publications/2016_003_Tuning_PhotoPhotobio/index.html",
-      "/publications/2014_002_Effect_of_concentraion_JPCA/index.html"
-    ]
-  },
-  {
-    "listing": "/past_lives/Bacon/index.html",
-    "items": [
-      "/publications/2012_001_Novel-simple-and-fast_Choline/index.html"
-    ]
-  },
-  {
-    "listing": "/past_lives/index.html",
-    "items": [
-      "/past_lives/Photochemistry/index.html",
-      "/past_lives/Bacon/index.html"
+      "/posts/2023-08-19-the-power-to-normalize/index.html",
+      "/posts/2022-10-10-Inequality/index.html"
     ]
   },
   {
@@ -73,15 +62,32 @@
     ]
   },
   {
-    "listing": "/posts/index.html",
+    "listing": "/past_lives/index.html",
     "items": [
-      "/posts/2023-08-19-the-power-to-normalize/index.html",
-      "/posts/2022-10-10-Inequality/index.html"
+      "/past_lives/Photochemistry/index.html",
+      "/past_lives/Bacon/index.html"
+    ]
+  },
+  {
+    "listing": "/past_lives/Bacon/index.html",
+    "items": [
+      "/publications/2012_001_Novel-simple-and-fast_Choline/index.html"
+    ]
+  },
+  {
+    "listing": "/past_lives/Photochemistry/index.html",
+    "items": [
+      "/publications/2018_007_Photophysics_PhotoPhotobio/index.html",
+      "/publications/2016_003_Tuning_PhotoPhotobio/index.html",
+      "/publications/2014_002_Effect_of_concentraion_JPCA/index.html"
     ]
   },
   {
     "listing": "/publications/index.html",
     "items": [
+      "/publications/2026_040_Charge-Asymmetric-Interfacial-Water_arXiv/index.html",
+      "/publications/2026_039_DFT-vs-RPA-Water-Graphene_arXiv/index.html",
+      "/publications/2026_038_Electrified-Pt111-Water_arXiv/index.html",
       "/publications/2026_037_FHI-aims-Roadmap_ElectronStruct/index.html",
       "/publications/2026_036_Water-Magnetite_JCIS/index.html",
       "/publications/2026_035_nanoconfined_pkw/index.html",
@@ -134,6 +140,7 @@
   {
     "listing": "/research/VibrationalSpectroscopy/index.html",
     "items": [
+      "/publications/2026_040_Charge-Asymmetric-Interfacial-Water_arXiv/index.html",
       "/publications/2026_036_Water-Magnetite_JCIS/index.html",
       "/publications/2026_034_IR-Raman-Vibrational_JCP/index.html",
       "/publications/2026_033_Wetting-Transparency_Chem/index.html",
