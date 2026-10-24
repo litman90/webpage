@@ -84,18 +84,11 @@
     "text": "Welcome to the STREAM Group website!\n\n\nWe are a theory and simulation research group at the Molecular Spectroscopy Department of the Max Planck Institute for Polymer Research in Mainz, Germany.\nThe STREAM Group — Simulations of Transformations at Electrochemical Aqueous Media — studies how chemical reactions occur at aqueous interfaces. Our work focuses on complex environments such as electrified interfaces, nanoconfined water, and liquid–solid boundaries, where molecular structure and dynamics control reactivity.\nTo address these questions, we develop and apply atomistic simulation methods based on quantum mechanics, statistical mechanics, machine-learning potentials, enhanced sampling, and path-integral techniques. We also simulate vibrational spectroscopies to connect our theoretical predictions with experiments.\nOur ultimate goal is to build a microscopic understanding of interfacial reactivity and use it to guide the design of systems relevant for energy storage and conversion."
   },
   {
-    "objectID": "contact.html",
-    "href": "contact.html",
-    "title": "Contact",
-    "section": "",
-    "text": "View larger map"
-  },
-  {
     "objectID": "contact.html#how-to-reach",
     "href": "contact.html#how-to-reach",
-    "title": "Contact",
+    "title": "STREAM",
     "section": "How to reach us",
-    "text": "How to reach us\nBy tram, take lines 51, 53, or 59 from Hauptbahnhof West (below the highway) and exit at Bretzenheim/Hochschule Mainz. From there it is a short ~200 m walk to the institute entrance (see map below).\nAlternatively, bus 75 stops at Duesbergweg, less than 100 m from the main entrance.\nUpon arrival, please announce yourself at reception and ask them to call office number 380.\nFurther travel information is available on the MPIP directions page.\n\n\n\nWalking route from the tram stop to MPIP"
+    "text": "How to reach us\n\n\n\n  View larger map\n\nBy tram, take lines 51, 53, or 59 from Hauptbahnhof West (below the highway) and exit at Bretzenheim/Hochschule Mainz. From there it is a short ~200 m walk to the institute entrance (see map below).\nAlternatively, bus 75 stops at Duesbergweg, less than 100 m from the main entrance.\nUpon arrival, please announce yourself at reception and ask them to call office number 380.\nFurther travel information is available on the MPIP directions page.\n\n\n\nWalking route from the tram stop to MPIP"
   },
   {
     "objectID": "codes/index.html",
