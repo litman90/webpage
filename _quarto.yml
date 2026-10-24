@@ -44,8 +44,8 @@ website:
       - href: publications/index.qmd
       - text: "About Yair"
         file: people/litman-yair/index.qmd
-      # - text: "Thoughts"
-      #   file: posts/index.qmd
+      - text: "Posts"
+        file: posts/index.qmd
       - text: "Photos"
         file: gallery/index.qmd
       - text: "Contact"
