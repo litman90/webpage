@@ -19,7 +19,6 @@ Where water meets the world: exploring the dynamic and complex realm of aqueous 
 
 <figure style="text-align: center;">
     <img src="featured.jpg" alt="Featured Image" style="display: block; margin-left: auto; margin-right: auto; width: 500px; height: auto;">
-    <figcaption>NaCl (aq) - air interface </figcaption>
 </figure>
 
 
