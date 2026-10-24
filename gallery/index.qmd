@@ -9,6 +9,18 @@ lightbox: true
 ::: {.photo-grid}
 
 ::: {.photo-item}
+![](<../photos_gallery/Group-Aug-2026_mexican-dinner.jpg>){group="gallery" description="STREAM exploring Mexican food in Mainz (August 2026)"}
+
+STREAM exploring Mexican food in Mainz (August 2026)
+:::
+
+::: {.photo-item}
+![](<../photos_gallery/Group-Aug-2026_tacos.jpg>){group="gallery" description="Tacos: experimentally verified (Mainz, August 2026)"}
+
+Tacos: experimentally verified (Mainz, August 2026)
+:::
+
+::: {.photo-item}
 ![](<../photos_gallery/Spectrodynamics-2026_organizers.jpg>){group="gallery" description="Three proud organizers of Spectrodynamics 2026 (Lausanne 2026)"}
 
 Three proud organizers of Spectrodynamics 2026 (Lausanne 2026)

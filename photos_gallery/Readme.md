@@ -14,3 +14,5 @@ ASE-CECAM-Workshop_Mainz_June-2026.jpeg,order=12,"ASE/CECAM workshop (Mainz 2026
 Spectrodynamics-2026_dinner.jpg,order=13,"Spectrodynamics 2026 conference dinner, where the real discussions happen"
 Spectrodynamics-2026_MPIP.jpg,order=14,"The MPI-P delegation at Spectrodynamics 2026 (Lausanne 2026)"
 Spectrodynamics-2026_organizers.jpg,order=15,"Three proud organizers of Spectrodynamics 2026 (Lausanne 2026)"
+Group-Aug-2026_mexican-dinner.jpg,order=16,"STREAM exploring Mexican food in Mainz (August 2026)"
+Group-Aug-2026_tacos.jpg,order=17,"Tacos: experimentally verified (Mainz, August 2026)"
