@@ -93,7 +93,7 @@ Psi-k 2025 Conference (Lausanne 2025)
 :::
 
 ::: {.photo-item}
-![](<../photos_gallery/Yair_1.jpg>){group="gallery" description="Yair at "At the interface between confusion and insight""}
+![](<../photos_gallery/Yair_1.jpg>){group="gallery" description='Yair at "At the interface between confusion and insight"'}
 
 Yair at "At the interface between confusion and insight"
 :::

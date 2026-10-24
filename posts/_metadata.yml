@@ -1,9 +1,4 @@
 # Defaults for all posts
 freeze: true
-title-block-banner: true
 toc: true
 toc-location: right
-author:
-  - name: Yair Litman
-    affiliation: Max Planck Institute for Polymer Research
-    orcid: 0000-0002-6890-4052
