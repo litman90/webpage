@@ -1,0 +1,15 @@
+---
+title: "Towards decoding the structure of the water-magnetite interface"
+author: ["Salvatore Romano", "Harsharan Kaur", "Pablo Montero de Hijes", "Moritz Zelenka", "Moritz Eder", "Min-Ju Choi", "Yingge Du", "Gareth S. Parkinson", "Yair Litman", "Ellen H. G. Backus", "Christoph Dellago"]
+date: 2026-10-24
+publication: "J. Colloid Interface Sci. **729**, 141808 (2027)"
+categories: ["aqueous_interfaces", "vibrational_spectroscopy"]
+url_source: https://doi.org/10.1016/j.jcis.2026.141808
+url_preprint:
+journ: "J. Colloid Interface Sci."
+issue: 729
+page: "141808"
+year: 2027
+image: featured.jpg
+pub_number: 36
+---

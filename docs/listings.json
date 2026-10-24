@@ -11,6 +11,7 @@
   {
     "listing": "/research/QuantumDynamics/index.html",
     "items": [
+      "/publications/2026_037_FHI-aims-Roadmap_ElectronStruct/index.html",
       "/publications/2026_034_IR-Raman-Vibrational_JCP/index.html",
       "/publications/2024_028_ipiv3_JCP/index.html",
       "/publications/2024_027_Quantum_rates_JCP/index.html",
@@ -29,6 +30,7 @@
   {
     "listing": "/research/AqueousInterfaces/index.html",
     "items": [
+      "/publications/2026_036_Water-Magnetite_JCIS/index.html",
       "/publications/2026_035_nanoconfined_pkw/index.html",
       "/publications/2026_033_Wetting-Transparency_Chem/index.html",
       "/publications/2026_032_Breaking-Air-Water_JACS/index.html",
@@ -80,6 +82,8 @@
   {
     "listing": "/publications/index.html",
     "items": [
+      "/publications/2026_037_FHI-aims-Roadmap_ElectronStruct/index.html",
+      "/publications/2026_036_Water-Magnetite_JCIS/index.html",
       "/publications/2026_035_nanoconfined_pkw/index.html",
       "/publications/2026_034_IR-Raman-Vibrational_JCP/index.html",
       "/publications/2026_033_Wetting-Transparency_Chem/index.html",
@@ -130,6 +134,7 @@
   {
     "listing": "/research/VibrationalSpectroscopy/index.html",
     "items": [
+      "/publications/2026_036_Water-Magnetite_JCIS/index.html",
       "/publications/2026_034_IR-Raman-Vibrational_JCP/index.html",
       "/publications/2026_033_Wetting-Transparency_Chem/index.html",
       "/publications/2026_032_Breaking-Air-Water_JACS/index.html",
