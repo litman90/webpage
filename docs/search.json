@@ -102,7 +102,7 @@
     "href": "codes/index.html",
     "title": "Contribution to Community Software",
     "section": "",
-    "text": "We are committed to developing and supporting open community software. The group contributes to the codes below, and Yair is one of the core developers of i-PI.\n\n\n\n\n\n\ni-PI: a universal force engine\nA Python engine for advanced molecular dynamics that obtains forces from external electronic-structure or machine-learning codes. It implements path-integral methods for nuclear quantum effects, quantum rate theories, and a broad set of sampling and dynamics schemes. Yair is one of the core developers and led the i-PI 3.0 release.\n\n\n\n\n\n\n\n\nFHI-aims: the ab initio materials simulation package\nAn all-electron electronic-structure code based on numeric atom-centered orbitals, used for molecules, surfaces and materials. Our contributions concern the treatment of quantum nuclei, electron–phonon coupling and electronic friction, and the interface to i-PI.\n\n\n\n\n\nMetalWalls\n\n\nMetalWalls: a molecular dynamics code for electrochemical systems\nA classical molecular dynamics code dedicated to electrochemical systems, with constant-potential electrodes and polarizable force fields. We contribute developments for the simulation of electrified solid–liquid interfaces."
+    "text": "We are committed to developing and supporting open community software. The group contributes to the codes below, and Yair is one of the core developers of i-PI.\n\n\n\n\n\n\ni-PI: a universal force engine\nA Python engine for advanced molecular dynamics that obtains forces from external electronic-structure or machine-learning codes. It implements path-integral methods for nuclear quantum effects, quantum rate theories, and a broad set of sampling and dynamics schemes. Yair is one of the core developers and led the i-PI 3.0 release.\n\n\n\n\n\n\n\n\nFHI-aims: the ab initio materials simulation package\nAn all-electron electronic-structure code based on numeric atom-centered orbitals, used for molecules, surfaces and materials.\n\n\n\n\n\nMetalWalls\n\n\nMetalWalls: a molecular dynamics code for electrochemical systems\nA classical molecular dynamics code dedicated to electrochemical systems, with constant-potential electrodes and polarizable force fields."
   },
   {
     "objectID": "gallery/index.html",
@@ -165,7 +165,7 @@
     "href": "people/index.html#join-us",
     "title": "Meet the Group",
     "section": "Join us",
-    "text": "Join us\nInterested in joining STREAM? Please contact Yair, providing a CV and explaining why you want to join the group."
+    "text": "Join us\nInterested in joining STREAM? Please get in touch with Yair and include your CV together with a short note on why you would like to join the group."
   },
   {
     "objectID": "people/qian-shengjie/index.html#education",
