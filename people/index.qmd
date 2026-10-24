@@ -50,3 +50,7 @@ page-layout: full
 
 ::: {#alumni}
 ::: -->
+
+## Join us
+
+Interested in joining STREAM? Please contact [Yair](mailto:litmany@mpip-mainz.mpg.de), providing a CV and explaining why you want to join the group.
