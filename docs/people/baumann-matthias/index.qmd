@@ -19,9 +19,6 @@ about:
     - icon: envelope
       text: Email
       href: mailto:matthias.baumann1@rwth-aachen.de
-    - icon: file-earmark-pdf
-      text: CV
-      href: ../../CVs/CV_MB.pdf
 ---
 
 <hr>

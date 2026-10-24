@@ -23,9 +23,6 @@ about:
       href: https://scholar.google.de/citations?user=TZ9_wnEAAAAJ&hl=en
     - text: "{{< ai orcid >}} ORCID"
       href: https://orcid.org/0000-0002-6890-4052
-    - icon: twitter-x
-      text: Twitter/X
-      href: https://x.com/YairLitman
     - icon: file-earmark-pdf
       text: CV
       href: https://litman90.github.io/webpage/files/Yair_Litman.pdf

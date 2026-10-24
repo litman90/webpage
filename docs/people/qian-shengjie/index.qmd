@@ -19,9 +19,6 @@ about:
     - icon: envelope
       text: Email
       href: mailto:jennie.qian98@gmail.com
-    - icon: file-earmark-pdf
-      text: CV
-      href: ../../CVs/CV_Shengjie_Qian.pdf
 ---
 
 <hr>
