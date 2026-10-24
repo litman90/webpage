@@ -102,3 +102,16 @@
 @media (max-width: 767.98px) {
   .quarto-post .listing-pub-number { display: none; }
 }
+
+/* ── Research area cards: rounded corners ─────────── */
+
+#listing-research .quarto-grid-item.card {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+#listing-research .quarto-grid-item.card .card-img-top,
+#listing-research .quarto-grid-item.card .card-img {
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
