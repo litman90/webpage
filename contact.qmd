@@ -1,5 +1,6 @@
 ---
-title: "Contact"
+title: ""
+pagetitle: "Contact"
 comments: false
 about:
   id: contact
@@ -13,6 +14,8 @@ about:
 #contact h4 { font-size: 1rem; margin-bottom: 0.5rem; font-weight: 400; }
 </style>
 
+## Contact
+
 :::{#contact}
 
 #### {{< fa envelope >}} &nbsp; litmany@mpip-mainz.mpg.de
@@ -25,7 +28,7 @@ about:
 
 :::
 
-<br>
+## How to reach us {#how-to-reach}
 
 ```{=html}
 <iframe
@@ -38,8 +41,6 @@ about:
   <a href="https://www.openstreetmap.org/?mlat=49.9891189&mlon=8.2299197" target="_blank">View larger map</a>
 </p>
 ```
-
-## How to reach us {#how-to-reach}
 
 By **tram**, take lines 51, 53, or 59 from *Hauptbahnhof West* (below the highway) and exit at *Bretzenheim/Hochschule Mainz*. From there it is a short ~200 m walk to the institute entrance (see map below).
 

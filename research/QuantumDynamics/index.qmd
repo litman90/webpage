@@ -3,6 +3,7 @@ title: Quantum Dynamics
 alias: &ALIAS quantum_dynamics
 order: 2
 image: featured.jpg
+toc: false
 listing:
   id: pubs
   template: ../../_ejs/publications-people.ejs 

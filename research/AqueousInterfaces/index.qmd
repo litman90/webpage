@@ -3,6 +3,7 @@ title: Aqueous (Electrified) Interfaces
 alias: &ALIAS aqueous_interfaces
 order: 1
 image: featured.jpg
+toc: false
 listing:
   id: pubs
   template: ../../_ejs/publications-people.ejs 

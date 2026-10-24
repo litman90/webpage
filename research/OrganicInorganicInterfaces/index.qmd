@@ -3,6 +3,7 @@ title: Organic/Inorganic  Interfaces
 alias: &ALIAS organic_inorganic_interfaces
 order: 4
 image: featured.jpg
+toc: false
 listing:
   id: pubs
   template: ../../_ejs/publications-people.ejs 

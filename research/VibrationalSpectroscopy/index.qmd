@@ -3,6 +3,7 @@ title: Nonlinear Vibrational Spectroscopy
 alias: &ALIAS vibrational_spectroscopy
 order: 3
 image: featured.webp
+toc: false
 listing:
   id: pubs
   template: ../../_ejs/publications-people.ejs 
