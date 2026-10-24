@@ -1,5 +1,5 @@
 ---
-title: (Non Linear) Vibrational Spectroscopy
+title: Nonlinear Vibrational Spectroscopy
 alias: &ALIAS vibrational_spectroscopy
 order: 3
 image: featured.webp
