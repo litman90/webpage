@@ -96,3 +96,9 @@
   .landing-grid { grid-template-columns: 1fr; }
   .landing-image { order: -1; max-height: 300px; }
 }
+
+/* ── Publication listings on narrow screens ───────── */
+
+@media (max-width: 767.98px) {
+  .quarto-post .listing-pub-number { display: none; }
+}
