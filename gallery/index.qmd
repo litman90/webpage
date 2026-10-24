@@ -3,85 +3,99 @@ title: "Photo Gallery"
 page-layout: full
 toc: false
 comments: false
+lightbox: true
 ---
 
-```{=html}
-<div class="photo-grid">
+::: {.photo-grid}
 
-  <div class="photo-item">
-    <img src="../photos_gallery/Spectrodynamics-2026_organizers.jpg" alt="Three proud organizers of Spectrodynamics 2026 (Lausanne 2026)">
-    <p>Three proud organizers of Spectrodynamics 2026 (Lausanne 2026)</p>
-  </div>
+::: {.photo-item}
+![](<../photos_gallery/Spectrodynamics-2026_organizers.jpg>){group="gallery" description="Three proud organizers of Spectrodynamics 2026 (Lausanne 2026)"}
 
-  <div class="photo-item">
-    <img src="../photos_gallery/Spectrodynamics-2026_MPIP.jpg" alt="The MPI-P delegation at Spectrodynamics 2026 (Lausanne 2026)">
-    <p>The MPI-P delegation at Spectrodynamics 2026 (Lausanne 2026)</p>
-  </div>
+Three proud organizers of Spectrodynamics 2026 (Lausanne 2026)
+:::
 
-  <div class="photo-item">
-    <img src="../photos_gallery/Spectrodynamics-2026_dinner.jpg" alt="Spectrodynamics 2026 conference dinner">
-    <p>Spectrodynamics 2026 conference dinner, where the real discussions happen</p>
-  </div>
+::: {.photo-item}
+![](<../photos_gallery/Spectrodynamics-2026_MPIP.jpg>){group="gallery" description="The MPI-P delegation at Spectrodynamics 2026 (Lausanne 2026)"}
 
-  <div class="photo-item">
-    <img src="../photos_gallery/ASE-CECAM-Workshop_Mainz_June-2026.jpeg" alt="ASE/CECAM workshop (Mainz 2026)">
-    <p>ASE/CECAM workshop (Mainz 2026), proudly hosted by STREAM as local co-organizers</p>
-  </div>
+The MPI-P delegation at Spectrodynamics 2026 (Lausanne 2026)
+:::
 
-  <div class="photo-item">
-    <img src="../photos_gallery/Group-May-2026_sun.jpeg" alt="Group May 2026">
-    <p>Group May 2026</p>
-  </div>
+::: {.photo-item}
+![](<../photos_gallery/Spectrodynamics-2026_dinner.jpg>){group="gallery" description="Spectrodynamics 2026 conference dinner, where the real discussions happen"}
 
-  <div class="photo-item">
-    <img src="../photos_gallery/Group-May-2026_close.jpeg" alt="Group May 2026 (so much sun!)">
-    <p>Group May 2026 — ab initio evidence that Mainz has a summer</p>
-  </div>
+Spectrodynamics 2026 conference dinner, where the real discussions happen
+:::
 
-  <div class="photo-item">
-    <img src="../photos_gallery/Yair_naquaWindsow_2026.jpg" alt="n-aqua workshop (Windsor 2026)">
-    <p>n-aqua workshop (Windsor 2026)</p>
-  </div>
+::: {.photo-item}
+![](<../photos_gallery/ASE-CECAM-Workshop_Mainz_June-2026.jpeg>){group="gallery" description="ASE/CECAM workshop (Mainz 2026), proudly hosted by STREAM as local co-organizers"}
 
-  <div class="photo-item">
-    <img src="../photos_gallery/Yair_aerosol_2026.jpg" alt="Chemical reactivity on droplets and air/water interface (Shanghai, 2026)">
-    <p>Chemical reactivity on droplets and air/water interface (Shanghai, 2026)</p>
-  </div>
+ASE/CECAM workshop (Mainz 2026), proudly hosted by STREAM as local co-organizers
+:::
 
-  <div class="photo-item">
-    <img src="../photos_gallery/Yair_simplaix.JPG" alt="Simplaix Workshop (Heidelberg 2026)">
-    <p>Simplaix Workshop (Heidelberg 2026)</p>
-  </div>
+::: {.photo-item}
+![](<../photos_gallery/Group-May-2026_sun.jpeg>){group="gallery" description="Group May 2026"}
 
-  <div class="photo-item">
-    <img src="../photos_gallery/Yair_simplaix2.JPG" alt="Simplaix Workshop (Heidelberg 2026)">
-    <p>Simplaix Workshop (Heidelberg 2026)</p>
-  </div>
+Group May 2026
+:::
 
-  <div class="photo-item">
-    <img src="../photos_gallery/Stream_May-2025.jpg" alt="STREAM group May 2025">
-    <p>STREAM group, May 2025</p>
-  </div>
+::: {.photo-item}
+![](<../photos_gallery/Group-May-2026_close.jpeg>){group="gallery" description="Group May 2026 — ab initio evidence that Mainz has a summer"}
 
-  <div class="photo-item">
-    <img src="../photos_gallery/Stream_May-2025b.jpg" alt="STREAM group May 2025" style="object-position: top;">
-    <p>STREAM group, May 2025</p>
-  </div>
+Group May 2026 — ab initio evidence that Mainz has a summer
+:::
 
-  <div class="photo-item">
-    <img src="../photos_gallery/Yair_2.jpg" alt="Evidence that theory can be fun">
-    <p>Evidence that theory can be fun</p>
-  </div>
+::: {.photo-item}
+![](<../photos_gallery/Yair_naquaWindsow_2026.jpg>){group="gallery" description="n-aqua workshop (Windsor 2026)"}
 
-  <div class="photo-item">
-    <img src="../photos_gallery/Psi-k%202025.jpg" alt="Psi-k 2025 Conference (Lausanne 2025)">
-    <p>Psi-k 2025 Conference (Lausanne 2025)</p>
-  </div>
+n-aqua workshop (Windsor 2026)
+:::
 
-  <div class="photo-item">
-    <img src="../photos_gallery/Yair_1.jpg" alt="Yair at the interface between confusion and insight">
-    <p>Yair at "At the interface between confusion and insight"</p>
-  </div>
+::: {.photo-item}
+![](<../photos_gallery/Yair_aerosol_2026.jpg>){group="gallery" description="Chemical reactivity on droplets and air/water interface (Shanghai, 2026)"}
 
-</div>
-```
+Chemical reactivity on droplets and air/water interface (Shanghai, 2026)
+:::
+
+::: {.photo-item}
+![](<../photos_gallery/Yair_simplaix.JPG>){group="gallery" description="Simplaix Workshop (Heidelberg 2026)"}
+
+Simplaix Workshop (Heidelberg 2026)
+:::
+
+::: {.photo-item}
+![](<../photos_gallery/Yair_simplaix2.JPG>){group="gallery" description="Simplaix Workshop (Heidelberg 2026)"}
+
+Simplaix Workshop (Heidelberg 2026)
+:::
+
+::: {.photo-item}
+![](<../photos_gallery/Stream_May-2025.jpg>){group="gallery" description="STREAM group, May 2025"}
+
+STREAM group, May 2025
+:::
+
+::: {.photo-item}
+![](<../photos_gallery/Stream_May-2025b.jpg>){group="gallery" description="STREAM group, May 2025" style="object-position: top;"}
+
+STREAM group, May 2025
+:::
+
+::: {.photo-item}
+![](<../photos_gallery/Yair_2.jpg>){group="gallery" description="Evidence that theory can be fun"}
+
+Evidence that theory can be fun
+:::
+
+::: {.photo-item}
+![](<../photos_gallery/Psi-k 2025.jpg>){group="gallery" description="Psi-k 2025 Conference (Lausanne 2025)"}
+
+Psi-k 2025 Conference (Lausanne 2025)
+:::
+
+::: {.photo-item}
+![](<../photos_gallery/Yair_1.jpg>){group="gallery" description="Yair at "At the interface between confusion and insight""}
+
+Yair at "At the interface between confusion and insight"
+:::
+
+:::
