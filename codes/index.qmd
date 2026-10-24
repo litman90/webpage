@@ -33,7 +33,7 @@ A Python engine for advanced molecular dynamics that obtains forces from externa
 ::: {.g-col-12 .g-col-md-9}
 ### [FHI-aims: the ab initio materials simulation package](https://fhi-aims.org/)
 
-An all-electron electronic-structure code based on numeric atom-centered orbitals, used for molecules, surfaces and materials. Our contributions concern the treatment of quantum nuclei, electron–phonon coupling and electronic friction, and the interface to i-PI.
+An all-electron electronic-structure code based on numeric atom-centered orbitals, used for molecules, surfaces and materials.
 :::
 
 :::
@@ -49,7 +49,7 @@ An all-electron electronic-structure code based on numeric atom-centered orbital
 ::: {.g-col-12 .g-col-md-9}
 ### [MetalWalls: a molecular dynamics code for electrochemical systems](https://gitlab.com/ampere2/metalwalls)
 
-A classical molecular dynamics code dedicated to electrochemical systems, with constant-potential electrodes and polarizable force fields. We contribute developments for the simulation of electrified solid–liquid interfaces.
+A classical molecular dynamics code dedicated to electrochemical systems, with constant-potential electrodes and polarizable force fields.
 :::
 
 :::
