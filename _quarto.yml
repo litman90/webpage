@@ -10,6 +10,7 @@ website:
   page-navigation: true
   reader-mode: false
   title: "STREAM"
+  description: "STREAM group at the Max Planck Institute for Polymer Research, Mainz: atomistic simulations of chemical reactions at aqueous and electrified interfaces, led by Yair Litman."
   favicon: favicon.ico
   site-url: "https://litman90.github.io/webpage"
   repo-url: "https://github.com/litman90/webpage"
