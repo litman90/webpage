@@ -1,6 +1,6 @@
 ---
 title: "Roadmap on Advancements of the FHI-aims Software Package"
-author: "Joseph W. Abbott, Carlos Mera Acosta, Alaa Akkoush, ..., Yair Litman, ..., Tong Zhu (205 authors)"
+author: "FHI-aims developers and contributors (205 authors, including Yair Litman)"
 date: 2026-10-24
 publication: "Electron. Struct. (2026)"
 categories: ["quantum_dynamics"]
