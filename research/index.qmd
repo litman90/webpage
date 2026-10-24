@@ -2,8 +2,10 @@
 title: Research Areas
 listing:
   id: research
-  type: grid
+  template: ../_ejs/research-circles.ejs
+  contents: "*/index.qmd"
   sort: "order asc"
+  fields: [title, description, image, path, order]
 page-layout: full
 ---
 

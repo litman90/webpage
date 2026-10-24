@@ -1,0 +1,11 @@
+```{=html}
+<div class="research-grid">
+<% for (const item of items) { %>
+  <a href="<%- item.path %>" class="research-item">
+    <div class="research-title"><%= item.title %></div>
+    <img src="<%- item.image %>" alt="<%= item.title %>" class="research-image">
+    <p class="research-tagline"><%= item.description %></p>
+  </a>
+<% } %>
+</div>
+```
