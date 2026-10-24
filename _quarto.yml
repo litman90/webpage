@@ -76,7 +76,6 @@ format:
     css: styles.css
     resources:
       - figures
-      - CVs
       - people
       - photos_gallery
     # page formatting

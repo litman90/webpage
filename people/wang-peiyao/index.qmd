@@ -19,9 +19,6 @@ about:
     - icon: envelope
       text: Email
       href: mailto:peiyao.w@outlook.com
-    - icon: file-earmark-pdf
-      text: CV
-      href: ../../CVs/Resume_Peiyao_Wang_-1.pdf
 ---
 
 <hr>
